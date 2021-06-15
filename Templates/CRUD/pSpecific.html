@@ -1,0 +1,242 @@
+{% extends 'pTemplate.html' %}
+{% load mathfilters %}
+
+{% block body %}
+{% endblock %}
+
+
+{% block fillUp %}
+<h1 style="text-align:center" >Project Management</h1>
+<br>
+
+<div class="center">
+
+<table class="table table-bordered limitedTable">
+  <thead class="thead thead-dark">
+    <tr>
+      <th scope="col">S#</th>
+      <th scope="col">Project</th>
+      <th scope="col">Project Owner</th>
+      <th scope="col"> Total Value </th>
+      <th scope="col"> Status </th>
+      <th scope="col"> Sector </th>
+
+    </tr>
+  </thead>
+  <tbody>
+
+      {% for object in projectList %}
+      <tr>
+      <th scope="row"> {{object.projectID}} </th>
+      <td>{{object.projectName}}</td>
+      <td>{{object.projectOwner}}</td>
+      <td>{{object.projectValue}}</td>
+      <td>{{object.projectStatus}}</td>
+      <td>  {{object.projectSector}}</td>
+      </tr>
+      {% endfor %}
+  </tbody>
+</table>
+
+</div>
+
+<div class="accordion" id="accordionExample">
+  <div class="card">
+    <div class="card-header" id="headingOne">
+      <h2 class="mb-0">
+        <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+          Show Expenses, Receivings and Profit
+        </button>
+      </h2>
+    </div>
+
+    <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
+      <div class="card-body">
+      <div class="container mt-4">
+  <!-- Content here -->
+    <div class="jumbotron jumbotron">
+
+
+  <div class="container mt-4">
+    <h1 class="display-6"> Total Project Value {{projectValue}} Million PKR</h1>
+    <h1 class="display-6"> Total Receivings {{invoiceCompletedSum}} Million PKR</h1>
+    <h1 class="display-6"> Total Cost {{expenseSum}} Million PKR</h1>
+
+    <h1 class="display-6"> Total Profit Received {{projectProfit}} Million PKR</h1>
+    <h1 class="display-6"> Total Remaining Invoices {{invoiceOngoingSum}} Million PKR</h1>
+    <h1 class="display-6"> Total Remaining Project {{projectRemainingSum}} Million PKR</h1>
+</div>
+</div>
+</div>
+      </div>
+      </div>
+    </div>
+
+</div>
+
+<div class="container mt">
+  <!-- Content here -->
+    <center> <h1>Ongoing Invoices PKR: {{invoiceOngoingSum}} Million </h1>  </center>
+    <br>
+<div class="center mt-2">
+
+<table class="table table-bordered ">
+  <thead class="thead thead-dark">
+    <tr>
+
+      <th scope="col">S#</th>
+        <th scope="col">Project</th>
+        <th scope="col">Date</th>
+        <th scope="col"> Type </th>
+      <th scope="col"> Amount </th>
+      <th scope="col"> Details</th>
+        <th scope="col"> Action </th>
+    </tr>
+  </thead>
+  <tbody>
+
+      {% for object in invoiceListOngoing %}
+      <tr>
+      <th scope="row"> {{object.invoiceID}} </th>
+      <td>{{object.project.projectName}}</td>
+      <td>{{object.invoiceDate}}</td>
+      <td> {{object.invoiceType}}</td>
+      <td>{{object.invoiceAmount}}</td>
+      <td>  {{object.invoiceDetails}}</td>
+      <td> <a href="/invoiceManagement/removeInvoice/{{object.invoiceID}} " > Remove Invoice </a></td>
+
+
+     </td>
+
+      </tr>
+      {% endfor %}
+  </tbody>
+</table>
+</div>
+
+       <div class="container mt-2">
+  <!-- Content here -->
+    <center> <h1> General Expenses PKR {{generalExpenseSum}} Million</h1>  </center>
+    <br>
+<div class="center mt-2">
+
+<table class="table table-bordered ">
+  <thead class="thead thead-dark">
+    <tr>
+
+        <th scope="col">S#</th>
+        <th scope="col">Project</th>
+        <th scope="col">Date</th>
+        <th scope="col">Receipient </th>
+        <th scope="col"> Type </th>
+        <th scope="col"> Amount </th>
+        <th scope="col"> Details</th>
+        <th scope="col"> Action </th>
+    </tr>
+  </thead>
+  <tbody>
+
+      {% for object in generalExpenseList %}
+      <tr>
+      <th scope="row"> {{object.expenseID}} </th>
+      <td>{{object.project.projectName}}</td>
+      <td>{{object.expenseDate}}</td>
+      <td>{{object.expenseReceipient}}</td>
+      <td> {{object.expenseType}}</td>
+      <td>{{object.expenseAmount}}</td>
+      <td>  {{object.expenseDetails}}</td>
+      <td> <a href="/expenseManagement/removeExpense/{{object.expenseID}} " > Remove expense </a></td>
+
+
+     </td>
+
+      </tr>
+      {% endfor %}
+  </tbody>
+</table>
+</div>
+
+</div>
+    <center> <h1> Vendor Expenses PKR {{vendorExpenseSum}} Million</h1>  </center>
+    <br>
+<div class="center mt-2">
+
+<table class="table table-bordered ">
+  <thead class="thead thead-dark">
+    <tr>
+
+        <th scope="col">S#</th>
+        <th scope="col">Date</th>
+        <th scope="col">Vendor </th>
+        <th scope="col"> Type </th>
+        <th scope="col"> Amount </th>
+        <th scope="col"> Details</th>
+        <th scope="col"> Action </th>
+    </tr>
+  </thead>
+  <tbody>
+
+      {% for object in vendorExpenseList %}
+      <tr>
+      <th scope="row"> {{object.expenseID}} </th>
+      <td>{{object.expenseDate}}</td>
+      <td>{{object.vendor.vendorName}}</td>
+      <td> {{object.expenseType}}</td>
+      <td>{{object.expenseAmount}}</td>
+      <td>  {{object.expenseDetails}}</td>
+      <td> <a href="/expenseManagement/removeExpense/{{object.expenseID}} " > Remove expense </a></td>
+
+
+     </td>
+
+      </tr>
+      {% endfor %}
+  </tbody>
+</table>
+</div>
+
+    <br>
+      <center>  <h1>Completed Invoices {{invoiceCompletedSum}} Million</h1> </center>
+    <br>
+<div class="center mt-2">
+
+<table class="table table-bordered ">
+  <thead class="thead thead-dark">
+    <tr>
+        <th scope="col">S#</th>
+        <th scope="col">Project</th>
+        <th scope="col">Date</th>
+        <th scope="col"> Type </th>
+        <th scope="col"> Amount </th>
+        <th scope="col"> Details</th>
+        <th scope="col"> Action </th>
+    </tr>
+  </thead>
+  <tbody>
+
+      {% for object in invoiceListCompleted %}
+      <tr>
+      <th scope="row"> {{object.invoiceID}} </th>
+      <td>{{object.project.projectName}}</td>
+      <td>{{object.invoiceDate}}</td>
+      <td> {{object.invoiceType}}</td>
+      <td>{{object.invoiceAmount}}</td>
+      <td>  {{object.invoiceDetails}}</td>
+      <td> <a href="/invoiceManagement/removeInvoice/{{object.invoiceID}} " > Remove Invoice </a></td>
+
+
+     </td>
+
+      </tr>
+      {% endfor %}
+  </tbody>
+</table>
+</div>
+
+
+
+</div>
+
+</div>
+
+{% endblock %}

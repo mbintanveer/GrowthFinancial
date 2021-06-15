@@ -1,0 +1,152 @@
+{% extends 'aTemplate.html' %}
+{% load mathfilters %}
+
+{% block body %}
+
+
+{% endblock %}
+
+{% block fillUp %}
+<h1 style="text-align:center" > Income Statement Summary for {{currentMonth}} </h1>
+<br>
+
+<div class="center">
+
+<table class="table table-bordered limitedTable">
+  <thead class="thead thead-dark">
+    <tr>
+
+        <th scope="col"><b>  Description</b> </th>
+        <th scope="col"> <b> Amount </b></th>
+
+    </tr>
+  </thead>
+  <tbody>
+
+
+      <tr>
+          <td> <h5> Revenue  [BreakDown Below] </h5></b> </td>
+        <td> <h5> {{invoiceCompletedSum}} Million </h5></td>
+      </tr>
+
+    {% for object in projectList %}
+
+      <tr>
+      <td class="ml-1"> {{object.projectName}} </td>
+      <td> {{object.projectMonthlySum}} Million </td>
+      </tr>
+
+    {% endfor %}
+
+    <tr>
+          <td> <h5>Cost of All Projects</h5>  </td>
+      <td> <h5> {{costOfProjectSum}} Lac </h5>  </td>
+
+      </tr>
+        <tr>
+
+            <td>  <h5>Gross Profit </h5>   </td>
+            <td> <h5> {{grossProfit}} LAC </h5> </td>
+      </tr>
+
+
+        <tr>
+          <td><h5> Operating Expenses </h5> </td>
+      <td>   </td>
+      </tr>
+
+      <tr>
+      <td> <h6> Labour Admin [BreakDown Below] </h6></td>
+        <td> <h6> {{sumAdminLabour}} LAC  </h6></td>
+      </tr>
+
+      {% for object in labourAdminList %}
+      <tr>
+      <td> {{object.expenseDetails}} </td>
+
+        {% if object.expenseAmount < 99999 %}
+        <td> {{object.expenseAmount|div:1000}} Thousand </td>
+        {% else %}
+        <td> {{object.expenseAmount|div:100000}} LAC </td>
+        {% endif %}
+
+      </tr>
+      {% endfor %}
+
+      <tr>
+        <td> <h6>Facilities [BreakDown Below]</h6></td>
+      <td> <h6> {{sumFacilities}} LAC</h6> </td>
+      </tr>
+
+      {% for object in facilitiesList %}
+      <tr>
+      <td> {{object.expenseDetails}} </td>
+
+        {% if object.expenseAmount < 99999 %}
+        <td> {{object.expenseAmount|div:1000}} Thousand </td>
+        {% else %}
+        <td> {{object.expenseAmount|div:100000}} LAC </td>
+        {% endif %}
+
+      </tr>
+      {% endfor %}
+
+
+      <tr>
+      <td><h5> Marketing [BreakDown Below]</h5></td>
+        <td> <h5> {{sumMarketing}} Thousand </h5></td>
+      </tr>
+
+      {% for object in marketingList %}
+      <tr>
+      <td> {{object.expenseDetails}} </td>
+
+        {% if object.expenseAmount < 99999 %}
+        <td> {{object.expenseAmount|div:1000}} Thousand </td>
+        {% else %}
+        <td> {{object.expenseAmount|div:100000}} LAC </td>
+        {% endif %}
+
+      </tr>
+      {% endfor %}
+
+      <tr>
+      <td> <h5> Other Expenses [BreakDown Below]</h5> </td>
+        <td><h5> {{sumOtherExpenses}} Thousand </h5> </td>
+      </tr>
+
+      {% for object in otherExpensesList %}
+
+      <tr>
+      <td> {{object.expenseDetails}} </td>
+
+        {% if object.expenseAmount < 99999 %}
+        <td> {{object.expenseAmount|div:1000}} Thousand </td>
+        {% else %}
+        <td> {{object.expenseAmount|div:100000}} LAC </td>
+        {% endif %}
+
+      </tr>
+      {% endfor %}
+
+
+      <tr>
+          <td> <h5>  Net Income </h5> </td>
+          <td><b> {{netIncome}} LAC </b> </td>
+      </tr>
+
+
+
+
+  </tbody>
+</table>
+</div>
+
+
+{% endblock %}
+
+
+
+
+
+

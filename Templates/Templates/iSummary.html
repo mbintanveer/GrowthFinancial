@@ -1,0 +1,48 @@
+{% extends 'iTemplate.html' %}
+
+
+{% block fillUp %}
+<h1 style="text-align:center" >Invoices Overall Summary</h1>
+<br>
+
+<!-- Project Wise Summary of Invoices -->
+
+<div class="center">
+<table class="table table-bordered limitedTable">
+  <thead class="thead thead-dark">
+    <tr>
+      <th scope="col">S#</th>
+      <th scope="col"> Project Name </th>
+        <th scope="col"> Total Invoices Paid(Million) </th>
+      <th scope="col"> Total Invoices Pending(Million) </th>
+    </tr>
+  </thead>
+
+  <tbody>
+    {% for object in projectList %}
+      <tr>
+      <th scope="row"> {{forloop.counter}} </th>
+      <th> {{object.shortSummary}} </th>
+      <th> {{object.projectInvoiceCompletedSum}} </th>
+      <th> {{object.projectInvoiceOngoingSum}} </th>
+      </tr>
+
+    {% endfor %}
+    <tr>
+
+        <th colspan="2">Total Sum</th>
+        <th>{{invoiceCompletedSum}}</th>
+        <th>{{invoiceOngoingSum}}</th>
+    </tr>
+  </tbody>
+</table>
+
+
+</div>
+{% endblock %}
+
+
+
+
+
+

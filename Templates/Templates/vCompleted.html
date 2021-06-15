@@ -1,0 +1,82 @@
+{% extends 'iTemplate.html' %}
+
+{% load mathfilters %}
+{% block body %}
+<style>
+
+  table.limitedTable {
+max-width: 100%;
+}
+
+.center {
+  display: block;
+  margin-left: 30px;
+  margin-right: 30px;
+  margin-top: 25px;
+  text-align:center;
+}
+
+</style>
+
+
+{% endblock %}
+
+
+
+{% block fillUp %}
+<div class="container mt">
+  <!-- Content here -->
+    <center>
+
+
+    <br>
+      <center>  <h1>Cleared Vendors </h1> </center>
+    <br>
+
+
+
+
+    <div class="center mt-2">
+<!-- Completed Vendors (Dues = 0) -->
+<table class="table table-bordered ">
+  <thead class="thead thead-dark">
+
+    <tr class="table-info">
+      <th scope="col">S#</th>
+        <th scope="col"> Vendor </th>
+        <th scope="col"> Owner </th>
+      <th scope="col"> Amount </th>
+        <th scope="col"> Action </th>
+    </tr>
+  </thead>
+  <tbody>
+
+      {% for object in vendorsCompleted %}
+      <tr>
+      <th scope="row"> {{forloop.counter}} </th>
+          <td> <a href="/vendorManagement/vSpecific/{{object.vendorID}}"> {{object.vendorName}} </a>
+          </td>
+      <td> {{object.vendorOwner}} </td>
+      <td>{{object.getAmount|div:1000}}K</td>
+      <td><a href="/vendorManagement/vEdit/{{object.vendorID}} " > Edit Vendor </a></td>
+
+     </td>
+
+      </tr>
+      {% endfor %}
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+</div>
+
+
+{% endblock %}
+
+
+
+
+
+

@@ -1,0 +1,61 @@
+{% extends 'main.html'%} {% load static %} {% block fillUp %}
+
+<h1> When we click, we will be redirected towards Specific Vendor Page</h1>
+
+<div class="card-body ">
+    <h5 class="card-title">
+    </h5>
+    <p class="card-text">
+    </p>
+
+    <a class="btn btn-info" href="/Vendors/Vendors_Add" role="button">Create New Vendor</a>
+
+    <a class="btn btn-info" href="/Vendors/Bills_Add" role="button">Add Bill</a>
+    <a class="btn btn-info" href="/Vendors/Payments_Add" role="button">Add Payment</a>
+
+    <a class="btn btn-info" href="/Vendors/Vendors_View" role="button">View Specific Vendor</a>
+
+
+    <div class="container mt">
+
+
+        <center>
+            <h1>Vendors List </h1>
+        </center>
+        <br>
+
+        <div class="center mt-2">
+
+            <table class="table table-bordered">
+                <thead class="thead thead-dark">
+                    <tr>
+                        <th scope="col">S#</th>
+                        <th scope="col">Client Name </th>
+
+                    </tr>
+                </thead>
+                <tbody>
+
+                    {% for vendor in VendorsList %}
+                    <tr>
+                        <th scope="row"> {{forloop.counter}} </th>
+                        <td><a href="/Vendors/Vendors_View/{{vendor.vendor_id}}"> {{vendor.vendor_name}} </a></td>
+
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+
+
+        <br>
+
+
+
+    </div>
+
+</div>
+
+
+{% endblock %}

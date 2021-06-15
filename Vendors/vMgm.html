@@ -1,0 +1,74 @@
+{% extends 'vTemplate.html' %}
+
+{% load mathfilters %}
+{% block body %}
+
+
+{% endblock %}
+
+
+{% block fillUp %}
+<div class="container mt">
+  <!-- Content here -->
+    <center>
+        <h1> Vendor Management </h1>
+
+<br>
+       <a class="btn btn-dark" href="/vendorManagement/vAdd" role="button">
+           Add New Vendor</a>
+
+    </center>
+
+<br>
+<br>
+
+<div class="center mt-2">
+
+<table class="table table-bordered ">
+  <thead class="thead thead-dark">
+
+    <tr class="table-info">
+      <th scope="col">S#</th>
+        <th scope="col"> Vendor </th>
+        <th scope="col"> Owner </th>
+      <th scope="col"> Amount </th>
+        <th scope="col"> Action </th>
+    </tr>
+  </thead>
+  <tbody>
+
+      {% for object in vendorOngoing %}
+      <tr>
+      <th scope="row"> {{forloop.counter}} </th>
+          <td> <a href="/vendorManagement/vSpecific/{{object.vendorID}}"> {{object.vendorName}} </a>
+          </td>
+      <td> {{object.vendorOwner}} </td>
+      <td>{{object.getAmount|div:1000}}K</td>
+      <td>
+      <a href="/vendorManagement/vEdit/{{object.vendorID}} " > Edit Vendor </a></td>
+
+     </td>
+
+      </tr>
+      {% endfor %}
+  </tbody>
+</table>
+</div>
+
+<br>
+           <a class="btn btn-dark" href="/vendorManagement/vCompleted" role="button">
+               View Completed Vendors</a>
+
+
+</div>
+</div>
+
+</div>
+</div>
+<br>
+
+{% endblock %}
+
+
+
+

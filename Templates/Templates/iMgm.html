@@ -1,0 +1,77 @@
+{% extends 'iTemplate.html' %}
+
+{% load mathfilters %}
+{% block body %}
+
+
+{% endblock %}
+
+
+{% block fillUp %}
+<div class="container mt">
+  <!-- Content here -->
+    <center>
+        <h1>Ongoing Invoices </h1>
+
+<br>
+
+           <a class="btn btn-dark" href="/invoiceManagement/iAdd" role="button">
+               Add New invoice</a>
+
+        </center>
+    <br>
+<br>
+<div class="center mt-2">
+
+<table class="table table-bordered ">
+  <thead class="thead thead-dark">
+
+    <tr class="table-info">
+      <th scope="col">S#</th>
+        <th scope="col">Description</th>
+        <th scope="col">Date</th>
+        <th scope="col"> Type </th>
+      <th scope="col"> Amount (Millions) </th>
+        <th scope="col"> Action </th>
+    </tr>
+  </thead>
+  <tbody>
+
+      {% for object in invoicesOngoing %}
+      <tr>
+      <th scope="row"> {{forloop.counter}} </th>
+          <td> <a href="/invoiceManagement/iSpecific/{{object.invoiceID}}"> {{object.desc}}</a>
+          </td>
+      <td>{{object.invoiceDate}}</td>
+      <td> {{object.invoiceType}}</td>
+      <td>{{object.invoiceAmount|div:1000000}}</td>
+      <td> <a href="/invoiceManagement/removeInvoiceFunction/{{object.invoiceID}} " > Remove Invoice </a> |
+      <a href="/invoiceManagement/iEdit/{{object.invoiceID}} " > Edit Invoice </a></td>
+
+     </td>
+
+      </tr>
+      {% endfor %}
+  </tbody>
+</table>
+</div>
+
+
+           <a class="btn btn-dark" href="/invoiceManagement/iCompleted" role="button">
+               View Completed Invoices</a>
+
+
+</div>
+</div>
+
+</div>
+</div>
+
+<br>
+{% endblock %}
+
+
+
+
+
+

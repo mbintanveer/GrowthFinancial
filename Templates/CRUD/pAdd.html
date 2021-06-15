@@ -1,0 +1,83 @@
+{% extends 'pTemplate.html' %}
+
+{% block fillUp %}
+
+<br>
+<div class="container">
+
+  <form action='addProjectFunction' method='post'> {% csrf_token %}
+<!-- Project Name -->
+
+      <div class="form-group row">
+
+      <label   class="col-sm-2 col-form-label"> Project Name</label>
+      <div class="col-sm-10">
+          <input name="projectName" type="text" class="form-control" id="projectName">
+      </div>
+  </div>
+
+<!-- Project Owner -->
+
+      <div class="form-group row">
+
+      <label   class="col-sm-2 col-form-label"> Project Owner   </label>
+      <div class="col-sm-10">
+
+      <select class="form-control" name="projectOwner">
+          {% for ownerObject in ownerList %}
+          <option value="{{ownerObject.ownerName}}" > {{ownerObject.ownerName}}</option>
+         {% endfor %}
+      </select>
+      </div>
+  </div>
+
+<!-- Project Value -->
+
+      <div class="form-group row">
+
+    <label for="projectValue" class="col-sm-2 col-form-label">Project Value</label>
+    <div class="col-sm-10">
+      <input name="projectValue" type="text" class="form-control" id="projectValue">
+    </div>
+   </div>
+
+<!-- Project Status -->
+
+      <div class="form-group row">
+
+      <label  class="col-sm-2 col-form-label">Project Status</label>
+        <div class="col-sm-10">
+          <select class="form-control" name="projectStatus">
+
+              <option value="Ongoing" > Ongoing </option>
+              <option value="Completed" > Completed </option>
+          </select>
+        </div>
+
+      </div>
+
+<!-- Project Sector -->
+      <div class="form-group row">
+
+    <label  class="col-sm-2 col-form-label">Project Sector </label>
+    <div class="col-sm-10">
+      <select class="form-control" name="projectSector">
+          {% for sectorObject in sectorList %}
+          <option value="{{sectorObject.sectorName}}" > {{sectorObject.sectorName}}</option>
+         {% endfor %}
+      </select>
+    </div>
+   </div>
+
+<!-- MAKE ENTRY -->
+
+      <div class="form-group row">
+        <div class="col-sm-10">
+             <button type="submit" class="btn btn-primary">Make Entry</button>
+         </div>
+     </div>
+
+
+</form>
+</div>
+{% endblock %}

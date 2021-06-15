@@ -1,0 +1,45 @@
+{% extends 'vTemplate.html' %} {% load mathfilters %} {% block body %} {% endblock %} {% block fillUp %}
+<h1 style="text-align:center"> Vendor Payable Table </h1>
+<br>
+
+<div class="center">
+    <table class="table table-bordered ">
+        <thead class="thead thead-dark">
+
+            <tr class="table-info">
+                <th scope="col">S#</th>
+                <th scope="col"> Vendor </th>
+                <th scope="col"> 1-30 </th>
+                <th scope="col"> 30-60 </th>
+                <th scope="col"> 60-90 </th>
+                <th scope="col"> > 90 </th>
+                <th scope="col"> Total </th>
+            </tr>
+        </thead>
+        <tbody>
+
+            {% for object in vendor %}
+            <tr>
+                <th scope="row"> {{forloop.counter}} </th>
+                <td> <a href="/vendorManagement/viewVendor/{{object.vendorID}}"> {{object.vendorName}} </a>
+                </td>
+
+
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>{{object.getAmount|div:1000}}K</td>
+
+
+                </td>
+
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+
+
+{% endblock %}

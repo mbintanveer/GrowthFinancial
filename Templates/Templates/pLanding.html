@@ -1,0 +1,73 @@
+{% extends 'pTemplate.html' %}
+
+
+
+{% block fillUp %}
+<div class="container mt">
+  <!-- Content here -->
+   <center>
+       <div class="container mt-6">
+
+    <ul class="list-group list-group-horizontal ml-5 mt-4">
+
+        <li class="list-group-item">
+       <div class="card bg-light m-6 border-info" style="max-width: 18rem;">
+     <div  class="card-header"> <b> Add New Project </b>  </div>
+
+  <div class="card-body ">
+    <h5 class="card-title">
+    </h5>
+    <p class="card-text">
+    </p>
+    <a class="btn btn-info" href="/projectManagement/pAdd" role="button">Add Project</a>
+
+  </div>
+
+
+        <li class="list-group-item">
+       <div class="card bg-light m-6 border-info" style="max-width: 18rem;">
+     <div  class="card-header"> <b> View & Edit Projects </b>  </div>
+
+  <div class="card-body ">
+    <h5 class="card-title">
+    </h5>
+
+    <p class="card-text"></p>
+    <a class="btn btn-info" href="/projectManagement/pMgm" role="button">View & Edit Projects</a>
+  </div>
+</div>
+
+
+  </li>
+{% if user.groups.all.0.name == "top_level" %}
+        <li class="list-group-item">
+        <div class="card bg-light m-6 border-info" style="max-width: 18rem;">
+            <div  class="card-header"> <b> View Project Summary </b>  </div>
+            <div class="card-body ">
+            <h5 class="card-title">
+            </h5>
+            <p class="card-text"></p>
+            <a class="btn btn-info" href="/projectManagement/pSummary" role="button">View Project Summary</a>
+  </div>
+</div>
+
+  </li>
+{% endif %}
+
+</ul>
+
+
+
+
+</div>
+</center>
+</div>
+</div>
+
+{% endblock %}
+
+
+
+
+
+

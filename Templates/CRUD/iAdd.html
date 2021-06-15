@@ -1,0 +1,117 @@
+{% extends 'iTemplate.html' %}
+
+
+{% block body %}
+
+{% endblock %}
+{% block fillUp %}
+<div class="container">
+<br>
+  <form action='/invoiceManagement/addInvoiceFunction' method='POST'> {% csrf_token %}
+
+    <div class="form-group row">
+
+      <label  class="col-sm-2 col-form-label"> Project Name
+      <a href="/projectManagement/addProject"> Add</a> </label>
+      <div class="col-sm-10">
+
+      <select class="form-control" name="projectID">
+          {% for projectObject in projectList %}
+          <option value="{{projectObject.projectID}}" > {{projectObject.projectName}}</option>
+         {% endfor %}
+      </select>
+      </div>
+  </div>
+
+
+
+
+  <div class="form-group row">
+<label for="invoiceAmount" class="col-sm-2 col-form-label">Invoice Amount</label>
+    <div class="col-sm-10">
+      <input name="invoiceAmount" type="text" class="form-control"  id="invoiceAmount" >
+    </div>
+  </div>
+
+<div class="form-group row">
+
+    <label for="invoiceDetails" class="col-sm-2 col-form-label">Invoice Details</label>
+      <div class="col-sm-10">
+    <textarea name="invoiceDetails"  class="form-control " id="invoiceDetails"> </textarea>
+      </div>
+  </div>
+
+   <!-- Invoice Date -->
+    <div class="form-group row">
+        <label for="invoiceDate" class="col-2 col-form-label">Invoice Date</label>
+        <div class="col-10">
+            <input class="form-control" type="date" value="2020-08-19" id="invoiceDate" name="invoiceDate">
+        </div>
+    </div>
+
+
+  <div class="form-group row">
+
+      <label for="invoiceStatus"  class="col-sm-2 col-form-label"> Invoice Status </label>
+      <div class="col-sm-10">
+      <select class="form-control" name="invoiceStatus" id="invoiceStatus">
+          <option value="Ongoing" > Ongoing</option>
+          <option value="Completed" > Completed </option>
+      </select>
+      </div>
+</div>
+
+      <div class="form-group row">
+
+        <legend class="col-form-label col-sm-2 pt-0 " >Type of Invoice </legend>
+      <div class="col-sm-10">
+       <select class="form-control" name="invoiceType">
+
+         {% for object in typeOfInvoice %}
+          <option value="{{object.typeName}}" > {{object.typeName}}</option>
+         {% endfor %}
+
+      </select>
+      </div>
+      </div>
+
+
+        <div class="form-group row">
+    <div class="col-sm-2">Extra Work</div>
+    <div class="col-sm-10">
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" id="checkExtraWork" value="True" name="checkExtraWork">
+        <label class="form-check-label" for="checkExtraWork">
+          Extra Work
+        </label>
+      </div>
+    </div>
+        </div>
+
+        <div class="form-group row">
+          <div class="input-group mb-3">
+
+
+  <div class="custom-file">
+  <input type="file" class="custom-file-input form-control" id="receivingAttachment">
+  <label class="custom-file-label " for="receivingAttachment">Choose Attachment</label>
+</div>
+</div>
+        </div>
+
+<div class="form-group row">
+    <div class="col-sm-10">
+      <button type="submit" class="btn btn-primary"> Make Entry</button>
+    </div>
+  </div>
+</form>
+</div>
+   </div>
+
+
+
+
+</form>
+
+   </div>
+{% endblock %}

@@ -1,0 +1,82 @@
+{% extends 'pTemplate.html' %}
+
+{% block body %}
+{% endblock %}
+
+{% block fillUp %}
+
+<h1 style="text-align:center" >Project Summary</h1>
+<br>
+
+<div class="center">
+
+<table class="table table-bordered limitedTable">
+  <thead class="thead thead-dark">
+    <tr>
+      <th scope="col">S#</th>
+      <th scope="col">Project</th>
+      <th scope="col">Project Owner</th>
+      <th scope="col"> Sector </th>
+      <th scope="col"> Status </th>
+
+
+    </tr>
+  </thead>
+  <tbody>
+
+      {% for object in projects %}
+      <tr>
+      <th scope="row"> {{forloop.counter}} </th>
+      <td><a href="/projectManagement/pSpecific/{{object.projectID}}"> {{object.projectName}} </a></td>
+      <td>{{object.projectOwner}}</td>
+      <td>  {{object.projectSector}}</td>
+      <td>{{object.projectStatus}}</td>
+
+
+      </td>
+
+      </tr>
+      {% endfor %}
+  </tbody>
+</table>
+</div>
+<div class="accordion" id="accordionExample">
+  <div class="card">
+    <div class="card-header" id="headingOne">
+      <h2 class="mb-0">
+        <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+          Show Summary & Targets
+        </button>
+      </h2>
+    </div>
+
+    <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
+      <div class="card-body">
+      <div class="container mt-4">
+  <!-- Content here -->
+    <div class="jumbotron jumbotron">
+
+  <div class="container mt-4">
+
+    <h1 class="display-6"> Total Inhand Value {{sumProjects_inhand}} Million PKR - MashaAllah </h1>
+
+
+</div>
+
+</div>
+</div>
+      </div>
+      </div>
+    </div>
+
+</div>
+
+
+
+{% endblock %}
+
+
+
+
+
+

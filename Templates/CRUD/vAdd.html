@@ -1,0 +1,51 @@
+{% extends 'vTemplate.html' %}
+
+
+{% block body %}
+{% endblock %}
+
+{% block fillUp %}
+
+<br>
+<div class="container">
+
+  <form action='addVendorFunction' method='post'> {% csrf_token %}
+<!-- Vendor Name -->
+  <div class="form-group row">
+
+      <label for="vendorName" class="col-sm-2 col-form-label">Vendor Name</label>
+      <div class="col-sm-10">
+          <input name="vendorName" type="text" class="form-control" id="vendorName">
+      </div>
+  </div>
+
+<!-- Vendor Owner -->
+  <div class="form-group row">
+
+    <label for="vendorOwner" class="col-sm-2 col-form-label">Vendor Owner</label>
+    <div class="col-sm-10">
+      <input name="vendorOwner" type="text" class="form-control" id="vendorOwner">
+    </div>
+
+   </div>
+
+<!-- Vendor Category-->
+   <div class="form-group row">
+
+    <label for="vendorCategory" class="col-sm-2 col-form-label">Vendor Category</label>
+    <div class="col-sm-10">
+      <input name="vendorCategory" type="text" class="form-control" id="vendorCategory">
+    </div>
+
+   </div>
+
+<!-- Make Entry -->
+      <div class="form-group row">
+        <div class="col-sm-10">
+             <button type="submit" class="btn btn-primary">Make Entry</button>
+         </div>
+     </div>
+
+</form>
+</div>
+{% endblock %}

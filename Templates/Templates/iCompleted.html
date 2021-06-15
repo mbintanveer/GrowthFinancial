@@ -1,0 +1,68 @@
+{% extends 'iTemplate.html' %}
+
+{% load mathfilters %}
+{% block body %}
+
+
+
+{% endblock %}
+
+
+
+{% block fillUp %}
+<div class="container mt">
+  <!-- Content here -->
+    <center>
+
+
+    <br>
+      <center>  <h1>Completed Invoices </h1> </center>
+    <br>
+
+
+
+
+    <div class="center mt-2">
+
+<table class="table table-bordered ">
+  <thead class="thead thead-dark">
+
+    <tr class="table-info">
+        <th scope="col">S#</th>
+        <th scope="col">Description</th>
+        <th scope="col"> Type </th>
+        <th scope="col"> Amount (Millions) </th>
+        <th scope="col"> Action </th>
+    </tr>
+  </thead>
+  <tbody>
+
+      {% for object in invoicesCompleted %}
+
+      <tr>
+      <th scope="row"> {{forloop.counter}} </th>
+          <td> <a href="/invoiceManagement/iSpecific/{{object.invoiceID}}">{{object.desc}}</a></td>
+      <td> {{object.invoiceType}}</td>
+      <td>{{object.invoiceAmount|div:1000000}}</td>
+      <td> <a href="/invoiceManagement/removeInvoiceFunction/{{object.invoiceID}} " > Remove Invoice </a> |
+      <a href="/invoiceManagement/iEdit/{{object.invoiceID}} " > Edit Invoice </a>
+      </td>
+      </tr>
+      {% endfor %}
+
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+</div>
+
+
+{% endblock %}
+
+
+
+
+
+

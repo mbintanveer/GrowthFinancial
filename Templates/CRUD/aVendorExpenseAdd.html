@@ -1,0 +1,146 @@
+{% extends 'aTemplate.html' %}
+{% block body %}
+
+{% endblock %}
+
+{% block fillUp %}
+
+<br>
+
+
+<div class="container">
+
+  <form action='/accountManagement/addVendorExpenseFunction' method='post'> {% csrf_token %}
+        <!-- Expense Project Name -->
+
+  <div class="form-group row">
+
+      <label  class="col-sm-2 col-form-label">Project Name
+      <a href="/projectManagement/addProject"> Add</a> </label>
+      <div class="col-sm-10">
+      <select class="form-control" name="projectID">
+
+          {% for projectObject in projectList %}
+          <option value="{{projectObject.projectID}}" > {{projectObject.projectName}}</option>
+
+         {% endfor %}
+      </select>
+
+      </div>
+  </div>
+        <!-- Expense Type -->
+  <fieldset class="form-group mt-4">
+    <div class="row ">
+      <legend class="col-form-label col-sm-2 pt-0 " >Type of Expense</legend>
+        <div class="col-sm-10">
+
+          <select class="form-control" name="expenseType">
+              <option value="Site Labour" > Site Labour </option>
+              <option value="Material" > Material </option>
+              <option value="Material And Labour" > Material and Labour </option>
+              <option value="Advance"> Advance </option>
+              <option value="Admin Labour" > Admin Labour </option>
+              <option value="Marketing" > Marketing </option>
+              <option value="Facilities" > Facilities </option>
+              <option value="OtherExpenses" > Other Expenses </option>
+
+
+      </select>
+        </div>
+    </div>
+  </fieldset>
+
+      <!-- Expense Vendor -->
+    <div class="form-group row">
+
+      <label  class="col-sm-2 col-form-label">Vendor/Contractor Name</label>
+      <div class="col-sm-10">
+      <select class="form-control" name="vendorID">
+
+          {% for projectObject in vendorList %}
+          <option value="{{projectObject.vendorID}}" > {{projectObject.vendorName}}</option>
+
+         {% endfor %}
+      </select>
+
+      </div>
+  </div>
+      <!-- Expense Amount -->
+    <div class="form-group row">
+<label for="expenseAmount" class="col-sm-2 col-form-label">Expense Amount</label>
+    <div class="col-sm-10">
+      <input name="expenseAmount" type="text" class="form-control"  id="expenseAmount" >
+    </div>
+  </div>
+      <!-- Expense Details -->
+    <div class="form-group row">
+
+    <label for="expenseDetails" class="col-sm-2 col-form-label">Expense Details</label>
+      <div class="col-sm-10">
+    <textarea name="expenseDetails"  class="form-control " id="expenseDetails"> </textarea>
+      </div>
+
+
+</div>
+
+      <!-- Expense Date -->
+    <div class="form-group row">
+  <label for="expenseDate" class="col-2 col-form-label">Expense Date</label>
+  <div class="col-10">
+    <input class="form-control" type="date" value="2020-08-19" id="expenseDate" name = "expenseDate">
+  </div>
+</div>
+
+    <!-- Expense Paid -->
+    <div class="form-group row">
+
+      <label  class="col-sm-2 col-form-label">Expense Paid </label>
+      <div class="col-sm-10">
+      <select class="form-control" name="expensePaid">
+
+
+          <option value=True > YES </option>
+          <option value=False > NO </option>
+
+
+      </select>
+
+      </div>
+  </div>
+
+    <!-- Expense Extra Work  -->
+    <div class="form-group row">
+    <div class="col-sm-2">Extra Work</div>
+    <div class="col-sm-10">
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" id="checkExtraWork" value="True" name="checkExtraWork">
+        <label class="form-check-label" for="checkExtraWork">
+          Extra Work
+        </label>
+      </div>
+    </div>
+        </div>
+
+      <!-- Expense Attachment -->
+    <div class="form-group row">
+          <div class="input-group mb-3">
+
+
+  <div class="custom-file">
+  <input type="file" class="custom-file-input" id="expenseAttachment">
+  <label class="custom-file-label" for="expenseAttachment">Choose Attachment</label>
+</div>
+</div>
+        </div>
+
+      <!--Submit Button -->
+      <div class="form-group row">
+    <div class="col-sm-10">
+      <button type="submit" class="btn btn-primary">Make Entry</button>
+    </div>
+  </div>
+
+</form>
+</div>
+   </div>
+{% endblock %}

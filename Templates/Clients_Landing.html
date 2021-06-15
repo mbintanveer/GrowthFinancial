@@ -1,0 +1,42 @@
+{% extends 'main.html'%} {% load static %} {% block fillUp %}
+
+
+
+
+<h1> When we click, we will be redirected towards Specific Clients Page</h1>
+
+<div class="card-body ">
+    <h5 class="card-title">
+    </h5>
+    <p class="card-text">
+    </p>
+    <a class="btn btn-info" href="/Clients/Clients_Add" role="button">Create New Client</a><br><br>
+    <a class="btn btn-info" href="/Clients/Clients_View" role="button">View Client</a>
+
+</div>
+
+<div class="center mt-2">
+
+    <table class="table table-bordered">
+        <thead class="thead thead-dark">
+            <tr>
+                <th scope="col">S#</th>
+                <th scope="col">Client Name </th>
+
+            </tr>
+        </thead>
+        <tbody>
+
+            {% for client in ClientsList %}
+            <tr>
+                <th scope="row"> {{forloop.counter}} </th>
+                <td><a href="/Clients/Clients_View/{{client.client_id}}"> {{client.client_name}} </a></td>
+
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+
+{% endblock %}

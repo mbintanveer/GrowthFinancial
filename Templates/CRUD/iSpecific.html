@@ -1,0 +1,93 @@
+{% extends 'iTemplate.html' %}
+
+{% block fillUp %}
+
+<div class="container">
+
+  <form action='/invoiceManagement/addInvoiceEntry' method='get'> {% csrf_token %}
+      <!-- Project Name -->
+    <div class="form-group row">
+
+      <label  class="col-sm-2 col-form-label"> Project Name</label>
+      <div class="col-sm-10">
+
+      <p class="text-center">{{currentInvoice.project.projectName}}</p>
+      </div>
+  </div>
+
+    <!-- Invoice Amount -->
+    <div class="form-group row">
+
+        <label for="invoiceAmountText" class="col-sm-2 col-form-label">Invoice Amount</label>
+        <div class="col-sm-10">
+          <p id="invoiceAmountText" class="text-center">{{currentInvoice.invoiceAmount}}</p>
+        </div>
+     </div>
+
+      <!-- Invoice Details -->
+
+    <div class="form-group row">
+
+        <label for="invoiceDetailsLabel" class="col-sm-2 col-form-label">Invoice Details</label>
+          <div class="col-sm-10">
+       <p id="invoiceDetailsLabel" class="text-center">{{currentInvoice.invoiceDetails}}</p>
+          </div>
+      </div>
+
+      <!-- Invoice Status -->
+      <div class="form-group row">
+
+          <label for="invoiceStatus"  class="col-sm-2 col-form-label"> Invoice Status </label>
+          <div class="col-sm-10">
+
+             <p id="invoiceStatus" class="text-center"> {{currentInvoice.invoiceStatus}}</p>
+          </div>
+    </div>
+
+      <!-- Invoice Type -->
+      <div class="form-group row">
+
+        <legend class="col-form-label col-sm-2 pt-0 " >Type of Invoice </legend>
+      <div class="col-sm-10">
+
+       <p  class="text-center"> {{currentInvoice.invoiceType}}</p>
+      </div>
+      </div>
+
+      <!-- Extra Work Boolean -->
+        <div class="form-group row">
+        <div class="col-sm-2">Extra Work </div>
+        <div class="col-sm-10">
+          <div class="form-check">
+            <center>
+            {% if currentInvoice.invoiceExtraWorkBoolean == True %}
+                <input class="form-check-input" type="checkbox" id="checkExtraWork" value="False" name="checkExtraWork" checked="False"
+                disabled="True">
+            {% else %}
+                <input class="form-check-input" type="checkbox" id="checkExtraWork" value="True" name="checkExtraWork"
+                       disabled="True">
+            {% endif %}
+            <label class="form-check-label" for="checkExtraWork">  Extra Work
+            </label>
+
+            </center>
+          </div>
+
+        </div>
+        </div>
+
+      <!-- Attachment -->
+        <div class="form-group row">
+          <div class="input-group mb-3">
+          <div class="custom-file">
+          <input type="file" class="custom-file-input form-control" id="receivingAttachment">
+          <label class="custom-file-label " for="receivingAttachment">Download Attachment</label>
+        </div>
+</div>
+        </div>
+
+
+</form>
+</div>
+
+{% endblock %}

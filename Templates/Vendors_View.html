@@ -1,0 +1,91 @@
+{% extends 'main.html'%} {% load static %} {% block fillUp %}
+
+<h4> This page will have VENDOR SPECIFIC Bills/Payments</h4>
+<h4> We can Add Bills and Add Payments</h4>
+
+<div class="card-body ">
+    <h5 class="card-title">
+    </h5>
+    <p class="card-text">
+    </p>
+    <a class="btn btn-info" href="/Vendors/Vendors_Get_Statement" role="button">Generate Statement</a><br><br>
+
+</div>
+
+<h1 style="text-align:center"> Vendor Payable Table </h1>
+<br>
+
+<div class="center">
+    <table class="table table-bordered ">
+        <thead class="thead thead-dark">
+
+            <tr class="table-info">
+
+                <th scope="col"> Vendor Name </th>
+                <th scope="col"> 1-30 </th>
+                <th scope="col"> 30-60 </th>
+                <th scope="col"> 60-90 </th>
+                <th scope="col"> > 90 </th>
+                <th scope="col"> Total </th>
+            </tr>
+        </thead>
+        <tbody>
+
+
+            <tr>
+
+                <td> {{vendor.vendor_name}} </td>
+                <td> {{vendor.get_one_month}} </td>
+                <td> {{vendor.get_two_month}} </td>
+                <td>{{vendor.get_three_month}}</td>
+                <td>{{vendor.get_four_month}}</td>
+                <td>{{vendor.get_total}}</td>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+</div>
+
+
+<h1 style="text-align:center"> Vendor Statement </h1>
+<br>
+<div class="center">
+    <table class="table table-bordered ">
+        <thead class="thead thead-dark">
+
+            <tr class="table-info">
+
+                <th scope="col"> Transaction Type </th>
+                <th scope="col"> Date </th>
+                <th scope="col"> Transaction Details </th>
+                <th scope="col"> Amount </th>
+
+            </tr>
+        </thead>
+        <tbody>
+
+            {% for entry in combined_results %}
+            <tr>
+                {% if entry.bill_vendor %}
+                <td> Bills </td>
+                <td>{{entry.date_created}}</td>
+                <td>{{entry.bill_description}}</td>
+                <td>{{entry.bill_amount}}</td>
+
+                {% elif entry.payment_vendor%}
+                <td> Payments</td>
+                <td>{{entry.date_created}}</td>
+                <td>{{entry.payment_description}}</td>
+                <td>{{entry.payment_amount}}</td>
+
+                {% endif %}
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+</div>
+
+{% endblock %}

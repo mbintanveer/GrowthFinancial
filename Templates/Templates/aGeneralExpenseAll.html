@@ -1,0 +1,58 @@
+{% extends 'aTemplate.html' %}
+
+{% load mathfilters %}
+
+{% block body %}
+{% endblock %}
+
+
+{% block fillUp %}
+<center><h1> General Expenses </h1></center>
+<br>
+
+<div class="center mt-2">
+
+<br>
+<table class="table table-bordered ">
+  <thead class="thead thead-dark">
+    <tr>
+
+      <th scope="col">S#</th>
+        <th scope="col">Project</th>
+         <th scope="col">Receipient </th>
+        <th scope="col">Date</th>
+      <th scope="col"> Amount </th>
+        <th scope="col"> Action </th>
+    </tr>
+  </thead>
+  <tbody>
+
+      {% for object in generalExpenseList %}
+      <tr>
+      <th scope="row"> {{forloop.counter}} </th>
+      <td><a href="/accountManagement/viewGeneralExpense/{{object.expenseID}}/"> {{object.expenseReceipient}} | {{object.expenseDetails}}
+      </a></td>
+      <td>{{object.expenseReceipient}}</td>
+      <td>{{object.expenseDate}}</td>
+      <td>{{object.expenseAmount|div:1000}} K</td>
+      <td> <a href="/accountManagement/removeGeneralExpense/{{object.expenseID}} " > Remove </a>|
+      <a href="/accountManagement/editGeneralExpense/{{object.expenseID}} " > Edit  </a></td>
+
+
+     </td>
+
+      </tr>
+      {% endfor %}
+  </tbody>
+</table>
+</div>
+
+<br>
+
+{% endblock %}
+
+
+
+
+
+

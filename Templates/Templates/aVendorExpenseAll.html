@@ -1,0 +1,86 @@
+{% extends 'aTemplate.html' %}
+
+{% load mathfilters %}
+{% block body %}
+
+<style>
+
+  table.limitedTable {
+max-width: 100%;
+}
+
+.center {
+  display: block;
+  margin-left: 30px;
+  margin-right: 30px;
+  margin-top: 25px;
+  text-align:center;
+}
+
+</style>
+
+
+{% endblock %}
+
+
+
+{% block fillUp %}
+
+<div class="container mt">
+  <!-- Content here -->
+
+<center><h1> Vendor Expenses </h1></center>
+
+<br>
+<br>
+
+<div class="center mt-2">
+
+<table class="table table-bordered ">
+  <thead class="thead thead-dark">
+    <tr>
+
+      <th scope="col">S#</th>
+         <th scope="col">Vendor </th>
+        <th scope="col">Project</th>
+        <th scope="col">Date</th>
+      <th scope="col"> Amount </th>
+        <th scope="col"> Action </th>
+    </tr>
+  </thead>
+  <tbody>
+
+      {% for object in vendorExpenseList %}
+      <tr>
+      <th scope="row"> {{forloop.counter}} </th>
+      <td><a href="/accountManagement/viewVendorExpense/{{object.expenseID}}/"> {{object.vendor.vendorName}} | {{object.expenseDetails}}
+      </a></td>
+                  <td>{{object.project.projectName}}</td>
+                <td>{{object.expenseDate}}</td>
+      <td>{{object.expenseAmount|div:1000}} K</td>
+      <td> <a href="/accountManagement/removeVendorExpense/{{object.expenseID}} " > Remove </a>|
+      <a href="/accountManagement/editVendorExpense/{{object.expenseID}} " > Edit  </a></td>
+
+
+     </td>
+
+      </tr>
+      {% endfor %}
+
+  </tbody>
+</table>
+</div>
+
+
+
+</div>
+</div>
+
+
+{% endblock %}
+
+
+
+
+
+
