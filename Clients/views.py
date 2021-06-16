@@ -1,3 +1,4 @@
+from django.urls import reverse
 from django.shortcuts import render
 from .models import Client,Receiving,Invoice
 from itertools import chain
@@ -8,6 +9,7 @@ def Clients_Landing(request):
     ClientsList = Client.objects.all()
     params = {'ClientsList':ClientsList}
     return render(request,'Clients_Landing.html',params)
+    
 
 
 def Clients_View(request,id):
