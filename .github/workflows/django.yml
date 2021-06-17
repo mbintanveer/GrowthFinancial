@@ -6,7 +6,17 @@ on:
   pull_request:
     branches: [ main ]
 
-jobs:
+ name: Django test
+  on:
+    push:
+      branches:
+      - main
+
+    pull_request:
+      branches:
+      - main
+
+ jobs:
   build:
 
     runs-on: ubuntu-latest
