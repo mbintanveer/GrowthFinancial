@@ -13,14 +13,12 @@ services:
 
   django-server:
     build:
-     
       context: .
-      dockerfile: Dockerfile
+      dockerfile: Dockerfile.dev
 
     restart: always
     command:  
       sh -c "
-      python manage.py migrate &&
       python manage.py runserver 0.0.0.0:8000"
     ports: #Mapping of ports of the current django image/container
       - '8000:8000'
@@ -32,5 +30,15 @@ services:
       - postgres-database:postgres-database
     networks:
       some_network:
+  
+  tests:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+
+    volumes:
+      - .:/code
+    command: ["pytest"]
+
 networks:
   some_network:
