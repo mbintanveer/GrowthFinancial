@@ -10,9 +10,9 @@ class Expense(models.Model):
         ,('Payroll', 'Payroll' ))
 
     expense_type = models.CharField(max_length=255, choices=type_choices)
-    expense_date = models.DateField()
+    date_created = models.DateField()
 
 
     def __str__(self):
-        return self.expense_type + " | " + self.expense_amount
+        return self.expense_type + " | " + str(self.expense_amount)
 
