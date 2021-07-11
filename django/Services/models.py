@@ -15,11 +15,13 @@ class Recurring(models.Model):
     recurring_id = models.AutoField(primary_key=True)
     recurring_name=models.CharField(max_length=255)
     recurring_price=models.IntegerField()
+    date_created=models.DateField()
     #Client Linkage in Recurring
     recurring_frequency = models.IntegerField()
-    #recurring_unit eg Days, Months Etc.
+    #recurring_unit Monthly Default For Now
 
 
     def __str__(self):
         return self.recurring_name + " | " + str(self.recurring_price)
         
+class 

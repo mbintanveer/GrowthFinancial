@@ -1,8 +1,13 @@
 
 from django.shortcuts import render
 from .models import Vendors, Bills, Payments
+from rest_framework.decorators import api_view
 from itertools import chain
 from operator import attrgetter
+from .serializers import VendorSerializer
+from django.http.response import JsonResponse
+from rest_framework.parsers import JSONParser 
+from rest_framework import status
 
 Bills = Bills.objects.all()
 
@@ -27,40 +32,40 @@ def Vendors_View(request,id):
     return render(request,'Vendors_View.html',params)
 
 @api_view(['GET','POST'])
-def expenses_list(request):
+def vendors_list(request):
     if request.method == 'GET':
-        expense = Expense.objects.all()
-        expense_serializer = ExpenseSerializer(expense, many=True)
-        return JsonResponse(expense_serializer.data, safe=False)
+        vendor = Vendors.objects.all()
+        vendor_serializer = VendorSerializer(vendor, many=True)
+        return JsonResponse(vendor_serializer.data, safe=False)
 
     elif request.method == 'POST':
-        expense_data = JSONParser().parse(request)
-        expense_serializer =ExpenseSerializer(data=expense_data)
-        if expense_serializer.is_valid():
-            expense_serializer.save()
-            return JsonResponse(expense_serializer.data, status=status.HTTP_201_CREATED) 
-        return JsonResponse(expense_serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+        vendor_data = JSONParser().parse(request)
+        vendor_serializer =VendorSerializer(data=vendor_data)
+        if vendor_serializer.is_valid():
+            vendor_serializer.save()
+            return JsonResponse(vendor_serializer.data, status=status.HTTP_201_CREATED) 
+        return JsonResponse(vendor_serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 @api_view(['GET','PUT','DELETE'])
-def expenses_detail(request, pk):  
+def vendors_detail(request, pk):  
     try: 
-        expense = Expense.objects.get(pk=pk) 
-    except Expense.DoesNotExist: 
+        vendor = Vendors.objects.get(pk=pk) 
+    except Vendors.DoesNotExist: 
         return JsonResponse({'message': 'The tutorial does not exist'}, status=status.HTTP_404_NOT_FOUND) 
     
     if request.method == 'GET': 
-        expense_serializer = ExpenseSerializer(expense) 
-        return JsonResponse(expense_serializer.data) 
+        vendor_serializer = VendorSerializer(vendor) 
+        return JsonResponse(vendor_serializer.data) 
 
     elif request.method == 'PUT': 
-        expense_data = JSONParser().parse(request) 
-        expense_serializer = ExpenseSerializer(expense, data=expense_data) 
-        if expense_serializer.is_valid(): 
-            expense_serializer.save() 
-            return JsonResponse(expense_serializer.data) 
-        return JsonResponse(expense_serializer.errors, status=status.HTTP_400_BAD_REQUEST) 
+        vendor_data = JSONParser().parse(request) 
+        vendor_serializer = VendorSerializer(vendor, data=vendor_data) 
+        if vendor_serializer.is_valid(): 
+            vendor_serializer.save() 
+            return JsonResponse(vendor_serializer.data) 
+        return JsonResponse(vendor_serializer.errors, status=status.HTTP_400_BAD_REQUEST) 
 
     elif request.method == 'DELETE': 
-        expense.delete() 
+        vendor.delete() 
         return JsonResponse({'message': 'Invoice was deleted successfully!'}, status=status.HTTP_204_NO_CONTENT)
         
