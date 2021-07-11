@@ -6,9 +6,8 @@ from django.http.response import JsonResponse
 from rest_framework.parsers import JSONParser 
 from rest_framework import status
  
-from .serializers import ClientSerializer
+from .serializers import ClientSerializer, InvoiceSerializer, ReceivingSerializer
 from rest_framework.decorators import api_view
-
 
 from .models import Client,Receiving,Invoice
 from itertools import chain
@@ -58,6 +57,26 @@ def client_detail(request, pk):
             client_serializer = ClientSerializer(client) 
         return JsonResponse(client_serializer.data) 
     except Client.DoesNotExist: 
+        return JsonResponse({'message': 'The tutorial does not exist'}, status=status.HTTP_404_NOT_FOUND) 
+
+@api_view(['GET'])
+def invoice_detail(request, pk):  
+    try: 
+        invoice = Invoice.objects.get(pk=pk) 
+        if request.method == 'GET': 
+            invoice_serializer = InvoiceSerializer(invoice) 
+        return JsonResponse(invoice_serializer.data) 
+    except Invoice.DoesNotExist: 
+        return JsonResponse({'message': 'The tutorial does not exist'}, status=status.HTTP_404_NOT_FOUND) 
+
+@api_view(['GET'])
+def receiving_detail(request, pk):  
+    try: 
+        receiving = Receiving.objects.get(pk=pk) 
+        if request.method == 'GET': 
+            receiving_serializer = ReceivingSerializer(receiving) 
+        return JsonResponse(receiving_serializer.data) 
+    except Receiving.DoesNotExist: 
         return JsonResponse({'message': 'The tutorial does not exist'}, status=status.HTTP_404_NOT_FOUND) 
 
 # @api_view(['GET'])
