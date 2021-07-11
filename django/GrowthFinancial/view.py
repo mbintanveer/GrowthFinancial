@@ -9,8 +9,6 @@ def index(request):
     return render(request,'index.html')
 
 
-
-
 def signIn(request):
     if request.method =="POST":
         username = request.POST.get('username')
@@ -36,6 +34,8 @@ def signOut(request):
     index = redirect('/')
     return index
 
+def cashflows(request):
+    return render(request,'cashflows.html')
 
 def unavailable(request):
     return render(request,'unavailable.html')

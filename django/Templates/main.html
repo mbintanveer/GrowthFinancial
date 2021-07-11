@@ -57,28 +57,18 @@
                         </li>
 
                         <li class="nav-item">
-                            {% if '/Expenses/' in request.path %}
-                            <a class="nav-link active" href="/Expenses">
-                                <span data-feather="shopping-cart"></span> Expenses
+                            {% if '/Cashflows/' in request.path %}
+                            <a class="nav-link active" href="/Cashflows">
+                                <span data-feather="shopping-cart"></span> Cashflows
                             </a>
                             {% else %}
-                            <a class="nav-link " href="/Expenses">
-                                <span data-feather="shopping-cart"></span> Expenses
+                            <a class="nav-link " href="/Cashflows">
+                                <span data-feather="shopping-cart"></span> Cashflows
                             </a>
                             {% endif %}
                         </li>
 
-                        <li class="nav-item">
-                            {% if '/Receivings/' in request.path %}
-                            <a class="nav-link active" href="/Receivings">
-                                <span data-feather="shopping-cart"></span> Receivings
-                            </a>
-                            {% else %}
-                            <a class="nav-link " href="/Receivings">
-                                <span data-feather="shopping-cart"></span> Receivings
-                            </a>
-                            {% endif %}
-                        </li>
+
 
 
                         <li class="nav-item">
@@ -91,6 +81,29 @@
                                 <span data-feather="shopping-cart"></span> Accounts
                             </a>
 
+                            <li class="nav-item">
+                                {% if '/Expenses/' in request.path %}
+                                <a class="nav-link active" href="/Expenses">
+                                    <span data-feather="shopping-cart"></span> Expenses
+                                </a>
+                                {% else %}
+                                <a class="nav-link " href="/Expenses">
+                                    <span data-feather="shopping-cart"></span> Expenses
+                                </a>
+                                {% endif %}
+                            </li>
+
+                            <li class="nav-item">
+                                {% if '/Receivings/' in request.path %}
+                                <a class="nav-link active" href="/Receivings">
+                                    <span data-feather="shopping-cart"></span> Receivings
+                                </a>
+                                {% else %}
+                                <a class="nav-link " href="/Receivings">
+                                    <span data-feather="shopping-cart"></span> Receivings
+                                </a>
+                                {% endif %}
+                            </li>
                             {% endif %}
                         </li>
 

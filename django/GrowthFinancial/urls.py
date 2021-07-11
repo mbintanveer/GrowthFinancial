@@ -16,6 +16,7 @@ urlpatterns = [
     path('Receivings/',include('Receivings.urls')),
     path('Accounts/',include('Accounts.urls')),
     path('Vendors/',include('Vendors.urls')),
+    path('Cashflows/', view.cashflows,name='cashflows'),
     
     #Default
     path('', view.index, name='index'),
