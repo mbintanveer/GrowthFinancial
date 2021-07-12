@@ -158,6 +158,3 @@ def invoices_get_invoice_entries(request,pk):
         return JsonResponse({'message': 'The tutorial does not exist'}, status=status.HTTP_404_NOT_FOUND) 
     
     return JsonResponse({"models_to_return": list(invoice_entries)},safe=False)
-
-    # data = serializers.serialize('json', invoice_entries)
-    # return HttpResponse(data, content_type="application/json")
