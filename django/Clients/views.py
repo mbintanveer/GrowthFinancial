@@ -1,3 +1,4 @@
+from django.http import response
 from django.urls import reverse
 from django.shortcuts import render
 from django.views.decorators.csrf import csrf_exempt
@@ -6,8 +7,10 @@ from rest_framework.parsers import JSONParser
 from rest_framework import status
 from .serializers import ClientSerializer, InvoiceSerializer, ReceivingSerializer
 from rest_framework.decorators import api_view
+from rest_framework.views import APIView
 
-from .models import Client,Receiving,Invoice
+
+from .models import Client, Invoice_Entry,Receiving,Invoice
 from itertools import chain
 from operator import attrgetter
 
@@ -145,3 +148,16 @@ def Clients_View(request,id):
     key=attrgetter('date_created'),reverse=True)
     params= {'client':client,'combined_results':combined_results}
     return render(request,'Clients_View.html',params)
+
+
+def invoices_get_invoice_entries(request,pk):
+    try: 
+        invoice = Invoice.objects.get(pk=pk)
+        invoice_entries =  Invoice_Entry.objects.filter(entry_invoice=invoice).values()
+    except Invoice.DoesNotExist: 
+        return JsonResponse({'message': 'The tutorial does not exist'}, status=status.HTTP_404_NOT_FOUND) 
+    
+    return JsonResponse({"models_to_return": list(invoice_entries)},safe=False)
+
+    # data = serializers.serialize('json', invoice_entries)
+    # return HttpResponse(data, content_type="application/json")
