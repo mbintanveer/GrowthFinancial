@@ -8,13 +8,15 @@ import { ClientDetailsComponent } from './components/client-details/client-detai
 import { ClientsListComponent } from './components/client-list/client-list.component';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { NavbarComponent } from './components/navbar/navbar.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     AddClientComponent,
     ClientDetailsComponent,
-    ClientsListComponent
+    ClientsListComponent,
+    NavbarComponent,
   ],
   imports: [
     BrowserModule,
