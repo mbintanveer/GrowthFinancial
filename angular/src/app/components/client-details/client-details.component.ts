@@ -24,6 +24,7 @@ export class ClientDetailsComponent implements OnInit {
     ngOnInit(): void {
       this.message = '';
       this.getClient(this.route.snapshot.params.id);
+      console.log('hi')
     }
   
     getClient(id: string): void {
@@ -58,25 +59,24 @@ export class ClientDetailsComponent implements OnInit {
     }
   
     updateClient(): void {
-      this.message = '';
   
       this.clientService.update(this.currentClient.client_id, this.currentClient)
         .subscribe(
-          response => {
-            console.log(response);
-            this.message = response.message ? response.message : 'This client was updated successfully!';
-          },
+            
           error => {
             console.log(error);
           });
+        this.router.navigate(['/Clients']);
+          
     }
   
     deleteClient(): void {
       this.clientService.delete(this.currentClient.client_id)
         .subscribe(
           response => {
-            console.log(response);
-            this.router.navigate(['/clients']);
+       
+            this.message = response.message ? response.message : 'This client was deleted successfully!';
+            this.router.navigate(['/Clients']);
           },
           error => {
             console.log(error);

@@ -7,16 +7,16 @@
                 <label for="name">Name</label>
                 <input type="text" class="form-control" id="name" [(ngModel)]="currentClient.client_name" name="client_name" />
             </div>
-
         </form>
 
+
         <button class="badge badge-danger mr-2" (click)="deleteClient()">
-        Delete
-      </button>
+      Delete
+    </button>
 
         <button type="submit" class="badge badge-success mb-2" (click)="updateClient()">
-        Update
-      </button>
+      Update
+    </button>
         <p>{{ message }}</p>
     </div>
 

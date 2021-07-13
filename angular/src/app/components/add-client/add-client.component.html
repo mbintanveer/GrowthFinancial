@@ -2,8 +2,8 @@
     <div class="submit-form">
         <div *ngIf="!submitted">
             <div class="form-group">
-                <label for="name">Name</label>
-                <input type="text" class="form-control" id="name" required [(ngModel)]="client.client_name" name="name" />
+                <label for="name">Client Name</label>
+                <input class="form-control" id="description" required [(ngModel)]="client.client_name" name="name" />
             </div>
 
             <button (click)="saveClient()" class="btn btn-success">Submit</button>
