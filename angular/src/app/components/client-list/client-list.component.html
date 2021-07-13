@@ -1,40 +1,127 @@
-<div class="list row">
-    <div class="col-md-8">
-        <div class="input-group mb-3">
-            <input type="text" class="form-control" placeholder="Search by title" [(ngModel)]="clients" />
-            <div class="input-group-append">
-                <!-- <button class="btn btn-outline-secondary" type="button" (click)="searchTitle()">
-                Search
-                </button> -->
+<div class="col">
+
+    <div id="page-content">
+        <div id="vendors">
+            <div id="table-container">
+                <div id="table-header">
+                    <div id="table-header-left">
+                        <span id="tab-title">Clients</span>
+                    </div>
+                    <div id="table-header-right">
+                        <input id="search" type="text" placeholder="Search Vendor">
+                        <img id="search-icon" src="search.png">
+                        <button id="add-bill" class="table-header-button">Add Bill</button>
+                        <button id="add-payment" class="table-header-button">Add Payment</button>
+                        <button id="create-new-vendor" class="table-header-button">Create New Vendor</button>
+                    </div>
+                </div>
+                <table id="table">
+                    <thead>
+                        <tr>
+                            <td>Serial No</td>
+                            <td>Vendor Name</td>
+                            <td>Vendor Type</td>
+                            <td>Reference No</td>
+                            <td>
+                                View Vendor
+                            </td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>01</td>
+                            <td>Client Name</td>
+                            <td>Type 1</td>
+                            <td>658795423568975</td>
+                            <td>
+                                <a href="#" class="view-vendor">View</a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>02</td>
+                            <td>Client Name</td>
+                            <td>Type 1</td>
+                            <td>658795423568975</td>
+                            <td>
+                                <a href="#" class="view-vendor">View</a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>03</td>
+                            <td>Client Name</td>
+                            <td>Type 1</td>
+                            <td>658795423568975</td>
+                            <td>
+                                <a href="#" class="view-vendor">View</a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>04</td>
+                            <td>Client Name</td>
+                            <td>Type 1</td>
+                            <td>658795423568975</td>
+                            <td>
+                                <a href="#" class="view-vendor">View</a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>05</td>
+                            <td>Client Name</td>
+                            <td>Type 1</td>
+                            <td>658795423568975</td>
+                            <td>
+                                <a href="#" class="view-vendor">View</a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>06</td>
+                            <td>Client Name</td>
+                            <td>Type 1</td>
+                            <td>658795423568975</td>
+                            <td>
+                                <a href="#" class="view-vendor">View</a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>07</td>
+                            <td>Client Name</td>
+                            <td>Type 1</td>
+                            <td>658795423568975</td>
+                            <td>
+                                <a href="#" class="view-vendor">View</a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>08</td>
+                            <td>Client Name</td>
+                            <td>Type 1</td>
+                            <td>658795423568975</td>
+                            <td>
+                                <a href="#" class="view-vendor">View</a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>09</td>
+                            <td>Client Name</td>
+                            <td>Type 1</td>
+                            <td>658795423568975</td>
+                            <td>
+                                <a href="#" class="view-vendor">View</a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>10</td>
+                            <td>Client Name</td>
+                            <td>Type 1</td>
+                            <td>658795423568975</td>
+                            <td>
+                                <a href="#" class="view-vendor">View</a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
         </div>
     </div>
-    <div class="col-md-6">
-        <h4>Clients List</h4>
-        <ul class="list-group">
-            <li class="list-group-item" *ngFor="let client of clients; let i = index" [class.active]="i == currentIndex" (click)="setActiveClient(client, i)">
-                {{ client.client_name }}
-            </li>
-        </ul>
-    </div>
-    <div class="col-md-6">
-        <div *ngIf="currentClient.client_id">
-            <h4>Client</h4>
 
-            <div>
-                <label><strong>Client Name:</strong></label> {{ currentClient.client_name }}
-            </div>
-            <a class="badge badge-warning" routerLink="/Clients/{{currentClient.client_id}}">
-          Edit
-        </a>
-
-        </div>
-        <button class="btn" routerLink="/add">
-            Add New
-        </button>
-        <div *ngIf="!currentClient">
-            <br />
-            <p>Please click on a Client...</p>
-        </div>
-    </div>
 </div>

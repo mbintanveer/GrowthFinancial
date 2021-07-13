@@ -23,7 +23,8 @@ import { AddVendorsComponent } from './components/add-vendors/add-vendors.compon
 import { SummaryComponent } from './components/summary/summary.component';
 import { CashflowsComponent } from './components/cashflows/cashflows.component';
 import { AccountsComponent } from './components/accounts/accounts.component';
-
+import { SidebarComponent } from './components/sidebar/sidebar.component';
+ 
 @NgModule({
   declarations: [
     AppComponent,
@@ -42,6 +43,7 @@ import { AccountsComponent } from './components/accounts/accounts.component';
     SummaryComponent,
     CashflowsComponent,
     AccountsComponent,
+    SidebarComponent,
   ],
   imports: [
     AppRoutingModule,

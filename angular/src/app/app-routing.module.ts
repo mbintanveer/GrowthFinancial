@@ -28,7 +28,7 @@ const routes: Routes = [
   { path: '', component: SummaryComponent, pathMatch: 'full' },
   { path: 'Clients', component: ClientsListComponent },
   { path: 'Clients/:id', component: ClientDetailsComponent },
-  { path: 'add_client', component: AddClientComponent },
+  { path: 'add', component: AddClientComponent },
 
   { path: 'Services', component: ServicesListComponent },
   { path: 'Cashflows', component: CashflowsComponent },
