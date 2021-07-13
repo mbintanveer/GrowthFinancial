@@ -6,6 +6,7 @@ import { SummaryComponent } from './components/summary/summary.component';
 import { ClientsListComponent } from './components/client-list/client-list.component';
 import { ClientDetailsComponent } from './components/client-details/client-details.component';
 import { AddClientComponent } from './components/add-client/add-client.component';
+import { ViewClientComponent } from './components/view-client/view-client.component';
 
 import { ServicesListComponent } from './components/services-list/services-list.component';
 import { CashflowsComponent } from './components/cashflows/cashflows.component';
@@ -28,6 +29,7 @@ const routes: Routes = [
   { path: '', component: SummaryComponent, pathMatch: 'full' },
   { path: 'Clients', component: ClientsListComponent },
   { path: 'Clients/:id', component: ClientDetailsComponent },
+  { path: 'View-Clients/:id', component: ViewClientComponent },
   { path: 'add', component: AddClientComponent },
 
   { path: 'Services', component: ServicesListComponent },

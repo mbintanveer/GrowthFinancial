@@ -24,6 +24,7 @@ import { SummaryComponent } from './components/summary/summary.component';
 import { CashflowsComponent } from './components/cashflows/cashflows.component';
 import { AccountsComponent } from './components/accounts/accounts.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
+import { ViewClientComponent } from './components/view-client/view-client.component';
  
 @NgModule({
   declarations: [
@@ -44,6 +45,7 @@ import { SidebarComponent } from './components/sidebar/sidebar.component';
     CashflowsComponent,
     AccountsComponent,
     SidebarComponent,
+    ViewClientComponent,
   ],
   imports: [
     AppRoutingModule,

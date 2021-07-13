@@ -1,0 +1,192 @@
+a:link,
+a:visited {
+    color: #16a3b4;
+}
+
+body {
+    margin: 0;
+    font-size: 0.7em;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 400;
+    color: rgb(100, 100, 100);
+}
+
+#page-content {
+    margin-top: 65px;
+    margin-left: 15%;
+    display: block;
+    padding: 15px 20px;
+    text-align: justify;
+}
+
+#nav {
+    height: 60px;
+    position: fixed;
+    top: 0;
+    background-color: rgb(255, 255, 255);
+    box-shadow: 0px 0px 8px 2px rgba(0, 0, 0, 0.2);
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.95em;
+    font-weight: 500;
+    z-index: 100;
+}
+
+#nav-left {
+    align-self: center;
+}
+
+#nav-right {
+    align-self: center;
+}
+
+#nav-logo {
+    max-width: 150px;
+    padding: 10px;
+}
+
+#nav-profile-picture {
+    padding: 5px;
+    max-width: 45px;
+    max-height: 45px;
+    border-radius: 50%;
+}
+
+#nav-profile-name {
+    font-size: 1em;
+    height: fit-content;
+    align-self: center;
+    padding: 8px;
+}
+
+#nav-profile {
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    padding: 5px 25px 5px 5px;
+}
+
+#tabs {
+    width: 15%;
+    position: fixed;
+    background-color: white;
+    z-index: 99;
+    height: 110%;
+    margin-top: 50px;
+    padding-top: 20px;
+    box-shadow: 0px 0px 5px 3px rgba(0, 0, 0, 0.1);
+}
+
+#tab-list {
+    list-style: none;
+    padding: 0px;
+    text-align: center;
+    margin: 0;
+}
+
+#tab-list li {
+    padding: 20px 10px;
+    box-shadow: 0px 4px 5px -2px rgba(0, 0, 0, 0.1);
+    transition: all 0.2s;
+    cursor: pointer;
+}
+
+#tab-list li:hover {
+    box-shadow: 0px 4px 5px -1px rgba(0, 0, 0, 0.3);
+}
+
+#tab-list .active-tab {
+    color: white;
+    background-color: #16a3b4;
+    box-shadow: inset 0px 4px 5px -2px rgba(0, 0, 0, 0.1);
+}
+
+#tab-list .active-tab:hover {
+    box-shadow: inset 2px 4px 5px 0px rgba(0, 0, 0, 0.3);
+}
+
+#table-container {
+    box-shadow: 0px 0px 4px 1px rgba(0, 0, 0, 0.1);
+    margin: 20px 10px;
+}
+
+#table-header {
+    display: flex;
+    padding: 15px;
+    justify-content: space-between;
+    border-bottom: #16a3b4 2px solid;
+    font-size: 1.4em;
+    font-weight: 500;
+}
+
+#table-header-left {
+    align-self: center;
+}
+
+#table-header-right {
+    align-self: center;
+    display: flex;
+}
+
+#tab-title {
+    padding: 0px 5px;
+    color: #16a3b4;
+    font-weight: 600;
+}
+
+#search {
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    border-radius: 6px;
+    padding: 4px 8px;
+    width: 14vw;
+    color: rgb(40, 40, 40);
+    margin: 0px 8px;
+}
+
+#search::placeholder {
+    color: rgb(160, 160, 160);
+}
+
+#search-icon {
+    width: 16px;
+    position: absolute;
+    margin-left: 14vw;
+    align-self: center;
+}
+
+.table-header-button {
+    background-color: #16a3b4;
+    border: none;
+    border-radius: 6px;
+    color: white;
+    font-size: 0.7em;
+    width: 20vh;
+    padding: 10px 0px;
+    margin: 0px 8px;
+    transition: box-shadow 0.3s;
+}
+
+.table-header-button:hover {
+    box-shadow: 1px 1px 4px 1px rgba(0, 0, 0, 0.2);
+}
+
+#table {
+    margin: 0 auto;
+    width: 90%;
+    text-align: center;
+    font-size: 0.9em;
+}
+
+#table td {
+    padding: 13px;
+}
+
+#table thead {
+    font-size: 1.1em;
+    font-weight: 600;
+}
+
+#table thead td {
+    padding: 20px;
+}
