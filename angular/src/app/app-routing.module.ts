@@ -28,7 +28,7 @@ const routes: Routes = [
   { path: '', component: SummaryComponent, pathMatch: 'full' },
   { path: 'Clients', component: ClientsListComponent },
   { path: 'Clients/:id', component: ClientDetailsComponent },
-  { path: 'add', component: AddClientComponent },
+  { path: 'add_client', component: AddClientComponent },
 
   { path: 'Services', component: ServicesListComponent },
   { path: 'Cashflows', component: CashflowsComponent },
@@ -36,15 +36,15 @@ const routes: Routes = [
 
   { path: 'Expenses', component: ExpensesListComponent },
   { path: 'Expenses/:id', component: ExpensesDetailsComponent },
-  { path: 'add', component: AddExpensesComponent },
+  // { path: 'add', component: AddExpensesComponent },
 
   { path: 'Receivings', component: ReceivingsListComponent },
   { path: 'Receivings/:id', component: ReceivingsDetailsComponent },
-  { path: 'add', component: AddReceivingsComponent },
+  // { path: 'add', component: AddReceivingsComponent },
 
   { path: 'Vendors', component: VendorsListComponent },
   { path: 'Vendors/:id', component: VendorsDetailsComponent },
-  { path: 'add', component: AddVendorsComponent }
+  // { path: 'add', component: AddVendorsComponent }
 
 ];
 

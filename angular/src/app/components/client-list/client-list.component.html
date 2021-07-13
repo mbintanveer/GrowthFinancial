@@ -16,10 +16,6 @@
                 {{ client.client_name }}
             </li>
         </ul>
-
-        <button class="m-3 btn btn-sm btn-danger" (click)="removeAllClients()">
-        Remove All
-      </button>
     </div>
     <div class="col-md-6">
         <div *ngIf="currentClient.client_id">
@@ -31,8 +27,11 @@
             <a class="badge badge-warning" routerLink="/Clients/{{currentClient.client_id}}">
           Edit
         </a>
-        </div>
 
+        </div>
+        <button class="btn" routerLink="/add">
+            Add New
+        </button>
         <div *ngIf="!currentClient">
             <br />
             <p>Please click on a Client...</p>

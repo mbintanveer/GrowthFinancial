@@ -14,6 +14,7 @@ export class AddClientComponent implements OnInit {
     client_name: '',
 
   };
+  submitted = false;
 
   constructor (private clientService: ClientService){ }
 
@@ -25,11 +26,13 @@ export class AddClientComponent implements OnInit {
       id: this.client.client_id,
       name: this.client.client_name
     };
+    
 
     this.clientService.create(data)
       .subscribe(
         response => {
           console.log(response);
+          this.submitted = true;
         },
         error => {
           console.log(error);
@@ -37,7 +40,7 @@ export class AddClientComponent implements OnInit {
   }
 
   newClient(): void {
-
+    this.submitted = false;
     this.client = {
       client_id: '',
       client_name: '',
