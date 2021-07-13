@@ -13,3 +13,17 @@ export class NavbarComponent implements OnInit {
   }
 
 }
+
+
+/**
+ * @title Autosize sidenav
+ */
+@Component({
+  selector: 'sidenav-autosize-example',
+  templateUrl: './navbar.component.html',
+  styleUrls: ['./navbar.component.css'],
+})
+
+export class SidenavAutosizeExample {
+  showFiller = false;
+}
