@@ -1,7 +1,7 @@
 <div class="list row">
     <div class="col-md-8">
         <div class="input-group mb-3">
-            <input type="text" class="form-control" placeholder="Search by title" [(ngModel)]="title" />
+            <input type="text" class="form-control" placeholder="Search by title" [(ngModel)]="clients" />
             <div class="input-group-append">
                 <!-- <button class="btn btn-outline-secondary" type="button" (click)="searchTitle()">
                 Search
@@ -28,7 +28,7 @@
             <div>
                 <label><strong>Client Name:</strong></label> {{ currentClient.client_name }}
             </div>
-            <a class="badge badge-warning" routerLink="/clients/{{currentClient.client_id}}">
+            <a class="badge badge-warning" routerLink="/Clients/{{currentClient.client_id}}">
           Edit
         </a>
         </div>

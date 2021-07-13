@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { RouterModule } from '@angular/router';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -13,14 +14,15 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AddReceivingsComponent } from './components/add-receivings/add-receivings.component';
 import { ReceivingsDetailsComponent } from './components/receivings-details/receivings-details.component';
 import { ReceivingsListComponent } from './components/receivings-list/receivings-list.component';
-import { ServicesListComponent } from './services-list/services-list.component';
-import { ExpensesListComponent } from './expenses-list/expenses-list.component';
+
 import { AddExpensesComponent } from './components/add-expenses/add-expenses.component';
 import { ExpensesDetailsComponent } from './components/expenses-details/expenses-details.component';
 import { VendorsDetailsComponent } from './components/vendors-details/vendors-details.component';
 import { VendorsListComponent } from './components/vendors-list/vendors-list.component';
 import { AddVendorsComponent } from './components/add-vendors/add-vendors.component';
 import { SummaryComponent } from './components/summary/summary.component';
+import { CashflowsComponent } from './components/cashflows/cashflows.component';
+import { AccountsComponent } from './components/accounts/accounts.component';
 
 @NgModule({
   declarations: [
@@ -32,18 +34,19 @@ import { SummaryComponent } from './components/summary/summary.component';
     AddReceivingsComponent,
     ReceivingsDetailsComponent,
     ReceivingsListComponent,
-    ServicesListComponent,
-    ExpensesListComponent,
     AddExpensesComponent,
     ExpensesDetailsComponent,
     VendorsDetailsComponent,
     VendorsListComponent,
     AddVendorsComponent,
     SummaryComponent,
+    CashflowsComponent,
+    AccountsComponent,
   ],
   imports: [
-    BrowserModule,
     AppRoutingModule,
+    RouterModule,
+    BrowserModule,
     FormsModule,
     HttpClientModule,
     BrowserAnimationsModule
@@ -51,4 +54,5 @@ import { SummaryComponent } from './components/summary/summary.component';
   providers: [],
   bootstrap: [AppComponent]
 })
+
 export class AppModule { }

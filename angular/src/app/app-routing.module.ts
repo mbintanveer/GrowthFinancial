@@ -8,6 +8,8 @@ import { ClientDetailsComponent } from './components/client-details/client-detai
 import { AddClientComponent } from './components/add-client/add-client.component';
 
 import { ServicesListComponent } from './components/services-list/services-list.component';
+import { CashflowsComponent } from './components/cashflows/cashflows.component';
+import { AccountsComponent } from './components/accounts/accounts.component';
 
 import { ExpensesListComponent } from './components/expenses-list/expenses-list.component';
 import { ExpensesDetailsComponent } from './components/expenses-details/expenses-details.component';
@@ -22,16 +24,19 @@ import { VendorsDetailsComponent } from './components/vendors-details/vendors-de
 import { AddVendorsComponent } from './components/add-vendors/add-vendors.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: 'Summary', pathMatch: 'full' },
+  // { path: '', redirectTo: 'Clients', pathMatch: 'full' },
+  { path: '', component: SummaryComponent, pathMatch: 'full' },
   { path: 'Clients', component: ClientsListComponent },
   { path: 'Clients/:id', component: ClientDetailsComponent },
   { path: 'add', component: AddClientComponent },
 
   { path: 'Services', component: ServicesListComponent },
+  { path: 'Cashflows', component: CashflowsComponent },
+  { path: 'Accounts', component: AccountsComponent },
 
   { path: 'Expenses', component: ExpensesListComponent },
   { path: 'Expenses/:id', component: ExpensesDetailsComponent },
-  { path: 'add', component: AddExpensesComponent }
+  { path: 'add', component: AddExpensesComponent },
 
   { path: 'Receivings', component: ReceivingsListComponent },
   { path: 'Receivings/:id', component: ReceivingsDetailsComponent },
