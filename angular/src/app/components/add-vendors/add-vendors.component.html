@@ -1,1 +1,17 @@
-<p>add-vendors works!</p>
+<div>
+    <div class="submit-form">
+        <div *ngIf="!submitted">
+            <div class="form-group">
+                <label for="name">Vendor Name</label>
+                <input class="form-control" id="description" required [(ngModel)]="vendor.vendor_name" name="name" />
+            </div>
+
+            <button (click)="saveVendor()" class="btn btn-success">Submit</button>
+        </div>
+
+        <div *ngIf="submitted">
+            <h4>Vendor was submitted successfully!</h4>
+            <button class="btn btn-success" (click)="newVendor()">Add</button>
+        </div>
+    </div>
+</div>

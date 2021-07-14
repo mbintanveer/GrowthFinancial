@@ -1,1 +1,27 @@
-<p>vendors-details works!</p>
+<div>
+    <div *ngIf="currentVendor.vendor_id" class="edit-form">
+        <h4>Vendor</h4>
+        <form>
+
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" class="form-control" id="name" [(ngModel)]="currentVendor.vendor_name" name="vendor_name" />
+            </div>
+        </form>
+
+
+        <button class="badge badge-danger mr-2" (click)="deleteVendor()">
+      Delete
+    </button>
+
+        <button type="submit" class="badge badge-success mb-2" (click)="updateVendor()">
+      Update
+    </button>
+        <p>{{ message }}</p>
+    </div>
+
+    <div *ngIf="!currentVendor.vendor_id">
+        <br />
+        <p>Cannot access this Client...</p>
+    </div>
+</div>

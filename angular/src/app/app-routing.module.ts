@@ -30,7 +30,7 @@ const routes: Routes = [
   { path: 'Clients', component: ClientsListComponent },
   { path: 'Clients/:id', component: ClientDetailsComponent },
   { path: 'View-Clients/:id', component: ViewClientComponent },
-  { path: 'add', component: AddClientComponent },
+  { path: 'Add-Client', component: AddClientComponent },
 
   { path: 'Services', component: ServicesListComponent },
   { path: 'Cashflows', component: CashflowsComponent },
@@ -46,7 +46,7 @@ const routes: Routes = [
 
   { path: 'Vendors', component: VendorsListComponent },
   { path: 'Vendors/:id', component: VendorsDetailsComponent },
-  // { path: 'add', component: AddVendorsComponent }
+  { path: 'Add-Vendor', component: AddVendorsComponent }
 
 ];
 

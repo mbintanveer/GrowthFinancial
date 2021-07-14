@@ -1,1 +1,50 @@
-<p>vendors-list works!</p>
+<div class="col">
+    <div id="page-content">
+        <div id="vendors">
+            <div id="table-container">
+                <div id="table-header">
+                    <div id="table-header-left">
+                        <span id="tab-title">Vendors</span>
+                    </div>
+                    <div id="table-header-right">
+                        <input id="search" type="text" placeholder="Search Vendor">
+                        <img id="search-icon" src="search.png">
+                        <button id="add-bill" class="table-header-button" routerLink="/Add-Vendor">Add Vendor</button>
+                    </div>
+                </div>
+                <table id="table">
+                    <thead>
+                        <tr>
+                            <td>Serial No</td>
+                            <td>Vendor Name</td>
+                            <td>Vendor Type</td>
+                            <td>Reference No</td>
+                            <td>
+                                View Vendor
+                            </td>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        <tr *ngFor="let vendor of vendors; let i = index">
+                            <td>01</td>
+                            <td>{{vendor.vendor_name }}</td>
+                            <td>Type 1</td>
+                            <td>658795423568975</td>
+                            <td>
+
+                                <a routerLink="/View-Vendors/{{vendor.vendor_id}}">
+                                    View
+                                </a> |
+                                <a routerLink="/Vendors/{{vendor.vendor_id}}">
+                                    Edit
+                                </a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+</div>
