@@ -3,10 +3,10 @@
     </h5>
     <p class="card-text">
     </p>
-    <a class="btn btn-info" href="/Clients/Clients_Get_Statement" role="button">Generate Statement</a><br><br>
+    <a class="btn btn-info" href="/Vendors/Vendors_Get_Statement" role="button">Generate Statement</a><br><br>
 </div>
 
-<h1 style="text-align:center"> Client Payable Table </h1>
+<h1 style="text-align:center"> Vendor Payable Table </h1>
 <br>
 
 <div class="center">
@@ -15,7 +15,7 @@
 
             <tr class="table-info">
 
-                <th scope="col"> Client Name </th>
+                <th scope="col"> Vendor Name </th>
                 <th scope="col"> 1-30 </th>
                 <th scope="col"> 30-60 </th>
                 <th scope="col"> 60-90 </th>
@@ -27,12 +27,12 @@
 
             <tr>
 
-                <!-- <td> {{client.client_name}} </td>
-                <td> {{client.get_one_month}} </td>
-                <td> {{client.get_two_month}} </td>
-                <td>{{client.get_three_month}}</td>
-                <td>{{client.get_four_month}}</td>
-                <td>{{client.get_total}}</td> -->
+                <!-- <td> {{Vendor.Vendor_name}} </td>
+                <td> {{Vendor.get_one_month}} </td>
+                <td> {{Vendor.get_two_month}} </td>
+                <td>{{Vendor.get_three_month}}</td>
+                <td>{{Vendor.get_four_month}}</td>
+                <td>{{Vendor.get_total}}</td> -->
 
             </tr>
 
@@ -41,7 +41,7 @@
 </div>
 
 
-<h1 style="text-align:center"> Client Statement </h1>
+<h1 style="text-align:center"> Vendor Statement </h1>
 <br>
 
 <div class="center">
@@ -61,13 +61,13 @@
 
             <!-- {% for entry in combined_results %} -->
             <tr>
-                <!-- {% if entry.invoice_client %} -->
+                <!-- {% if entry.invoice_vendor%} -->
                 <!-- <td> Invoices </td>
                 <td>{{entry.date_created}}</td>
                 <td>{{entry.invoice_description}}</td>
 
 
-                <!-- {% elif entry.receiving_client%} -->
+                <!-- {% elif entry.receiving_vendor%} -->
                 <td> Receivings</td>
                 <!-- <td>{{entry.date_created}}</td>
                 <td>{{entry.receiving_description}}</td> -->-->
@@ -102,13 +102,13 @@
 
             <!-- {% for entry in combined_results %} -->
             <tr>
-                <!-- {% if entry.invoice_client %} -->
+                <!-- {% if entry.invoice_Vendor %} -->
                 <!-- <td> Invoices </td>
                 <td>{{entry.date_created}}</td>
                 <td>{{entry.invoice_description}}</td>
 
 
-                <!-- {% elif entry.receiving_client%} -->
+                <!-- {% elif entry.receiving_Vendor%} -->
                 <td> Receivings</td>
                 <!-- <td>{{entry.date_created}}</td>
                 <td>{{entry.receiving_description}}</td> -->-->
@@ -140,7 +140,7 @@
             <!-- {% for entry in combined_results %} -->
             <tr>
 
-                <!-- {% elif entry.receiving_client%} -->
+                <!-- {% elif entry.receiving_Vendor%} -->
                 <td> Receivings</td>
 
             </tr>

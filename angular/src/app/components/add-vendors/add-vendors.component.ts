@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Vendor } from 'src/app/models/vendor.model';
 import { VendorService } from 'src/app/services/vendor.service';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-add-vendor',
@@ -9,7 +9,7 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./add-vendors.component.css']
 })
 
-export class AddVendorComponent implements OnInit {
+export class AddVendorsComponent implements OnInit {
   vendor: Vendor = {
     vendor_id: '',
     vendor_name: '',

@@ -25,6 +25,7 @@ import { CashflowsComponent } from './components/cashflows/cashflows.component';
 import { AccountsComponent } from './components/accounts/accounts.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { ViewClientComponent } from './components/view-client/view-client.component';
+import { ViewVendorComponent } from './components/view-vendors/view-vendors.component';
  
 @NgModule({
   declarations: [
@@ -46,7 +47,9 @@ import { ViewClientComponent } from './components/view-client/view-client.compon
     AccountsComponent,
     SidebarComponent,
     ViewClientComponent,
+    ViewVendorComponent,
   ],
+
   imports: [
     AppRoutingModule,
     RouterModule,
