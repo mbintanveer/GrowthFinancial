@@ -1,22 +1,22 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Expense } from '../models/expense.model';
+import { Receiving } from '../models/receiving.model';
 
-const baseUrl = 'http://localhost:8000/api/Expenses';
+const baseUrl = 'http://localhost:8000/api/Receivings';
 
 @Injectable({
   providedIn: 'root'
 })
 
-export class ExpenseService {
+export class ReceivingService {
   constructor(private http: HttpClient) { }
 
-  getAll(): Observable<Expense[]> {
-    return this.http.get<Expense[]>(baseUrl);
+  getAll(): Observable<Receiving[]> {
+    return this.http.get<Receiving[]>(baseUrl);
   }
 
-  get(id: any): Observable<Expense> {
+  get(id: any): Observable<Receiving> {
     return this.http.get(`${baseUrl}/${id}`);
   }
 
@@ -36,8 +36,8 @@ export class ExpenseService {
     return this.http.delete(baseUrl);
   }
 
-  findByTitle(title: any): Observable<Expense[]> {
-    return this.http.get<Expense[]>(`${baseUrl}?title=${title}`);
+  findByTitle(title: any): Observable<Receiving[]> {
+    return this.http.get<Receiving[]>(`${baseUrl}?title=${title}`);
   }
 }
 

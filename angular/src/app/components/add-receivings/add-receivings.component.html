@@ -1,0 +1,38 @@
+<div>
+    <div class="submit-form">
+        <div *ngIf="!submitted">
+            <div class="form-group">
+                <label for="name">Receiving Description</label>
+                <input class="form-control" id="description" required [(ngModel)]="receiving.receiving_description" name="receiving_description" />
+            </div>
+            <div class="form-group">
+                <label for="receiving_amount">Receiving Amount</label>
+                <input class="form-control" id="receiving_amount" required [(ngModel)]="receiving.receiving_amount" name="receiving_amount" />
+            </div>
+
+            <div class="form-group">
+                <label for="date_created">Date Created</label> <br>
+                <input type="date" id="date_created" name="date_created" required [(ngModel)]="receiving.date_created">
+                <!-- <input class="form-control" id="date_created" required [(ngModel)]="receiving.date_created" name="date_created" /> -->
+            </div>
+
+            <label for="client">Client ID</label> <br>
+            <!-- 
+            <select id="client">
+            <option value="volvo">Volvo</option>
+            <option value="saab">Saab</option>
+            <option value="vw">VW</option>
+            <option value="audi" selected>Audi</option>
+            </select> -->
+            <input class="form-group" id="receiving_client" required [(ngModel)]="receiving.receiving_client" name="receiving_client" />
+
+            <br>
+            <button (click)="saveReceiving()" class="btn btn-success">Submit</button>
+        </div>
+
+        <div *ngIf="submitted">
+            <h4>Receiving was submitted successfully!</h4>
+            <button class="btn btn-success" (click)="newReceiving()">Add</button>
+        </div>
+    </div>
+</div>

@@ -18,9 +18,9 @@ import { ExpensesDetailsComponent } from './components/expenses-details/expenses
 import { AddExpensesComponent } from './components/add-expenses/add-expenses.component';
 // import { ViewExpenseComponent } from './components/view-expenses/view-expenses.component';
 
-// import { ReceivingsListComponent } from './components/receivings-list/receivings-list.component';
-// import { ReceivingsDetailsComponent } from './components/receivings-details/receivings-details.component';
-// import { AddReceivingsComponent } from './components/add-receivings/add-receivings.component';
+import { ReceivingsListComponent } from './components/receivings-list/receivings-list.component';
+import { ReceivingsDetailsComponent } from './components/receivings-details/receivings-details.component';
+import { AddReceivingsComponent } from './components/add-receivings/add-receivings.component';
 
 import { VendorsListComponent } from './components/vendors-list/vendors-list.component';
 import { VendorsDetailsComponent } from './components/vendors-details/vendors-details.component';
@@ -46,9 +46,9 @@ const routes: Routes = [
   // { path: 'View-Expenses/:id', component: ViewExpensesComponent },
   { path: 'Add-Expense', component: AddExpensesComponent },
 
-  // { path: 'Receivings', component: ReceivingsListComponent },
-  // { path: 'Receivings/:id', component: ReceivingsDetailsComponent },
-  // { path: 'add', component: AddReceivingsComponent },
+  { path: 'Receivings', component: ReceivingsListComponent },
+  { path: 'Receivings/:id', component: ReceivingsDetailsComponent },
+  { path: 'Add-Receiving', component: AddReceivingsComponent },
 
   { path: 'Vendors', component: VendorsListComponent },
   { path: 'Vendors/:id', component: VendorsDetailsComponent },

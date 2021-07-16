@@ -1,0 +1,48 @@
+<p>receivings-list works!</p>
+<div class="col">
+    <div id="page-content">
+        <div id="vendors">
+            <div id="table-container">
+                <div id="table-header">
+                    <div id="table-header-left">
+                        <span id="tab-title">Receivings</span>
+                    </div>
+                    <div id="table-header-right">
+                        <input id="search" type="text" placeholder="Search Receivings">
+                        <img id="search-icon" src="search.png">
+                        <button id="add-bill" class="table-header-button" routerLink="/Add-Receiving">Add Receiving</button>
+                    </div>
+                </div>
+                <table id="table">
+                    <thead>
+                        <tr>
+                            <td>Serial No</td>
+                            <td>Date Created</td>
+                            <td>Receiving Type</td>
+                            <td>Receiving Amount</td>
+                            <td>
+                                View Receiving
+                            </td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let receiving of receivings; let i = index">
+                            <td>{{receiving.receiving_id }}</td>
+                            <td>{{receiving.date_created}}</td>
+                            <td>{{receiving.receiving_description}}</td>
+                            <td>{{receiving.receiving_amount}}</td>
+                            <td>
+                                <!-- <a routerLink="/View-Receivings/{{receiving.receiving_id}}">
+                                    View
+                                </a> | -->
+                                <a routerLink="/Receivings/{{receiving.receiving_id}}">
+                                    Edit
+                                </a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

@@ -11,9 +11,6 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-// import { AddReceivingsComponent } from './components/add-receivings/add-receivings.component';
-// import { ReceivingsDetailsComponent } from './components/receivings-details/receivings-details.component';
-// import { ReceivingsListComponent } from './components/receivings-list/receivings-list.component';
 import { ExpensesListComponent } from './components/expenses-list/expenses-list.component';
 import { AddExpensesComponent } from './components/add-expenses/add-expenses.component';
 import { ExpensesDetailsComponent } from './components/expenses-details/expenses-details.component';
@@ -26,6 +23,9 @@ import { AccountsComponent } from './components/accounts/accounts.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { ViewClientComponent } from './components/view-client/view-client.component';
 import { ViewVendorComponent } from './components/view-vendors/view-vendors.component';
+import { AddReceivingsComponent } from './components/add-receivings/add-receivings.component';
+import { ReceivingsListComponent } from './components/receivings-list/receivings-list.component';
+import { ReceivingsDetailsComponent } from './components/receivings-details/receivings-details.component';
  
 @NgModule({
   declarations: [
@@ -49,6 +49,9 @@ import { ViewVendorComponent } from './components/view-vendors/view-vendors.comp
     SidebarComponent,
     ViewClientComponent,
     ViewVendorComponent,
+    AddReceivingsComponent,
+    ReceivingsListComponent,
+    ReceivingsDetailsComponent,
   ],
 
   imports: [
