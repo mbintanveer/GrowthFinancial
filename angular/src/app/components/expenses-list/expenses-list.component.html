@@ -9,16 +9,16 @@
                     <div id="table-header-right">
                         <input id="search" type="text" placeholder="Search Expenses">
                         <img id="search-icon" src="search.png">
-                        <!-- <button id="add-bill" class="table-header-button" routerLink=         "/Add-Expense">Add Expense</button> -->
+                        <button id="add-bill" class="table-header-button" routerLink="/Add-Expense">Add Expense</button>
                     </div>
                 </div>
                 <table id="table">
                     <thead>
                         <tr>
                             <td>Serial No</td>
-                            <td>Expense Name</td>
+                            <td>Date Created</td>
                             <td>Expense Type</td>
-                            <td>Reference No</td>
+                            <td>Expense Amount</td>
                             <td>
                                 View Expense
                             </td>
@@ -27,18 +27,17 @@
                     <tbody>
 
                         <tr *ngFor="let expense of expenses; let i = index">
-                            <td>01</td>
-                            <td>{{expense.expense_amount }}</td>
+                            <td>{{expense.expense_id }}</td>
+                            <td>{{expense.date_created}}</td>
                             <td>{{expense.expense_type}}</td>
-                            <td>658795423568975</td>
+                            <td>{{expense.expense_amount}}</td>
                             <td>
-
-                                <!-- <a routerLink="/View-Expenses/{{expense.expense_id}}"> -->
-                                View
-                                <!-- </a> | -->
-                                <!-- <a routerLink="/Expenses/{{expense.expense_id}}"> -->
-                                Edit
-                                <!-- </a> -->
+                                <!-- <a routerLink="/View-Expenses/{{expense.expense_id}}">
+                                    View
+                                </a> | -->
+                                <a routerLink="/Expenses/{{expense.expense_id}}">
+                                    Edit
+                                </a>
                             </td>
                         </tr>
                     </tbody>
