@@ -5,11 +5,11 @@ class Expense(models.Model):
     expense_id=models.AutoField(primary_key=True)
     expense_amount = models.IntegerField()
 
-    type_choices = (
-        ('Marketing','Marketing')
-        ,('Payroll', 'Payroll' ))
+    # type_choices = (
+    #     ('Marketing','Marketing')
+    #     ,('Payroll', 'Payroll' ))
 
-    expense_type = models.CharField(max_length=255, choices=type_choices)
+    expense_type = models.CharField(max_length=255) #choices=type_choices
     date_created = models.DateField()
 
 

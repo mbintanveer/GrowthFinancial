@@ -3,16 +3,17 @@
         <div *ngIf="!submitted">
             <div class="form-group">
                 <label for="name">Expense Type</label>
-                <input class="form-control" id="description" required [(ngModel)]="expense.expense_type" name="name" />
+                <input class="form-control" id="description" required [(ngModel)]="expense.expense_type" name="expense_type" />
             </div>
             <div class="form-group">
                 <label for="expense_amount">Expense Amount</label>
-                <input class="form-control" id="expense_amount" required [(ngModel)]="expense.expense_amount" name="amount" />
+                <input class="form-control" id="expense_amount" required [(ngModel)]="expense.expense_amount" name="expense_amount" />
             </div>
 
             <div class="form-group">
-                <label for="date_created">Date Created</label>
-                <input class="form-control" id="date_created" required [(ngModel)]="expense.date_created" name="amount" />
+                <label for="date_created">Date Created</label> <br>
+                <input type="date" id="date_created" name="date_created" required [(ngModel)]="expense.date_created">
+                <!-- <input class="form-control" id="date_created" required [(ngModel)]="expense.date_created" name="date_created" /> -->
             </div>
 
             <button (click)="saveExpense()" class="btn btn-success">Submit</button>

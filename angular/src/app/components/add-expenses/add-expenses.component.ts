@@ -13,6 +13,9 @@ export class AddExpensesComponent implements OnInit {
   expense: Expense = {
     expense_id: '',
     expense_type: '',
+    expense_amount: 0,
+    date_created: '2020-01-01',
+    
 
   };
   submitted = false;
@@ -26,7 +29,11 @@ export class AddExpensesComponent implements OnInit {
   saveExpense(): void {
     const data = {
       expense_id: this.expense.expense_id,
-      expense_name: this.expense.expense_type
+      expense_type: this.expense.expense_type,
+      expense_amount:this.expense.expense_amount,
+      date_created: this.expense.date_created,
+
+
     };
     
 
