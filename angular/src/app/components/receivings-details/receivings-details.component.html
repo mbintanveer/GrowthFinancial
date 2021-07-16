@@ -1,1 +1,45 @@
-<p>receivings-details works!</p>
+<div>
+    <div *ngIf="currentReceiving.receiving_id" class="edit-form">
+        <h4>Receiving</h4>
+        <form>
+            <div class="form-group">
+                <label for="name">Receiving Type</label>
+                <input class="form-control" id="description" required [(ngModel)]="currentReceiving.receiving_description" name="receiving_description" />
+            </div>
+            <div class="form-group">
+                <label for="receiving_amount">Receiving Amount</label>
+                <input class="form-control" id="receiving_amount" required [(ngModel)]="currentReceiving.receiving_amount" name="receiving_amount" />
+            </div>
+
+            <div class="form-group">
+                <label for="date_created">Date Created</label> <br>
+                <input type="date" id="date_created" name="date_created" required [(ngModel)]="currentReceiving.date_created">
+                <!-- <input class="form-control" id="date_created" required [(ngModel)]="receiving.date_created" name="date_created" /> -->
+            </div>
+
+            <!-- <div class="form-group">
+                <label for="name">Receiving Type</label>
+                <input type="text" class="form-control" id="name" [(ngModel)]="currentReceiving.receiving_type" name="receiving_type" />
+            </div> -->
+            <div class="form-group">
+                <label for="receiving_client">Client</label> <br>
+                <input class="form-group" id="receiving_client" required [(ngModel)]="currentReceiving.receiving_client" name="receiving_client" />
+            </div>
+        </form>
+
+
+        <button class="badge badge-danger mr-2" (click)="deleteReceiving()">
+      Delete
+    </button>
+
+        <button type="submit" class="badge badge-success mb-2" (click)="updateReceiving()">
+      Update
+    </button>
+        <p>{{ message }}</p>
+    </div>
+
+    <div *ngIf="!currentReceiving.receiving_id">
+        <br />
+        <p>Cannot access this Client...</p>
+    </div>
+</div>
