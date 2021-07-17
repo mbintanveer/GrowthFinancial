@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
-
+import { NgxPaginationModule } from 'ngx-pagination';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AddClientComponent } from './components/add-client/add-client.component';
@@ -57,6 +57,7 @@ import { ReceivingsDetailsComponent } from './components/receivings-details/rece
   imports: [
     AppRoutingModule,
     RouterModule,
+    NgxPaginationModule,
     BrowserModule,
     FormsModule,
     HttpClientModule,

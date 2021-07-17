@@ -12,9 +12,14 @@ const baseUrl = 'http://localhost:8000/api/Clients';
 export class ClientService {
   constructor(private http: HttpClient) { }
 
-  getAll(): Observable<Client[]> {
-    return this.http.get<Client[]>(baseUrl);
+
+  getAll(): Observable<any> {
+    return this.http.get(baseUrl);
   }
+
+  // getAll(): Observable<any> {
+  //   return this.http.get<Client[]>(baseUrl);
+  // }
 
   get(id: any): Observable<Client> {
     return this.http.get(`${baseUrl}/${id}`);

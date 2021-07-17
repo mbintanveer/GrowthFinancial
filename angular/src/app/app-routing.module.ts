@@ -34,7 +34,6 @@ const routes: Routes = [
   { path: 'Clients', component: ClientsListComponent },
   { path: 'Clients/:id', component: ClientDetailsComponent },
   { path: 'View-Clients/:id', component: ViewClientComponent },
-
   { path: 'Add-Client', component: AddClientComponent },
 
   { path: 'Services', component: ServicesListComponent },
