@@ -40,6 +40,7 @@ export class ClientsListComponent implements OnInit {
           console.log(error);
         });
   }
+  
   tabSize(event:any){
     this.page = event;
     this.retrieveClients();

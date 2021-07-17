@@ -1,22 +1,22 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Receiving } from '../models/receiving.model';
+import { Invoice } from '../models/invoice.model';
 
-const baseUrl = 'http://localhost:8000/api/Receivings';
+const baseUrl = 'http://localhost:8000/api/Invoices';
 
 @Injectable({
   providedIn: 'root'
 })
 
-export class ReceivingService {
+export class InvoiceService {
   constructor(private http: HttpClient) { }
 
-  getAll(): Observable<Receiving[]> {
-    return this.http.get<Receiving[]>(baseUrl);
+  getAll(): Observable<Invoice[]> {
+    return this.http.get<Invoice[]>(baseUrl);
   }
 
-  get(id: any): Observable<Receiving> {
+  get(id: any): Observable<Invoice> {
     return this.http.get(`${baseUrl}/${id}`);
   }
 
@@ -36,12 +36,12 @@ export class ReceivingService {
     return this.http.delete(baseUrl);
   }
 
-  findByTitle(title: any): Observable<Receiving[]> {
-    return this.http.get<Receiving[]>(`${baseUrl}?title=${title}`);
+  findByTitle(title: any): Observable<Invoice[]> {
+    return this.http.get<Invoice[]>(`${baseUrl}?title=${title}`);
   }
 
-  findByClient(receiving_client_id: any): Observable<Receiving[]> {
-    return this.http.get<Receiving[]>(`${baseUrl}?receiving_client_id=${receiving_client_id}`);
+  findByClient(invoice_client_id: any): Observable<Invoice[]> {
+    return this.http.get<Invoice[]>(`${baseUrl}?invoice_client_id=${invoice_client_id}`);
   }
 
 }

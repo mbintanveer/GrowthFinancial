@@ -32,7 +32,7 @@ export class ClientDetailsComponent implements OnInit {
         .subscribe(
           data => {
             this.currentClient = data;
-            console.log(data);
+            console.log(this.currentClient);
           },
           error => {
             console.log(error);
