@@ -18,6 +18,10 @@ from operator import attrgetter
 def clients_list(request):
     if request.method == 'GET':
         client = Client.objects.all()
+        client_name_keyword = request.GET.get('client_name_keyword', None)
+        if client_name_keyword is not None:
+            client = client.filter(client_name__icontains=client_name_keyword)
+        
         client_serializer = ClientSerializer(client, many=True)
         return JsonResponse(client_serializer.data, safe=False)
 
@@ -29,6 +33,18 @@ def clients_list(request):
             return JsonResponse(client_serializer.data, status=status.HTTP_201_CREATED) 
         return JsonResponse(client_serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
+# @api_view(['GET', 'POST', 'DELETE'])
+# def client_list(request):
+#     if request.method == 'GET':
+#         clients = Client.objects.all()
+        
+#         title = request.GET.get('title', None)
+#         if title is not None:
+#             clients = Client.filter(title__icontains=title)
+        
+#         clients_serializer = ClientSerializer(clients, many=True)
+#         return JsonResponse(clients_serializer.data, safe=False)
+  
 @api_view(['GET','PUT','DELETE'])
 def clients_detail(request, pk):  
     try: 
@@ -51,7 +67,8 @@ def clients_detail(request, pk):
     elif request.method == 'DELETE': 
         client.delete() 
         return JsonResponse({'message': 'Client was deleted successfully!'}, status=status.HTTP_204_NO_CONTENT)
-        
+
+     
 #INVOICES
 
 @api_view(['GET', 'POST']) #Post for new
@@ -132,7 +149,8 @@ def receivings_detail(request, pk):
     elif request.method == 'DELETE': 
         receiving.delete() 
         return JsonResponse({'message': 'Invoice was deleted successfully!'}, status=status.HTTP_204_NO_CONTENT)
-    
+
+
 # Create your views here.
 def Clients_Landing(request):
     ClientsList = Client.objects.all()

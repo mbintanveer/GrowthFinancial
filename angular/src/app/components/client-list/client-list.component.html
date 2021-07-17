@@ -7,13 +7,18 @@
                         <span id="tab-title">Clients</span>
                     </div>
                     <div id="table-header-right">
-                        <input id="search" type="text" placeholder="Search Client">
-                        <img id="search-icon" src="search.png">
-                        <button id="add-bill" class="table-header-button" routerLink="/Add-Client">Add Client</button>
-                        <button id="add-bill" class="table-header-button" routerLink="/Add-Invoice">Add Invoice</button>
+                        <div class="input-group mb-3">
+                            <input id="search" type="text" placeholder="Search Client" [(ngModel)]="client_name">
+                            <button id="add-bill" class="table-header-button" (click)="searchClient()">Search Client</button>
+
+
+                        </div>
+                        <!-- <img id="search-icon" src="search.png" (click)="searchClient()"> -->
+                        <button id=" add-bill " class="table-header-button " routerLink="/Add-Client ">Add Client</button>
+                        <button id="add-bill " class="table-header-button " routerLink="/Add-Invoice ">Add Invoice</button>
                     </div>
                 </div>
-                <table id="table">
+                <table id="table ">
                     <thead>
                         <tr>
                             <td>Serial No</td>
@@ -27,17 +32,17 @@
                     </thead>
                     <tbody>
 
-                        <tr *ngFor="let client of clients; let i = index">
+                        <tr *ngFor="let client of clients; let i=index ">
                             <td>01</td>
                             <td>{{client.client_name }}</td>
                             <td>Type 1</td>
                             <td>658795423568975</td>
                             <td>
 
-                                <a routerLink="/View-Clients/{{client.client_id}}">
+                                <a routerLink="/View-Clients/{{client.client_id}} ">
                                     View
                                 </a> |
-                                <a routerLink="/Clients/{{client.client_id}}">
+                                <a routerLink="/Clients/{{client.client_id}} ">
                                     Edit
                                 </a>
                             </td>
@@ -49,23 +54,3 @@
     </div>
 
 </div>
-
-<!-- <div class="col-md-6">
-
-
-<div class="col-md-6">
-    <div *ngIf="currentClient.client_id">
-        <h4>Client</h4>
-
-        <div>
-            <label><strong>Client Name:</strong></label> {{ currentClient.client_name }}
-        </div>
-
-
-    </div>
-
-    <div *ngIf="!currentClient">
-        <br />
-        <p>Please click on a Client...</p>
-    </div>
-</div> -->

@@ -14,7 +14,7 @@ export class ClientsListComponent implements OnInit {
   clients?: Client[];
   currentClient: Client = {};
   currentIndex = -1;
-  title = '';
+  client_name = '';
 
   constructor(private clientService: ClientService) { }
 
@@ -58,20 +58,20 @@ export class ClientsListComponent implements OnInit {
         });
   }
 
-  // searchTitle(): void {
-  //   this.currentClient = {};
-  //   this.currentIndex = -1;
+  searchClient(): void {
+    this.currentClient = {};
+    this.currentIndex = -1;
 
-  //   this.clientService.findByTitle(this.title)
-  //     .subscribe(
-  //       data => {
-  //         this.clients = data;
-  //         console.log(data);
-  //       },
-  //       error => {
-  //         console.log(error);
-  //       });
-  // }
+    this.clientService.findByClientName(this.client_name)
+      .subscribe(
+        data => {
+          this.clients = data;
+          console.log(data);
+        },
+        error => {
+          console.log(error);
+        });
+  }
 }
 
 
