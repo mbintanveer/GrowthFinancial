@@ -73,8 +73,13 @@ def clients_detail(request, pk):
 
 @api_view(['GET', 'POST']) #Post for new
 def invoices_list(request):
+  
     if request.method == 'GET':
         invoice = Invoice.objects.all()
+        invoice_client_id = request.GET.get('invoice_client_id', None)
+        if invoice_client_id is not None:
+            invoice = invoice.filter(invoice_client=invoice_client_id)
+        
         invoice_serializer = InvoiceSerializer(invoice, many=True)
         return JsonResponse(invoice_serializer.data, safe=False)
 
@@ -115,6 +120,10 @@ def invoices_detail(request, pk):
 def receivings_list(request):
     if request.method == 'GET':
         receiving = Receiving.objects.all()
+        receiving_client_id = request.GET.get('receiving_client_id', None)
+        if receiving_client_id is not None:
+            receiving = receiving.filter(receiving_client=receiving_client_id)
+        
         receiving_serializer = ReceivingSerializer(receiving, many=True)
         return JsonResponse(receiving_serializer.data, safe=False)
 
