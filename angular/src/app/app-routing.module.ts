@@ -8,6 +8,13 @@ import { ClientDetailsComponent } from './components/client-details/client-detai
 import { AddClientComponent } from './components/add-client/add-client.component';
 import { ViewClientComponent } from './components/view-client/view-client.component';
 
+import { InvoicesListComponent } from './components/invoices-list/invoices-list.component';
+import { InvoicesDetailsComponent } from './components/invoices-details/invoices-details.component';
+import { AddInvoicesComponent } from './components/add-invoices/add-invoices.component';
+
+import { ReceivingsListComponent } from './components/receivings-list/receivings-list.component';
+import { ReceivingsDetailsComponent } from './components/receivings-details/receivings-details.component';
+import { AddReceivingsComponent } from './components/add-receivings/add-receivings.component';
 
 import { ServicesListComponent } from './components/services-list/services-list.component';
 import { CashflowsComponent } from './components/cashflows/cashflows.component';
@@ -18,9 +25,6 @@ import { ExpensesDetailsComponent } from './components/expenses-details/expenses
 import { AddExpensesComponent } from './components/add-expenses/add-expenses.component';
 // import { ViewExpenseComponent } from './components/view-expenses/view-expenses.component';
 
-import { ReceivingsListComponent } from './components/receivings-list/receivings-list.component';
-import { ReceivingsDetailsComponent } from './components/receivings-details/receivings-details.component';
-import { AddReceivingsComponent } from './components/add-receivings/add-receivings.component';
 
 import { VendorsListComponent } from './components/vendors-list/vendors-list.component';
 import { VendorsDetailsComponent } from './components/vendors-details/vendors-details.component';
@@ -36,6 +40,14 @@ const routes: Routes = [
   { path: 'View-Clients/:id', component: ViewClientComponent },
   { path: 'Add-Client', component: AddClientComponent },
 
+  { path: 'Invoices', component: InvoicesListComponent },
+  { path: 'Invoices/:id', component: InvoicesDetailsComponent },
+  { path: 'Add-Invoice', component: AddInvoicesComponent },
+
+  { path: 'Receivings', component: ReceivingsListComponent },
+  { path: 'Receivings/:id', component: ReceivingsDetailsComponent },
+  { path: 'Add-Receiving', component: AddReceivingsComponent },
+
   { path: 'Services', component: ServicesListComponent },
   { path: 'Cashflows', component: CashflowsComponent },
   { path: 'Accounts', component: AccountsComponent },
@@ -45,9 +57,6 @@ const routes: Routes = [
   // { path: 'View-Expenses/:id', component: ViewExpensesComponent },
   { path: 'Add-Expense', component: AddExpensesComponent },
 
-  { path: 'Receivings', component: ReceivingsListComponent },
-  { path: 'Receivings/:id', component: ReceivingsDetailsComponent },
-  { path: 'Add-Receiving', component: AddReceivingsComponent },
 
   { path: 'Vendors', component: VendorsListComponent },
   { path: 'Vendors/:id', component: VendorsDetailsComponent },

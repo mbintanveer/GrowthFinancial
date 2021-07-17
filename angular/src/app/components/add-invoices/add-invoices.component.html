@@ -1,0 +1,43 @@
+<div>
+    <div class="submit-form">
+        <div *ngIf="!submitted">
+            <div class="form-group">
+                <label for="name">Invoice Description</label>
+                <input class="form-control" id="description" required [(ngModel)]="invoice.invoice_description" name="invoice_description" />
+            </div>
+
+            <div class="form-group">
+                <label for="name">Invoice Status</label>
+                <input class="form-control" id="status" required [(ngModel)]="invoice.invoice_status" name="invoice_status" />
+            </div>
+            <!-- <div class="form-group"> -->
+            <!-- <label for="invoice_amount">Invoice Amount</label> -->
+            <!-- <input class="form-control" id="invoice_amount" required [(ngModel)]="invoice.invoice_amount" name="invoice_amount" /> -->
+            <!-- </div> -->
+
+            <div class="form-group">
+                <label for="date_created">Date Created</label> <br>
+                <input type="date" id="date_created" name="date_created" required [(ngModel)]="invoice.date_created">
+                <!-- <input class="form-control" id="date_created" required [(ngModel)]="invoice.date_created" name="date_created" /> -->
+            </div>
+
+            <label for="client">Client ID</label> <br>
+            <!-- 
+            <select id="client">
+            <option value="volvo">Volvo</option>
+            <option value="saab">Saab</option>
+            <option value="vw">VW</option>
+            <option value="audi" selected>Audi</option>
+            </select> -->
+            <input class="form-group" id="invoice_client" required [(ngModel)]="invoice.invoice_client" name="invoice_client" />
+
+            <br>
+            <button (click)="saveInvoice()" class="btn btn-success">Submit</button>
+        </div>
+
+        <div *ngIf="submitted">
+            <h4>Invoice was submitted successfully!</h4>
+            <button class="btn btn-success" (click)="newInvoice()">Add</button>
+        </div>
+    </div>
+</div>

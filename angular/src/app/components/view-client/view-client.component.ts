@@ -25,7 +25,7 @@ export class ViewClientComponent implements OnInit {
   receivings?: any;
   currentReceiving: Receiving = {};
 
-  invoices?: Invoice[];
+  invoices?: any;
   currentInvoice: Invoice = {};
 
   currentIndex = -1;
@@ -89,11 +89,17 @@ export class ViewClientComponent implements OnInit {
     this.retrieveReceivings(this.currentClient.client_id);
     this.retrieveInvoices(this.currentClient.client_id);
     this.currentReceiving = {};
+    this.currentInvoice = {};
     this.currentIndex = -1;
   }
 
   setActiveReceiving(receiving: Receiving, index: number): void {
     this.currentReceiving =receiving;
+    this.currentIndex = index;
+  }
+
+  setActiveInvoice(invoice: Invoice, index: number): void {
+    this.currentInvoice =invoice;
     this.currentIndex = index;
   }
 

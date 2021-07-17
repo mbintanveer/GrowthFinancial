@@ -1,0 +1,44 @@
+<div>
+    <div *ngIf="currentInvoice.invoice_id" class="edit-form">
+        <h4>Invoice</h4>
+        <form>
+            <div class="form-group">
+                <label for="name">Invoice Type</label>
+                <input class="form-control" id="description" required [(ngModel)]="currentInvoice.invoice_description" name="invoice_description" />
+            </div>
+            <!-- <div class="form-group">
+                <label for="invoice_amount">Invoice Amount</label>
+                <input class="form-control" id="invoice_amount" required [(ngModel)]="currentInvoice.invoice_amount" name="invoice_amount" />
+            </div> -->
+
+            <div class="form-group">
+                <label for="date_created">Date Created</label> <br>
+                <input type="date" id="date_created" name="date_created" required [(ngModel)]="currentInvoice.date_created">
+                <!-- <input class="form-control" id="date_created" required [(ngModel)]="invoice.date_created" name="date_created" /> -->
+            </div>
+
+            <!-- <div class="form-group">
+                <label for="name">Invoice Type</label>
+                <input type="text" class="form-control" id="name" [(ngModel)]="currentInvoice.invoice_type" name="invoice_type" />
+            </div> -->
+            <div class="form-group">
+                <label for="invoice_client">Client</label> <br>
+                <input class="form-group" id="invoice_client" required [(ngModel)]="currentInvoice.invoice_client" name="invoice_client" />
+            </div>
+        </form>
+
+        <button class="badge badge-danger mr-2" (click)="deleteInvoice()">
+      Delete
+    </button>
+
+        <button type="submit" class="badge badge-success mb-2" (click)="updateInvoice()">
+      Update
+    </button>
+        <p>{{ message }}</p>
+    </div>
+
+    <div *ngIf="!currentInvoice.invoice_id">
+        <br />
+        <p>Cannot access this Client...</p>
+    </div>
+</div>

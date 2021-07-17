@@ -159,7 +159,7 @@
                         <tr>
                             <td>Transaction ID</td>
                             <td>Type</td>
-                            <td></td>
+                            <td>Invoice Description</td>
                             <td>Details</td>
                             <td>Reference No</td>
                             <td>
@@ -167,10 +167,16 @@
                             </td>
                         </tr>
 
-                        <tr *ngFor="let invoice of invoices; let i = index">
+                        <tr *ngFor="let invoice of invoices | paginate : {
+                            itemsPerPage: tableSize,
+                            currentPage: page,
+                            totalItems: count
+                          };
+                    let i = index" [class.active]="i == currentIndex">
                             <td>{{invoice.invoice_id }}</td>
                             <td>{{invoice.date_created}}</td>
                             <td>{{invoice.invoice_description}}</td>
+                            <td>sample reference no.</td>
                             <td>{{invoice.invoice_client}}</td>
                             <!-- <td>{{invoice.invoice_amount}}</td> -->
                             <td>
@@ -188,7 +194,17 @@
                 </table>
             </div>
         </div>
-
+        <div class=" d-flex justify-content-center ">
+            Items per Page: <select (change)="tableData($event)">
+            <option *ngFor="let size of tableSizesArr" [ngValue]="size">
+              {{ size }}
+            </option>
+          </select>
+            <br> <br>
+            <pagination-controls previousLabel="Prev" nextLabel="Next" (pageChange)="tabSize($event)">
+                <!--responsive="True"-->
+            </pagination-controls>
+        </div>
         <!-- <div class=" d-flex justify-content-center ">
             Items per Page: <select (change)="tableData($event)">
             <option *ngFor="let size of tableSizesArr" [ngValue]="size">

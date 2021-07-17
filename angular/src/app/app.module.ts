@@ -26,6 +26,10 @@ import { ViewVendorComponent } from './components/view-vendors/view-vendors.comp
 import { AddReceivingsComponent } from './components/add-receivings/add-receivings.component';
 import { ReceivingsListComponent } from './components/receivings-list/receivings-list.component';
 import { ReceivingsDetailsComponent } from './components/receivings-details/receivings-details.component';
+import { ViewInvoicesComponent } from './components/view-invoices/view-invoices.component';
+import { AddInvoicesComponent } from './components/add-invoices/add-invoices.component';
+import { InvoicesDetailsComponent } from './components/invoices-details/invoices-details.component';
+import { InvoicesListComponent } from './components/invoices-list/invoices-list.component';
  
 @NgModule({
   declarations: [
@@ -52,6 +56,10 @@ import { ReceivingsDetailsComponent } from './components/receivings-details/rece
     AddReceivingsComponent,
     ReceivingsListComponent,
     ReceivingsDetailsComponent,
+    ViewInvoicesComponent,
+    AddInvoicesComponent,
+    InvoicesDetailsComponent,
+    InvoicesListComponent,
   ],
 
   imports: [
