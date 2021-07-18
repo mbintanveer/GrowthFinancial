@@ -22,22 +22,21 @@
             </div>
 
             <label for="client">Client ID</label> <br>
-            <!-- 
-            <select id="client">
-            <option value="volvo">Volvo</option>
-            <option value="saab">Saab</option>
-            <option value="vw">VW</option>
-            <option value="audi" selected>Audi</option>
-            </select> -->
-            <input class="form-group" id="invoice_client" required [(ngModel)]="invoice.invoice_client" name="invoice_client" />
+
+            <select class=form-group [(ngModel)]="invoice.invoice_client">
+                <option *ngFor="let client of clients" [value]="client.client_id">
+                  {{client.client_name}}
+                </option>
+            </select>
+
 
             <br>
-            <button (click)="saveInvoice()" class="btn btn-success">Submit</button>
+            <button (click)="saveInvoice() " class="btn btn-success ">Submit</button>
         </div>
 
-        <div *ngIf="submitted">
+        <div *ngIf="submitted ">
             <h4>Invoice was submitted successfully!</h4>
-            <button class="btn btn-success" (click)="newInvoice()">Add</button>
+            <button class="btn btn-success " (click)="newInvoice() ">Add</button>
         </div>
     </div>
 </div>

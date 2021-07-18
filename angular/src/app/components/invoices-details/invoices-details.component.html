@@ -21,10 +21,15 @@
                 <label for="name">Invoice Type</label>
                 <input type="text" class="form-control" id="name" [(ngModel)]="currentInvoice.invoice_type" name="invoice_type" />
             </div> -->
-            <div class="form-group">
-                <label for="invoice_client">Client</label> <br>
-                <input class="form-group" id="invoice_client" required [(ngModel)]="currentInvoice.invoice_client" name="invoice_client" />
-            </div>
+
+            <label for="client">Client ID</label> <br>
+
+            <select id=possile_clients class=form-group [(ngModel)]="currentInvoice.invoice_client">
+                <option *ngFor="let client of clients" [value]="client.client_id">
+                  {{client.client_name}}
+                </option>
+            </select>
+
         </form>
 
         <button class="badge badge-danger mr-2" (click)="deleteInvoice()">

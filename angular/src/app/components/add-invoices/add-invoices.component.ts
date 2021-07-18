@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Invoice } from 'src/app/models/invoice.model';
+import { Client} from 'src/app/models/client.model';
 import { InvoiceService } from 'src/app/services/invoice.service';
+import { ClientService } from 'src/app/services/client.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -16,15 +18,29 @@ export class AddInvoicesComponent implements OnInit {
     invoice_status: '',
     // invoice_amount: 0,
     date_created: '2020-01-01',
-    
-
   };
   submitted = false;
+  clients?: Client[];
 
   constructor (private invoiceService: InvoiceService,
+    private clientService: ClientService,
     private router: Router){ }
 
   ngOnInit(): void {
+    this.retrieveClients();
+  }
+
+
+  retrieveClients(): void {
+    this.clientService.getAll()
+      .subscribe(
+        data => {
+          this.clients = data;
+          console.log(data);
+        },
+        error => {
+          console.log(error);
+        });
   }
 
   saveInvoice(): void {

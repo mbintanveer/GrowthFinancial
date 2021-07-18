@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { InvoiceService } from 'src/app/services/invoice.service';
 import { ActivatedRoute, Router } from '@angular/router';
+
+import { Client} from 'src/app/models/client.model';
+import { ClientService } from 'src/app/services/client.service';
 import { Invoice } from 'src/app/models/invoice.model';
 
 @Component({
@@ -20,18 +23,32 @@ export class InvoicesDetailsComponent implements OnInit {
     
   };
   message = '';
-
+  clients?: Client[];
   constructor(
     private invoiceService: InvoiceService,
+    private clientService: ClientService,
     private route: ActivatedRoute,
     private router: Router) { }
 
     ngOnInit(): void {
       this.message = '';
+      this.retrieveClients();
       this.getInvoice(this.route.snapshot.params.id);
-      console.log('hi')
     }
-  
+    
+    
+  retrieveClients(): void {
+    this.clientService.getAll()
+      .subscribe(
+        data => {
+          this.clients = data;
+          console.log(data);
+        },
+        error => {
+          console.log(error);
+        });
+  }
+
     getInvoice(id: string): void {
       this.invoiceService.get(id)
         .subscribe(
