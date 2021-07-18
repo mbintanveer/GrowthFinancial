@@ -1,0 +1,38 @@
+<div>
+    <div class="submit-form">
+        <div *ngIf="!submitted">
+            <div class="form-group">
+                <label for="name">Payment Description</label>
+                <input class="form-control" id="description" required [(ngModel)]="payment.payment_description" name="payment_description" />
+            </div>
+            <div class="form-group">
+                <label for="payment_amount">Payment Amount</label>
+                <input class="form-control" id="payment_amount" required [(ngModel)]="payment.payment_amount" name="payment_amount" />
+            </div>
+
+            <div class="form-group">
+                <label for="date_created">Date Created</label> <br>
+                <input type="date" id="date_created" name="date_created" required [(ngModel)]="payment.date_created">
+                <!-- <input class="form-control" id="date_created" required [(ngModel)]="payment.date_created" name="date_created" /> -->
+            </div>
+
+            <label for="vendor">Vendor</label> <br>
+            <!-- 
+            <select id="client">
+            <option value="volvo">Volvo</option>
+            <option value="saab">Saab</option>
+            <option value="vw">VW</option>
+            <option value="audi" selected>Audi</option>
+            </select> -->
+            <input class="form-group" id="payment_vendor" required [(ngModel)]="payment.payment_vendor" name="payment_vendor" />
+
+            <br>
+            <button (click)="savePayment()" class="btn btn-success">Submit</button>
+        </div>
+
+        <div *ngIf="submitted">
+            <h4>Payment was submitted successfully!</h4>
+            <button class="btn btn-success" (click)="newPayment()">Add</button>
+        </div>
+    </div>
+</div>

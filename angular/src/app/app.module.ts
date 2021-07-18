@@ -30,6 +30,11 @@ import { ViewInvoicesComponent } from './components/view-invoices/view-invoices.
 import { AddInvoicesComponent } from './components/add-invoices/add-invoices.component';
 import { InvoicesDetailsComponent } from './components/invoices-details/invoices-details.component';
 import { InvoicesListComponent } from './components/invoices-list/invoices-list.component';
+
+import { AddBillsComponent } from './components/add-bills/add-bills.component';
+import { AddPaymentsComponent } from './components/add-payments/add-payments.component';
+import { BillsDetailsComponent } from './components/bills-details/bills-details.component';
+import { PaymentsDetailsComponent } from './components/payments-details/payments-details.component';
  
 @NgModule({
   declarations: [
@@ -60,6 +65,10 @@ import { InvoicesListComponent } from './components/invoices-list/invoices-list.
     AddInvoicesComponent,
     InvoicesDetailsComponent,
     InvoicesListComponent,
+    AddBillsComponent,
+    AddPaymentsComponent,
+    BillsDetailsComponent,
+    PaymentsDetailsComponent,
   ],
 
   imports: [

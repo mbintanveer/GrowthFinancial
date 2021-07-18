@@ -31,6 +31,9 @@ import { VendorsDetailsComponent } from './components/vendors-details/vendors-de
 import { AddVendorsComponent } from './components/add-vendors/add-vendors.component';
 import { ViewVendorComponent } from './components/view-vendors/view-vendors.component';
 
+import { AddBillsComponent } from './components/add-bills/add-bills.component';
+import { AddPaymentsComponent } from './components/add-payments/add-payments.component';
+
 
 const routes: Routes = [
   // { path: '', redirectTo: 'Clients', pathMatch: 'full' },
@@ -61,7 +64,10 @@ const routes: Routes = [
   { path: 'Vendors', component: VendorsListComponent },
   { path: 'Vendors/:id', component: VendorsDetailsComponent },
   { path: 'View-Vendors/:id', component: ViewVendorComponent },
-  { path: 'Add-Vendor', component: AddVendorsComponent }
+  { path: 'Add-Vendor', component: AddVendorsComponent },
+
+  { path: 'Add-Bill', component: AddBillsComponent },
+  { path: 'Add-Payment', component: AddPaymentsComponent }
 
 ];
 

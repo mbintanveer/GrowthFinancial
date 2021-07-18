@@ -1,0 +1,44 @@
+<div>
+    <div class="submit-form">
+        <div *ngIf="!submitted">
+            <div class="form-group">
+                <label for="name">Bill Description</label>
+                <input class="form-control" id="description" required [(ngModel)]="bill.bill_description" name="bill_description" />
+            </div>
+
+            <!-- <div class="form-group">
+                <label for="name">Bill Status</label>
+                <input class="form-control" id="status" required [(ngModel)]="bill.bill_status" name="bill_status" />
+            </div> -->
+            <div class="form-group">
+                <label for="bill_amount">Bill Amount</label>
+                <input class="form-control" id="bill_amount" required [(ngModel)]="bill.bill_amount" name="bill_amount" />
+            </div>
+
+            <div class="form-group">
+                <label for="date_created">Date Created</label> <br>
+                <input type="date" id="date_created" name="date_created" required [(ngModel)]="bill.date_created">
+                <!-- <input class="form-control" id="date_created" required [(ngModel)]="bill.date_created" name="date_created" /> -->
+            </div>
+
+            <label for="vendor">Vendor ID</label> <br>
+            <!-- 
+            <select id="vendor">
+            <option value="volvo">Volvo</option>
+            <option value="saab">Saab</option>
+            <option value="vw">VW</option>
+            <option value="audi" selected>Audi</option>
+            </select> -->
+
+            <input class="form-group" id="bill_vendor" required [(ngModel)]="bill.bill_vendor" name="bill_vendor" />
+
+            <br>
+            <button (click)="saveBill()" class="btn btn-success">Submit</button>
+        </div>
+
+        <div *ngIf="submitted">
+            <h4>Bill was submitted successfully!</h4>
+            <button class="btn btn-success" (click)="newBill()">Add</button>
+        </div>
+    </div>
+</div>
