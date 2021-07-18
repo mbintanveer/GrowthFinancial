@@ -1,15 +1,13 @@
-
 from django.shortcuts import render
 from .models import Vendors, Bills, Payments
 from rest_framework.decorators import api_view
 from itertools import chain
 from operator import attrgetter
-from .serializers import VendorSerializer
+from .serializers import VendorSerializer,BillSerializer,PaymentSerializer
 from django.http.response import JsonResponse
 from rest_framework.parsers import JSONParser 
 from rest_framework import status
 
-Bills = Bills.objects.all()
 
 def Vendors_Landing(request):
     VendorsList = Vendors.objects.all()
@@ -67,5 +65,94 @@ def vendors_detail(request, pk):
 
     elif request.method == 'DELETE': 
         vendor.delete() 
-        return JsonResponse({'message': 'Invoice was deleted successfully!'}, status=status.HTTP_204_NO_CONTENT)
+        return JsonResponse({'message': 'Vendor was deleted successfully!'}, status=status.HTTP_204_NO_CONTENT)
         
+#INVOICES
+
+@api_view(['GET', 'POST']) #Post for new
+def bills_list(request):
+  
+    if request.method == 'GET':
+        bill = Bills.objects.all()
+        bill_vendor_id = request.GET.get('bill_vendor_id', None)
+        if bill_vendor_id is not None:
+            bill = bill.filter(bill_vendor=bill_vendor_id)
+        
+        bill_serializer = BillSerializer(bill, many=True)
+        return JsonResponse(bill_serializer.data, safe=False)
+
+    elif request.method == 'POST':
+        bill_data = JSONParser().parse(request)
+        bill_serializer = BillSerializer(data=bill_data)
+        if bill_serializer.is_valid():
+            bill_serializer.save()
+            return JsonResponse(bill_serializer.data, status=status.HTTP_201_CREATED) 
+        return JsonResponse(bill_serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+@api_view(['GET','PUT','DELETE'])
+def bills_detail(request, pk):  
+    try: 
+        bill = Bills.objects.get(pk=pk) 
+    except Bills.DoesNotExist: 
+        return JsonResponse({'message': 'The Bill does not exist'}, status=status.HTTP_404_NOT_FOUND) 
+    
+    if request.method == 'GET': 
+        bill_serializer = BillSerializer(bill) 
+        return JsonResponse(bill_serializer.data) 
+
+    elif request.method == 'PUT': 
+        bill_data = JSONParser().parse(request) 
+        bill_serializer = BillSerializer(bill, data=bill_data) 
+        if bill_serializer.is_valid(): 
+            bill_serializer.save() 
+            return JsonResponse(bill_serializer.data) 
+        return JsonResponse(bill_serializer.errors, status=status.HTTP_400_BAD_REQUEST) 
+
+    elif request.method == 'DELETE': 
+        bill.delete() 
+        return JsonResponse({'message': 'Bills was deleted successfully!'}, status=status.HTTP_204_NO_CONTENT)
+        
+#RECEIVING
+
+@api_view(['GET', 'POST']) #Post for new
+def payments_list(request):
+    if request.method == 'GET':
+        payment = Payments.objects.all()
+        payment_vendor_id = request.GET.get('payment_vendor_id', None)
+        if payment_vendor_id is not None:
+            payment = payment.filter(payment_vendor=payment_vendor_id)
+        
+        payment_serializer = PaymentSerializer(payment, many=True)
+        return JsonResponse(payment_serializer.data, safe=False)
+
+    elif request.method == 'POST':
+        payment_data = JSONParser().parse(request)
+        payment_serializer = PaymentSerializer(data=payment_data)
+        if payment_serializer.is_valid():
+            payment_serializer.save()
+            return JsonResponse(payment_serializer.data, status=status.HTTP_201_CREATED) 
+        return JsonResponse(payment_serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+@api_view(['GET','PUT','DELETE'])
+def payments_detail(request, pk):  
+    try: 
+        payment = Payments.objects.get(pk=pk) 
+    except Payments.DoesNotExist: 
+        return JsonResponse({'message': 'The Payment does not exist'}, status=status.HTTP_404_NOT_FOUND) 
+    
+    if request.method == 'GET': 
+        payment_serializer = PaymentSerializer(payment) 
+        return JsonResponse(payment_serializer.data) 
+
+    elif request.method == 'PUT': 
+        payment_data = JSONParser().parse(request) 
+        payment_serializer = PaymentSerializer(payment, data=payment_data) 
+        if payment_serializer.is_valid(): 
+            payment_serializer.save() 
+            return JsonResponse(payment_serializer.data) 
+        return JsonResponse(payment_serializer.errors, status=status.HTTP_400_BAD_REQUEST) 
+
+    elif request.method == 'DELETE': 
+        payment.delete() 
+        return JsonResponse({'message': 'Bills was deleted successfully!'}, status=status.HTTP_204_NO_CONTENT)

@@ -105,6 +105,7 @@ class Vendors(models.Model):
 
 
 class Bills(models.Model):
+    bill_id=models.AutoField(primary_key=True,blank=True)
     bill_vendor = models.ForeignKey(Vendors,on_delete=models.CASCADE,related_name='bill_vendor')
     bill_description = models.CharField(max_length=255)
     bill_amount = models.IntegerField()
@@ -113,6 +114,7 @@ class Bills(models.Model):
         return (self.bill_vendor.__str__() + " | " + str(self.bill_amount))
 
 class Payments(models.Model):
+    payment_id=models.AutoField(primary_key=True,blank=True)
     payment_vendor=models.ForeignKey(Vendors,on_delete=models.CASCADE,related_name='payment_vendor')
     payment_description=models.CharField(max_length=255)
     payment_amount = models.IntegerField()

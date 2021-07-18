@@ -8,7 +8,8 @@
                     </div>
                     <div id="table-header-right">
                         <input id="search" type="text" placeholder="Search Vendor">
-                        <img id="search-icon" src="search.png">
+                        <button id="add-bill" class="table-header-button" routerLink="/Add-Bill">Add Bill</button>
+                        <button id="add-payment" class="table-header-button" routerLink="/Add-Payment">Add Payment</button>
                         <button id="add-bill" class="table-header-button" routerLink="/Add-Vendor">Add Vendor</button>
                     </div>
                 </div>
@@ -26,7 +27,12 @@
                     </thead>
                     <tbody>
 
-                        <tr *ngFor="let vendor of vendors; let i = index">
+                        <tr *ngFor="let vendor of vendors | paginate : {
+                            itemsPerPage: tableSize,
+                            currentPage: page,
+                            totalItems: count
+                          };
+                    let i = index" [class.active]="i == currentIndex">
                             <td>{{vendor.vendor_id}}</td>
                             <td>{{vendor.vendor_name }}</td>
                             <td>Type 1</td>
@@ -45,6 +51,17 @@
                 </table>
             </div>
         </div>
+    </div>
+    <div class=" d-flex justify-content-center ">
+        Items per Page: <select (change)="tableData($event)">
+        <option *ngFor="let size of tableSizesArr" [ngValue]="size">
+          {{ size }}
+        </option>
+      </select>
+        <br> <br>
+        <pagination-controls previousLabel="Prev" nextLabel="Next" (pageChange)="tabSize($event)">
+            <!--responsive="True"-->
+        </pagination-controls>
     </div>
 
 </div>

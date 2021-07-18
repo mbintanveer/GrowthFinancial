@@ -8,13 +8,18 @@ import { VendorService } from 'src/app/services/vendor.service';
   styleUrls: ['./vendors-list.component.css']
 })
 
-
 export class VendorsListComponent implements OnInit {
 
-  vendors?: Vendor[];
+
   currentVendor: Vendor = {};
   currentIndex = -1;
-  title = '';
+  vendor_name = '';
+
+  vendors?: any;
+  page = 1;
+  count = 0;
+  tableSize = 5;
+  tableSizesArr = [5];
 
   constructor(private vendorService: VendorService) { }
 
@@ -46,7 +51,17 @@ export class VendorsListComponent implements OnInit {
     this.currentIndex = index;
   }
 
+  
+  tabSize(event:any){
+    this.page = event;
+    this.retrieveVendors();
+  }  
 
+  tableData(event:any): void {
+    this.tableSize = event.target.value;
+    this.page = 1;
+    this.retrieveVendors();
+  } 
   // searchTitle(): void {
   //   this.currentClient = {};
   //   this.currentIndex = -1;
