@@ -15,6 +15,7 @@ export class AddPaymentsComponent implements OnInit {
     payment_description: '',
     payment_amount: 0,
     date_created: '2020-01-01',
+    payment_vendor:''
   };
   submitted = false;
 

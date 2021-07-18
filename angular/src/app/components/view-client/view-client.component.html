@@ -59,6 +59,89 @@
             <div id="table-container">
                 <div id="table-header">
                     <div id="table-header-left">
+                        <span id="tab-title">Invoices</span>
+                    </div>
+                    <div id="table-header-right">
+                        <div>
+                            <button id="add-invoice " class="table-header-button " routerLink="/Add-Invoice">Add Invoice</button>
+                        </div>
+                        <!-- <img id="search-icon" src="search.png" (click)="searchClient()"> -->
+                    </div>
+                </div>
+
+                <table id="table">
+                    <thead>
+                        <tr>
+                            <td>Transaction ID</td>
+                            <td>Type</td>
+                            <td>Invoice Description</td>
+                            <td>Details</td>
+                            <td>Reference No</td>
+                            <td>
+                                View Client
+                            </td>
+                        </tr>
+
+                        <tr *ngFor="let invoice of invoices | paginate : {
+                            itemsPerPage: tableSize,
+                            currentPage: page,
+                            totalItems: count
+                          };
+                    let i = index" [class.active]="i == currentIndex">
+                            <td>{{invoice.invoice_id }}</td>
+                            <td>{{invoice.date_created}}</td>
+                            <td>{{invoice.invoice_description}}</td>
+                            <td>sample reference no.</td>
+                            <td>{{invoice.invoice_client}}</td>
+                            <!-- <td>{{invoice.invoice_amount}}</td> -->
+                            <td>
+
+                                <a routerLink="/Invoices/{{invoice.invoice_id}}">
+                                    Edit
+                                </a>
+                            </td>
+                        </tr>
+
+                    </thead>
+                    <tbody>
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class=" d-flex justify-content-center ">
+            Items per Page: <select (change)="tableData($event)">
+            <option *ngFor="let size of tableSizesArr" [ngValue]="size">
+              {{ size }}
+            </option>
+          </select>
+            <br> <br>
+            <pagination-controls previousLabel="Prev" nextLabel="Next" (pageChange)="tabSize($event)">
+                <!--responsive="True"-->
+            </pagination-controls>
+        </div>
+        <!-- <div class=" d-flex justify-content-center ">
+            Items per Page: <select (change)="tableData($event)">
+            <option *ngFor="let size of tableSizesArr" [ngValue]="size">
+              {{ size }}
+            </option>
+          </select>
+            <br> <br>
+            <pagination-controls previousLabel="Prev" nextLabel="Next" (pageChange)="tabSize($event)">
+                <!--responsive="True"
+            </pagination-controls>
+        </div> -->
+    </div>
+
+</div>
+
+
+<div class="col">
+    <div id="page-content">
+        <div id="clients">
+            <div id="table-container">
+                <div id="table-header">
+                    <div id="table-header-left">
                         <span id="tab-title">Receivings</span>
                     </div>
                     <div id="table-header-right">
@@ -137,123 +220,3 @@
     </div>
 
 </div>
-
-<div class="col">
-    <div id="page-content">
-        <div id="clients">
-            <div id="table-container">
-                <div id="table-header">
-                    <div id="table-header-left">
-                        <span id="tab-title">Invoices</span>
-                    </div>
-                    <div id="table-header-right">
-                        <div>
-                            <button id="add-invoice " class="table-header-button " routerLink="/Add-Invoice">Add Invoice</button>
-                        </div>
-                        <!-- <img id="search-icon" src="search.png" (click)="searchClient()"> -->
-                    </div>
-                </div>
-
-                <table id="table">
-                    <thead>
-                        <tr>
-                            <td>Transaction ID</td>
-                            <td>Type</td>
-                            <td>Invoice Description</td>
-                            <td>Details</td>
-                            <td>Reference No</td>
-                            <td>
-                                View Client
-                            </td>
-                        </tr>
-
-                        <tr *ngFor="let invoice of invoices | paginate : {
-                            itemsPerPage: tableSize,
-                            currentPage: page,
-                            totalItems: count
-                          };
-                    let i = index" [class.active]="i == currentIndex">
-                            <td>{{invoice.invoice_id }}</td>
-                            <td>{{invoice.date_created}}</td>
-                            <td>{{invoice.invoice_description}}</td>
-                            <td>sample reference no.</td>
-                            <td>{{invoice.invoice_client}}</td>
-                            <!-- <td>{{invoice.invoice_amount}}</td> -->
-                            <td>
-
-                                <a routerLink="/Invoices/{{invoice.invoice_id}}">
-                                    Edit
-                                </a>
-                            </td>
-                        </tr>
-
-                    </thead>
-                    <tbody>
-
-                    </tbody>
-                </table>
-            </div>
-        </div>
-        <div class=" d-flex justify-content-center ">
-            Items per Page: <select (change)="tableData($event)">
-            <option *ngFor="let size of tableSizesArr" [ngValue]="size">
-              {{ size }}
-            </option>
-          </select>
-            <br> <br>
-            <pagination-controls previousLabel="Prev" nextLabel="Next" (pageChange)="tabSize($event)">
-                <!--responsive="True"-->
-            </pagination-controls>
-        </div>
-        <!-- <div class=" d-flex justify-content-center ">
-            Items per Page: <select (change)="tableData($event)">
-            <option *ngFor="let size of tableSizesArr" [ngValue]="size">
-              {{ size }}
-            </option>
-          </select>
-            <br> <br>
-            <pagination-controls previousLabel="Prev" nextLabel="Next" (pageChange)="tabSize($event)">
-                <!--responsive="True"
-            </pagination-controls>
-        </div> -->
-    </div>
-
-</div>
-
-
-
-
-
-<!-- <h1 style="text-align:center"> Client Payable Table </h1>
-<br>
-
-<div class="center">
-    <table class="table table-bordered ">
-        <thead class="thead thead-dark">
-
-            <tr class="table-info">
-
-                <th scope="col"> Client Name </th>
-                <th scope="col"> 1-30 </th>
-                <th scope="col"> 30-60 </th>
-                <th scope="col"> 60-90 </th>
-                <th scope="col"> > 90 </th>
-                <th scope="col"> Total </th>
-            </tr>
-        </thead>
-        <tbody>
-
-            <tr>
-
-                <!-- <td> {{client.client_name}} </td>
-                <td> {{client.get_one_month}} </td>
-                <td> {{client.get_two_month}} </td>
-                <td>{{client.get_three_month}}</td>
-                <td>{{client.get_four_month}}</td>
-                <td>{{client.get_total}}</td> 
-
-</tr>
-
-</tbody>
-</table>
-</div> -->

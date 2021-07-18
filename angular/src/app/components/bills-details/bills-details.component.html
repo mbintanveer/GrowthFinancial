@@ -1,1 +1,39 @@
-<p>bills-details works!</p>
+<div>
+    <div *ngIf="currentBill.bill_id" class="edit-form">
+        <h4>Bill</h4>
+        <form>
+            <div class="form-group">
+                <label for="name">Bill Description</label>
+                <input class="form-control" id="description" required [(ngModel)]="currentBill.bill_description" name="bill_description" />
+            </div>
+            <div class="form-group">
+                <label for="bill_amount">Bill Amount</label>
+                <input class="form-control" id="bill_amount" required [(ngModel)]="currentBill.bill_amount" name="bill_amount" />
+            </div>
+            <div class="form-group">
+                <label for="date_created">Date Created</label> <br>
+                <input type="date" id="date_created" name="date_created" required [(ngModel)]="currentBill.date_created">
+                <!-- <input class="form-control" id="date_created" required [(ngModel)]="bill.date_created" name="date_created" /> -->
+            </div>
+
+            <div class="form-group">
+                <label for="vendor">Vendor ID</label> <br>
+                <input class="form-group" id="bill_vendor" required [(ngModel)]="currentBill.bill_vendor" name="bill_vendor" />
+            </div>
+        </form>
+
+        <button class="badge badge-danger mr-2" (click)="deleteBill()">
+      Delete
+    </button>
+
+        <button type="submit" class="badge badge-success mb-2" (click)="updateBill()">
+      Update
+    </button>
+        <p>{{ message }}</p>
+    </div>
+
+    <div *ngIf="!currentBill.bill_id">
+        <br />
+        <p>Cannot access this Client...</p>
+    </div>
+</div>

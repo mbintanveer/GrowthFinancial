@@ -32,6 +32,9 @@ import { AddVendorsComponent } from './components/add-vendors/add-vendors.compon
 import { ViewVendorComponent } from './components/view-vendors/view-vendors.component';
 
 import { AddBillsComponent } from './components/add-bills/add-bills.component';
+import { BillsDetailsComponent } from './components/bills-details/bills-details.component';
+
+import { PaymentsDetailsComponent } from './components/payments-details/payments-details.component';
 import { AddPaymentsComponent } from './components/add-payments/add-payments.component';
 
 
@@ -67,8 +70,10 @@ const routes: Routes = [
   { path: 'Add-Vendor', component: AddVendorsComponent },
 
   { path: 'Add-Bill', component: AddBillsComponent },
-  { path: 'Add-Payment', component: AddPaymentsComponent }
+  { path: 'Bills/:id', component: BillsDetailsComponent },
 
+  { path: 'Add-Payment', component: AddPaymentsComponent },
+  { path: 'Payments/:id', component: PaymentsDetailsComponent },
 ];
 
 @NgModule({

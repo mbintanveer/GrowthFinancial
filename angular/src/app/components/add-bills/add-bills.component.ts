@@ -13,10 +13,9 @@ export class AddBillsComponent implements OnInit {
   bill: Bill = {
     bill_id: '',
     bill_description: '',
-    // bill_status: '',
     bill_amount: 0,
     date_created: '2020-01-01',
-    
+    bill_vendor:''
 
   };
   submitted = false;

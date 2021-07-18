@@ -1,1 +1,40 @@
-<p>payments-details works!</p>
+<div>
+    <div *ngIf="currentPayment.payment_id" class="edit-form">
+        <h4>Payment</h4>
+        <form>
+            <div class="form-group">
+                <label for="name">Payment Description</label>
+                <input class="form-control" id="description" required [(ngModel)]="currentPayment.payment_description" name="payment_description" />
+            </div>
+            <div class="form-group">
+                <label for="payment_amount">Payment Amount</label>
+                <input class="form-control" id="payment_amount" required [(ngModel)]="currentPayment.payment_amount" name="payment_amount" />
+            </div>
+            <div class="form-group">
+                <label for="date_created">Date Created</label> <br>
+                <input type="date" id="date_created" name="date_created" required [(ngModel)]="currentPayment.date_created">
+                <!-- <input class="form-control" id="date_created" required [(ngModel)]="payment.date_created" name="date_created" /> -->
+            </div>
+
+
+            <div class="form-group">
+                <label for="vendor">Vendor ID</label> <br>
+                <input class="form-group" id="payment_vendor" required [(ngModel)]="currentPayment.payment_vendor" name="payment_vendor" />
+            </div>
+        </form>
+
+        <button class="badge badge-danger mr-2" (click)="deletePayment()">
+      Delete
+    </button>
+
+        <button type="submit" class="badge badge-success mb-2" (click)="updatePayment()">
+      Update
+    </button>
+        <p>{{ message }}</p>
+    </div>
+
+    <div *ngIf="!currentPayment.payment_id">
+        <br />
+        <p>Cannot access this Client...</p>
+    </div>
+</div>
