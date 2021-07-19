@@ -191,3 +191,18 @@ def clients_summary(request, pk):
             "get_four_month":client.get_four_month(),
             "get_total":client.get_total()
             },safe=False)
+
+@api_view(['GET'])
+def all_clients_summary(request):
+    clients= Client.objects.all()
+    ClientResponse=[]
+    for client in clients:
+        ClientResponse.append({"client_name":client.client_name,
+            "get_one_month": client.get_one_month(),
+            "get_two_month" : client.get_two_month(),
+            "get_three_month":client.get_three_month(),
+            "get_four_month":client.get_four_month(),
+            "get_total":client.get_total()
+            })
+
+    return JsonResponse(ClientResponse,safe=False)

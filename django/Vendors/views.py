@@ -7,6 +7,8 @@ from .serializers import VendorSerializer,BillSerializer,PaymentSerializer
 from django.http.response import JsonResponse
 from rest_framework.parsers import JSONParser 
 from rest_framework import status
+from django.http import HttpResponse
+import json
 
 
 def Vendors_Landing(request):
@@ -165,11 +167,41 @@ def vendors_summary(request, pk):
         return JsonResponse({'message': 'The Vendor does not exist'}, status=status.HTTP_404_NOT_FOUND) 
     
     if request.method == 'GET': 
-        return JsonResponse(
+        return get_vendor_summary(vendor)
+
+
+@api_view(['GET'])
+def all_vendors_summary(request):
+    vendors= Vendors.objects.all()
+    VendorResponse=[]
+    for vendor in vendors:
+        VendorResponse.append({"vendor_name":vendor.vendor_name,
+            "get_one_month": vendor.get_one_month(),
+            "get_two_month" : vendor.get_two_month(),
+            "get_three_month":vendor.get_three_month(),
+            "get_four_month":vendor.get_four_month(),
+            "get_total":vendor.get_total()
+            })
+
+    return JsonResponse(VendorResponse,safe=False)
+
+
+def get_vendor_summary(vendor):
+    return JsonResponse(
             {"vendor_name":vendor.vendor_name,
             "get_one_month": vendor.get_one_month(),
             "get_two_month" : vendor.get_two_month(),
             "get_three_month":vendor.get_three_month(),
             "get_four_month":vendor.get_four_month(),
             "get_total":vendor.get_total()
-            },safe=False)
+            })
+
+    # return JsonResponse(
+    #         {"vendor_name":vendor.vendor_name,
+    #         "get_one_month": vendor.get_one_month(),
+    #         "get_two_month" : vendor.get_two_month(),
+    #         "get_three_month":vendor.get_three_month(),
+    #         "get_four_month":vendor.get_four_month(),
+    #         "get_total":vendor.get_total()
+    #         })
+

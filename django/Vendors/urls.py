@@ -7,6 +7,7 @@ url(r'^api/Vendors$', views.vendors_list),
 url(r'^api/Vendors/(?P<pk>[0-9]+)$', views.vendors_detail),
 
 url(r'^api/Vendors_Summary/(?P<pk>[0-9]+)$', views.vendors_summary),
+url(r'^api/All_Vendors_Summary', views.all_vendors_summary),
 
 url(r'^api/Bills$', views.bills_list),
 url(r'^api/Bills/(?P<pk>[0-9]+)$', views.bills_detail),
