@@ -174,3 +174,20 @@ def invoices_get_invoice_entries(request,pk):
         return JsonResponse({'message': 'The tutorial does not exist'}, status=status.HTTP_404_NOT_FOUND) 
     
     return JsonResponse({"models_to_return": list(invoice_entries)},safe=False)
+
+@api_view(['GET'])
+def clients_summary(request, pk):  
+    try: 
+        client = Client.objects.get(pk=pk) 
+    except Client.DoesNotExist: 
+        return JsonResponse({'message': 'The Client does not exist'}, status=status.HTTP_404_NOT_FOUND) 
+    
+    if request.method == 'GET': 
+        return JsonResponse(
+            {"client_name":client.client_name,
+            "get_one_month": client.get_one_month(),
+            "get_two_month" : client.get_two_month(),
+            "get_three_month":client.get_three_month(),
+            "get_four_month":client.get_four_month(),
+            "get_total":client.get_total()
+            },safe=False)

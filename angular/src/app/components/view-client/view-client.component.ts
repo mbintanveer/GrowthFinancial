@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ClientService } from 'src/app/services/client.service';
 import { Client } from 'src/app/models/client.model';
+import { Client_Summary } from 'src/app/models/client.model';
 import { ActivatedRoute, Router } from '@angular/router';
 
 import { Receiving } from 'src/app/models/receiving.model';
@@ -8,7 +9,6 @@ import { ReceivingService } from 'src/app/services/receiving.service';
 
 import { Invoice } from 'src/app/models/invoice.model';
 import { InvoiceService } from 'src/app/services/invoice.service';
-
 
 @Component({
   selector: 'app-view-client',
@@ -31,8 +31,18 @@ export class ViewClientComponent implements OnInit {
   currentIndex = -1;
   currentClient: Client = {
     client_id: '',
-    client_name: '',
-  };
+    client_name: '',}
+
+  getClientSummary:Client_Summary ={
+    client_name:'',
+    get_one_month: 0,
+    get_two_month: 0,
+    get_three_month: 0,
+    get_four_month: 0,
+    get_total: 0,
+  }
+ 
+
 
   constructor(private receivingService: ReceivingService,
     private invoiceService: InvoiceService,
@@ -44,6 +54,7 @@ export class ViewClientComponent implements OnInit {
     this.getClient(this.route.snapshot.params.id);
     this.retrieveReceivings(this.route.snapshot.params.id);
     this.retrieveInvoices(this.route.snapshot.params.id);
+    this.get_Client_Summary(this.route.snapshot.params.id);
   }
   
   getClient(id: string): void {
@@ -58,7 +69,18 @@ export class ViewClientComponent implements OnInit {
         });
   }
 
-// receiving_client_id: any
+  get_Client_Summary(id: string): void {
+    this.clientService.get_Client_Summary(id)
+      .subscribe(
+        data => {
+          this.getClientSummary = data;
+          console.log(this.currentClient);
+        },
+        error => {
+          console.log(error);
+        });
+  }
+
   retrieveReceivings(id: string): void {
 
     this.receivingService.findByClient(id)

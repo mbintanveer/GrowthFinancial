@@ -7,6 +7,8 @@ urlpatterns = [
 url(r'^api/Clients$', views.clients_list),
 url(r'^api/Clients/(?P<pk>[0-9]+)$', views.clients_detail),
 
+url(r'^api/Clients_Summary/(?P<pk>[0-9]+)$', views.clients_summary),
+
 url(r'^api/Invoices$', views.invoices_list),
 url(r'^api/Invoices/(?P<pk>[0-9]+)$', views.invoices_detail),
 url(r'^api/InvoicesA/(?P<pk>[0-9]+)$', views.invoices_get_invoice_entries), #Get_Invoice_Entries

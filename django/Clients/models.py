@@ -14,9 +14,9 @@ class Client(models.Model):
         now = datetime.now()
         date_lower = now - timedelta(days=30)
         client_invoices = Invoice.objects.filter(invoice_client=self).filter(date_created__gte=date_lower)
-        # client_invoices_sum = client_invoices.aggregate(Sum('invoice_amount'))['invoice_amount__sum']
-        # if client_invoices_sum == None:
-        client_invoices_sum = 0
+        client_invoices_sum = client_invoices.aggregate(Sum('invoice_amount'))['invoice_amount__sum']
+        if client_invoices_sum == None:
+            client_invoices_sum = 0
 
         client_payments = Receiving.objects.filter(receiving_client=self).filter(date_created__gte=date_lower)
         client_payments_sum = client_payments.aggregate(Sum('receiving_amount'))['receiving_amount__sum']
@@ -112,6 +112,7 @@ class Invoice(models.Model):
     date_created=models.DateField()
     invoice_status = models.CharField(max_length=255)
     invoice_description=models.CharField(max_length=255, null=True)
+    invoice_amount=models.IntegerField()
     invoice_client = models.ForeignKey(Client, on_delete=models.CASCADE,default=CLIENT_ID_DEFAULT,null=True)
 
     def invoice_get_amount(self):

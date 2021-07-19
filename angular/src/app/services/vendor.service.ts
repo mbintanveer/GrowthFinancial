@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { Vendor } from '../models/vendor.model';
 
 const baseUrl = 'http://localhost:8000/api/Vendors';
+const summaryUrl = 'http://localhost:8000/api/Vendors_Summary'
 
 @Injectable({
   providedIn: 'root'
@@ -39,5 +40,10 @@ export class VendorService {
   findByTitle(title: any): Observable<Vendor[]> {
     return this.http.get<Vendor[]>(`${baseUrl}?title=${title}`);
   }
+
+  get_Vendor_Summary(id: any): Observable<Vendor> {
+    return this.http.get(`${summaryUrl}/${id}`);
+  }
+
 }
 

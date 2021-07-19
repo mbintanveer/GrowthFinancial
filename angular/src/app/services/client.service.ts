@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { Client } from '../models/client.model';
 
 const baseUrl = 'http://localhost:8000/api/Clients';
+const summaryUrl = 'http://localhost:8000/api/Clients_Summary'
 
 @Injectable({
   providedIn: 'root'
@@ -44,5 +45,10 @@ export class ClientService {
   findByClientName(client_name: any): Observable<Client[]> {
     return this.http.get<Client[]>(`${baseUrl}?client_name_keyword=${client_name}`);
   }
+
+  get_Client_Summary(id: any): Observable<Client> {
+    return this.http.get(`${summaryUrl}/${id}`);
+  }
+
 }
 

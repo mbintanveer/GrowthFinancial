@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { VendorService } from 'src/app/services/vendor.service';
 import { Vendor } from 'src/app/models/vendor.model';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Vendor_Summary } from 'src/app/models/vendor.model';
+import { ActivatedRoute, } from '@angular/router';
 
 import { Payment } from 'src/app/models/payment.model';
 import { PaymentService } from 'src/app/services/payment.service';
@@ -34,6 +35,15 @@ export class ViewVendorComponent implements OnInit {
     vendor_name: '',
   };
 
+  getVendorSummary:Vendor_Summary ={
+    vendor_name:'',
+    get_one_month: 0,
+    get_two_month: 0,
+    get_three_month: 0,
+    get_four_month: 0,
+    get_total: 0,
+  }
+
   constructor(private paymentService: PaymentService,
     private billService: BillService,
     private vendorService: VendorService,
@@ -44,6 +54,7 @@ export class ViewVendorComponent implements OnInit {
     this.getVendor(this.route.snapshot.params.id);
     this.retrievePayments(this.route.snapshot.params.id);
     this.retrieveBills(this.route.snapshot.params.id);
+    this.get_Vendor_Summary(this.route.snapshot.params.id);
   }
   
   getVendor(id: string): void {
@@ -57,6 +68,19 @@ export class ViewVendorComponent implements OnInit {
           console.log(error);
         });
   }
+
+  get_Vendor_Summary(id: string): void {
+    this.vendorService.get_Vendor_Summary(id)
+      .subscribe(
+        data => {
+          this.getVendorSummary = data;
+
+        },
+        error => {
+          console.log(error);
+        });
+  }
+
 
 // payment_vendor_id: any
   retrievePayments(id: string): void {

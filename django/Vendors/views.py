@@ -156,3 +156,20 @@ def payments_detail(request, pk):
     elif request.method == 'DELETE': 
         payment.delete() 
         return JsonResponse({'message': 'Bills was deleted successfully!'}, status=status.HTTP_204_NO_CONTENT)
+
+@api_view(['GET'])
+def vendors_summary(request, pk):  
+    try: 
+        vendor = Vendors.objects.get(pk=pk) 
+    except Vendors.DoesNotExist: 
+        return JsonResponse({'message': 'The Vendor does not exist'}, status=status.HTTP_404_NOT_FOUND) 
+    
+    if request.method == 'GET': 
+        return JsonResponse(
+            {"vendor_name":vendor.vendor_name,
+            "get_one_month": vendor.get_one_month(),
+            "get_two_month" : vendor.get_two_month(),
+            "get_three_month":vendor.get_three_month(),
+            "get_four_month":vendor.get_four_month(),
+            "get_total":vendor.get_total()
+            },safe=False)
