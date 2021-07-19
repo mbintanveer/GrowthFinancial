@@ -21,16 +21,14 @@
                 <!-- <input class="form-control" id="date_created" required [(ngModel)]="bill.date_created" name="date_created" /> -->
             </div>
 
-            <label for="vendor">Vendor ID</label> <br>
-            <!-- 
-            <select id="vendor">
-            <option value="volvo">Volvo</option>
-            <option value="saab">Saab</option>
-            <option value="vw">VW</option>
-            <option value="audi" selected>Audi</option>
-            </select> -->
-            <input class="form-group" id="bill_vendor" required [(ngModel)]="bill.bill_vendor" name="bill_vendor" />
 
+            <label for="vendor">Vendor </label> <br>
+
+            <select class=form-group [(ngModel)]="bill.bill_vendor">
+                <option *ngFor="let vendor of vendors" [value]="vendor.vendor_id">
+                  {{vendor.vendor_name}}
+                </option>
+            </select>
             <br>
             <button (click)="saveBill()" class="btn btn-success">Submit</button>
         </div>

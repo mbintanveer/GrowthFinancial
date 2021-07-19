@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Payment } from 'src/app/models/payment.model';
 import { PaymentService } from 'src/app/services/payment.service';
+
+import { Vendor} from 'src/app/models/vendor.model';
+import { VendorService } from 'src/app/services/vendor.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -18,12 +21,27 @@ export class AddPaymentsComponent implements OnInit {
     payment_vendor:''
   };
   submitted = false;
+  vendors?: Vendor[];
 
   constructor (private paymentService: PaymentService,
+        private vendorService: VendorService,
     private router: Router){ }
 
-  ngOnInit(): void {
-  }
+    ngOnInit(): void {
+      this.retrieveVendors()
+    }
+  
+    retrieveVendors(): void {
+      this.vendorService.getAll()
+        .subscribe(
+          data => {
+            this.vendors = data;
+            console.log(data);
+          },
+          error => {
+            console.log(error);
+          });
+    }
 
   savePayment(): void {
     const data = {

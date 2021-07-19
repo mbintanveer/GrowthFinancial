@@ -16,16 +16,11 @@
                 <!-- <input class="form-control" id="date_created" required [(ngModel)]="payment.date_created" name="date_created" /> -->
             </div>
 
-            <label for="vendor">Vendor</label> <br>
-            <!-- 
-            <select id="client">
-            <option value="volvo">Volvo</option>
-            <option value="saab">Saab</option>
-            <option value="vw">VW</option>
-            <option value="audi" selected>Audi</option>
-            </select> -->
-            <input class="form-group" id="payment_vendor" required [(ngModel)]="payment.payment_vendor" name="payment_vendor" />
-
+            <select class=form-group [(ngModel)]="payment.payment_vendor">
+                <option *ngFor="let vendor of vendors" [value]="vendor.vendor_id">
+                  {{vendor.vendor_name}}
+                </option>
+            </select>
             <br>
             <button (click)="savePayment()" class="btn btn-success">Submit</button>
         </div>

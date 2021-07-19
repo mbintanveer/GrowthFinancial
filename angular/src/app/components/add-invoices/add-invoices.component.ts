@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Invoice } from 'src/app/models/invoice.model';
-import { Client} from 'src/app/models/client.model';
 import { InvoiceService } from 'src/app/services/invoice.service';
+
+import { Client} from 'src/app/models/client.model';
 import { ClientService } from 'src/app/services/client.service';
+
 import { Router } from '@angular/router';
 
 @Component({
@@ -29,7 +31,6 @@ export class AddInvoicesComponent implements OnInit {
   ngOnInit(): void {
     this.retrieveClients();
   }
-
 
   retrieveClients(): void {
     this.clientService.getAll()

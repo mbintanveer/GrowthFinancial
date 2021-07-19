@@ -16,16 +16,13 @@
                 <!-- <input class="form-control" id="date_created" required [(ngModel)]="receiving.date_created" name="date_created" /> -->
             </div>
 
-            <label for="client">Vendor</label> <br>
-            <!-- 
-            <select id="client">
-            <option value="volvo">Volvo</option>
-            <option value="saab">Saab</option>
-            <option value="vw">VW</option>
-            <option value="audi" selected>Audi</option>
-            </select> -->
-            <input class="form-group" id="receiving_client" required [(ngModel)]="receiving.receiving_client" name="receiving_client" />
+            <label for="client">Client </label> <br>
 
+            <select class=form-group [(ngModel)]="receiving.receiving_client">
+                <option *ngFor="let client of clients" [value]="client.client_id">
+                  {{client.client_name}}
+                </option>
+            </select>
             <br>
             <button (click)="saveReceiving()" class="btn btn-success">Submit</button>
         </div>

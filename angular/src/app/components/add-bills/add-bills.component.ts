@@ -1,10 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { Bill } from 'src/app/models/bill.model';
 import { BillService } from 'src/app/services/bill.service';
+
+import { Vendor} from 'src/app/models/vendor.model';
+import { VendorService } from 'src/app/services/vendor.service';
+
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-add-bill',
+  selector: 'app-add-vendor',
   templateUrl: './add-bills.component.html',
   styleUrls: ['./add-bills.component.css']
 })
@@ -19,11 +23,26 @@ export class AddBillsComponent implements OnInit {
 
   };
   submitted = false;
+  vendors?: Vendor[];
 
   constructor (private billService: BillService,
+    private vendorService: VendorService,
     private router: Router){ }
 
   ngOnInit(): void {
+    this.retrieveVendors()
+  }
+
+  retrieveVendors(): void {
+    this.vendorService.getAll()
+      .subscribe(
+        data => {
+          this.vendors = data;
+          console.log(data);
+        },
+        error => {
+          console.log(error);
+        });
   }
 
   saveBill(): void {

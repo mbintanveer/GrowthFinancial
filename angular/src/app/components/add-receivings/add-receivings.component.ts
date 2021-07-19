@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Receiving } from 'src/app/models/receiving.model';
 import { ReceivingService } from 'src/app/services/receiving.service';
+import { Client} from 'src/app/models/client.model';
+import { ClientService } from 'src/app/services/client.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -15,15 +17,29 @@ export class AddReceivingsComponent implements OnInit {
     receiving_description: '',
     receiving_amount: 0,
     date_created: '2020-01-01',
-    
-
+  
   };
+  clients?: Client[];
   submitted = false;
 
   constructor (private receivingService: ReceivingService,
+    private clientService: ClientService,
     private router: Router){ }
 
   ngOnInit(): void {
+    this.retrieveClients();
+  }
+
+  retrieveClients(): void {
+    this.clientService.getAll()
+      .subscribe(
+        data => {
+          this.clients = data;
+          console.log(data);
+        },
+        error => {
+          console.log(error);
+        });
   }
 
   saveReceiving(): void {
