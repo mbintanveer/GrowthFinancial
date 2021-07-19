@@ -13,6 +13,8 @@ import { Invoice } from 'src/app/models/invoice.model';
 })
 
 export class InvoicesDetailsComponent implements OnInit {
+  
+  status : any = "4";
   currentInvoice: Invoice = {
     invoice_id: '',
     invoice_description: '',

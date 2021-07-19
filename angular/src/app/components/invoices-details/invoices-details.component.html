@@ -26,9 +26,10 @@
 
             <select id=possile_clients class=form-group [(ngModel)]="currentInvoice.invoice_client">
                 <option *ngFor="let client of clients" [value]="client.client_id">
-                  {{client.client_name}}
+                  {{client.client_name}} - {{client.client_id}}
                 </option>
             </select>
+
 
         </form>
 
