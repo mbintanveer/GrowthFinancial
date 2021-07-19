@@ -8,7 +8,7 @@ import { ClientService } from 'src/app/services/client.service';
   styleUrls: ['./client-list.component.css']
 })
 
-
+ 
 export class ClientsListComponent implements OnInit {
 
   // clients?: Client[];

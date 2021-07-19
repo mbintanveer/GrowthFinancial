@@ -5,6 +5,7 @@ import { Vendor } from '../models/vendor.model';
 
 const baseUrl = 'http://localhost:8000/api/Vendors';
 const summaryUrl = 'http://localhost:8000/api/Vendors_Summary'
+const all_summary_Url='http://localhost:8000/api/All_Vendors_Summary'
 
 @Injectable({
   providedIn: 'root'
@@ -43,6 +44,10 @@ export class VendorService {
 
   get_Vendor_Summary(id: any): Observable<Vendor> {
     return this.http.get(`${summaryUrl}/${id}`);
+  }
+
+  get_all_vendor_summaries(): Observable<any> {
+    return this.http.get(all_summary_Url);
   }
 
 }

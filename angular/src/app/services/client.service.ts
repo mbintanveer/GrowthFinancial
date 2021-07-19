@@ -5,6 +5,7 @@ import { Client } from '../models/client.model';
 
 const baseUrl = 'http://localhost:8000/api/Clients';
 const summaryUrl = 'http://localhost:8000/api/Clients_Summary'
+const all_summary_Url='http://localhost:8000/api/All_Clients_Summary'
 
 @Injectable({
   providedIn: 'root'
@@ -48,6 +49,10 @@ export class ClientService {
 
   get_Client_Summary(id: any): Observable<Client> {
     return this.http.get(`${summaryUrl}/${id}`);
+  }
+
+  get_all_client_summaries(): Observable<any> {
+    return this.http.get(all_summary_Url);
   }
 
 }
