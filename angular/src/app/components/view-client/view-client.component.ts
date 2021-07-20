@@ -17,7 +17,9 @@ import { InvoiceService } from 'src/app/services/invoice.service';
 })
 
 export class ViewClientComponent implements OnInit {
-  page = 1;
+  invoice_page = 1;
+  receiving_page = 1;
+
   count = 0;
   tableSize = 10;
   tableSizesArr = [10];
@@ -124,15 +126,26 @@ export class ViewClientComponent implements OnInit {
     this.currentInvoice =invoice;
     this.currentIndex = index;
   }
-
-  tabSize(event:any){
-    this.page = event;
-    this.retrieveReceivings(this.currentClient.client_id);
+  
+  invoices_tabSize(event:any){
+    this.invoice_page = event;
+    this.retrieveInvoices(this.currentClient.client_id)
   }  
+
+  receivings_tabSize(event:any){
+    this.receiving_page = event;
+    this.retrieveReceivings(this.currentClient.client_id);
+    
+
+  }  
+
+
 
   tableData(event:any): void {
     this.tableSize = event.target.value;
-    this.page = 1;
+    this.invoice_page = 1;
+    this.receiving_page = 1;
+
     this.retrieveReceivings(this.currentClient.client_id);
   } 
 

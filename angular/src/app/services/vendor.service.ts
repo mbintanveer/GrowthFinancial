@@ -50,5 +50,11 @@ export class VendorService {
     return this.http.get(all_summary_Url);
   }
 
+  
+
+  findByVendorName(vendor_name: any): Observable<Vendor[]> {
+    return this.http.get<Vendor[]>(`${baseUrl}?vendor_name_keyword=${vendor_name}`);
+  }
+
 }
 

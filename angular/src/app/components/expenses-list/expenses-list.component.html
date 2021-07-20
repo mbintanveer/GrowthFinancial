@@ -1,15 +1,17 @@
 <div class="col">
     <div id="page-content">
-        <div id="vendors">
+        <div id="expenses">
             <div id="table-container">
                 <div id="table-header">
                     <div id="table-header-left">
                         <span id="tab-title">Expenses</span>
                     </div>
                     <div id="table-header-right">
-                        <input id="search" type="text" placeholder="Search Expenses">
-                        <img id="search-icon" src="search.png">
-                        <button id="add-bill" class="table-header-button" routerLink="/Add-Expense">Add Expense</button>
+                        <div>
+                            <input id="search" type="text" placeholder="Search Expenses" [(ngModel)]="expense_type">
+                            <button id="search-expenses" class="table-header-button" (click)="searchExpenses()">Search Expenses</button>
+                            <button id="add-expenses" class="table-header-button" routerLink="/Add-Expense">Add Expenses</button>
+                        </div>
                     </div>
                 </div>
                 <table id="table">
@@ -25,7 +27,6 @@
                         </tr>
                     </thead>
                     <tbody>
-
                         <tr *ngFor="let expense of expenses | paginate : {
                             itemsPerPage: tableSize,
                             currentPage: page,
@@ -50,6 +51,7 @@
             </div>
         </div>
     </div>
+
     <div class=" d-flex justify-content-center ">
         <pagination-controls previousLabel="Prev" Responsive=True nextLabel="Next" (pageChange)="tabSize($event)">
 

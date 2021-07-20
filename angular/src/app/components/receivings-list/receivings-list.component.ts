@@ -13,13 +13,15 @@ import { ReceivingService } from 'src/app/services/receiving.service';
 export class ReceivingsListComponent implements OnInit {
 
   receivings?: any;
+  receiving_description=''
   currentReceiving: Receiving = {};
   currentIndex = -1;
   title = '';
   page = 1;
   count = 0;
   tableSize = 10;
-
+  
+  
   constructor(private receivingService: ReceivingService) { }
 
   ngOnInit(): void {
@@ -61,21 +63,21 @@ export class ReceivingsListComponent implements OnInit {
     this.currentIndex = index;
   }
 
+  searchReceivings(): void {
+    this.currentReceiving = {};
+    this.currentIndex = -1;
 
-  // searchTitle(): void {
-  //   this.currentClient = {};
-  //   this.currentIndex = -1;
-
-  //   this.clientService.findByTitle(this.title)
-  //     .subscribe(
-  //       data => {
-  //         this.clients = data;
-  //         console.log(data);
-  //       },
-  //       error => {
-  //         console.log(error);
-  //       });
-  // }
+    this.receivingService.findByReceivingDescription(this.receiving_description)
+      .subscribe(
+        data => {
+          this.receivings = data;
+          this.page=1
+          console.log(data);
+        },
+        error => {
+          console.log(error);
+        });
+  }
 }
 
 

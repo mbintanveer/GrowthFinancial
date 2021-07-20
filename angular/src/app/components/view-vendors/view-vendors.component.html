@@ -85,12 +85,13 @@
                     <tbody>
 
                         <tr *ngFor="let bill of bills | paginate : {
+                            id: 'bills_pagination',
                             itemsPerPage: tableSize,
-                            currentPage: page,
+                            currentPage: bill_page,
                             totalItems: count
                           };
                     let i = index" [class.active]="i == currentIndex">
-                            <td>{{(page-1)*10 +i +1}}</td>
+                            <td>{{(bill_page-1)*10 +i +1}}</td>
                             <td>{{bill.date_created}}</td>
                             <td>{{bill.bill_description}}</td>
                             <td>{{bill.bill_amount}}</td>
@@ -109,7 +110,7 @@
         <div class=" d-flex justify-content-center ">
 
             <br> <br>
-            <pagination-controls previousLabel="Prev" nextLabel="Next" (pageChange)="tabSize($event)">
+            <pagination-controls id="bills_pagination" previousLabel="Prev" nextLabel="Next" (pageChange)="bill_tabSize($event)">
                 <!--responsive="True"-->
             </pagination-controls>
         </div>
@@ -152,11 +153,12 @@
                     </thead>
                     <tbody>
                         <tr *ngFor="let payment of payments | paginate : {
+                            id: 'payments_pagination',
                             itemsPerPage: tableSize,
-                            currentPage: page,
+                            currentPage: payment_page,
                             totalItems: count
                           }; let i = index" [class.active]="i == currentIndex">
-                            <td>{{(page-1)*10 +i +1}}</td>
+                            <td>{{(payment_page-1)*10 +i +1}}</td>
                             <td>{{payment.date_created}}</td>
                             <td>{{payment.payment_description}}</td>
                             <td>{{payment.payment_amount}}</td>
@@ -172,9 +174,7 @@
             </div>
         </div>
         <div class=" d-flex justify-content-center ">
-
-            <br> <br>
-            <pagination-controls previousLabel="Prev" nextLabel="Next" (pageChange)="tabSize($event)">
+            <pagination-controls id="payments_pagination" previousLabel="Prev" nextLabel="Next" (pageChange)="payment_tabSize($event)">
                 <!--responsive="True"-->
             </pagination-controls>
         </div>

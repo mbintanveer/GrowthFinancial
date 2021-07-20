@@ -39,5 +39,10 @@ export class ExpenseService {
   findByTitle(title: any): Observable<Expense[]> {
     return this.http.get<Expense[]>(`${baseUrl}?title=${title}`);
   }
+
+  findByExpenseType(expense_type: any): Observable<Expense[]> {
+    return this.http.get<Expense[]>(`${baseUrl}?expense_type_keyword=${expense_type}`);
+  }
+
 }
 

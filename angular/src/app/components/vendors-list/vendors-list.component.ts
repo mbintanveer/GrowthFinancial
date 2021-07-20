@@ -61,21 +61,24 @@ export class VendorsListComponent implements OnInit {
     this.tableSize = event.target.value;
     this.page = 1;
     this.retrieveVendors();
-  } 
-  // searchTitle(): void {
-  //   this.currentClient = {};
-  //   this.currentIndex = -1;
+  }
 
-  //   this.clientService.findByTitle(this.title)
-  //     .subscribe(
-  //       data => {
-  //         this.clients = data;
-  //         console.log(data);
-  //       },
-  //       error => {
-  //         console.log(error);
-  //       });
-  // }
+  searchVendors(): void {
+    this.currentVendor = {};
+    this.currentIndex = -1;
+
+    this.vendorService.findByVendorName(this.vendor_name)
+      .subscribe(
+        data => {
+          this.vendors = data;
+          this.page=1
+          console.log(data);
+        },
+        error => {
+          console.log(error);
+        });
+  }
+
 }
 
 

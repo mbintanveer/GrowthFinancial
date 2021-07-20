@@ -78,13 +78,14 @@
                         </thead>
                         <tbody>
                             <tr *ngFor="let invoice of invoices | paginate : {
+                                id: 'invoices_pagination',
                                 itemsPerPage: tableSize,
-                                currentPage: page,
+                                currentPage: invoice_page,
                                 totalItems: count
                               };
                         let i = index" [class.active]="i == currentIndex">
 
-                                <td>{{(page-1)*10 +i +1}}</td>
+                                <td>{{(invoice_page-1)*10 +i +1}}</td>
                                 <td>{{invoice.date_created}}</td>
                                 <td>{{invoice.invoice_description}}</td>
                                 <td>{{invoice.invoice_amount }}</td>
@@ -101,7 +102,7 @@
                 </div>
             </div>
             <div class=" d-flex justify-content-center ">
-                <pagination-controls previousLabel="Prev" nextLabel="Next" (pageChange)="tabSize($event)">
+                <pagination-controls id="invoices_pagination" previousLabel="Prev" nextLabel="Next" (pageChange)="invoices_tabSize($event)">
                     <!--responsive="True"-->
                 </pagination-controls>
             </div>
@@ -143,13 +144,14 @@
                         </thead>
                         <tbody>
                             <tr *ngFor="let receiving of receivings | paginate : {
+                                id: 'receivings_pagination',
                                 itemsPerPage: tableSize,
-                                currentPage: page,
+                                currentPage: receiving_page,
                                 totalItems: count
                               };
                         let i = index" [class.active]="i == currentIndex">
 
-                                <td>{{(page-1)*10 +i +1}}</td>
+                                <td>{{(receiving_page-1)*10 +i +1}}</td>
                                 <td>{{receiving.date_created}}</td>
                                 <td>{{receiving.receiving_description}}</td>
                                 <td>{{receiving.receiving_amount}}</td>
@@ -165,7 +167,7 @@
                 </div>
             </div>
             <div class=" d-flex justify-content-center ">
-                <pagination-controls previousLabel="Prev" nextLabel="Next" (pageChange)="tabSize($event)">
+                <pagination-controls id="receivings_pagination" previousLabel="Prev" nextLabel="Next" (pageChange)="receivings_tabSize($event)">
                     <!--responsive="True"-->
                 </pagination-controls>
             </div>

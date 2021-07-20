@@ -7,11 +7,12 @@
                         <span id="tab-title">Vendors</span>
                     </div>
                     <div id="table-header-right">
-                        <input id="search" type="text" placeholder="Search Vendor">
-                        <button id="add-bill" class="table-header-button" routerLink="/Add-Bill">Add Bill</button>
-                        <button id="add-payment" class="table-header-button" routerLink="/Add-Payment">Add Payment</button>
-                        <button id="add-bill" class="table-header-button" routerLink="/Add-Vendor">Add Vendor</button>
+                        <input id="search" type="text" placeholder="Search Vendors" [(ngModel)]="vendor_name">
+                        <button id=" search-receiving" class="table-header-button " (click)="searchVendors()">Search Vendors</button>
                     </div>
+                    <button id="add-bill" class="table-header-button " routerLink="/Add-Bill">Add Bill</button>
+                    <button id="add-payment " class="table-header-button " routerLink="/Add-Payment">Add Payment</button>
+                    <button id="add-bill" class="table-header-button " routerLink="/Add-Vendor ">Add Vendor</button>
                 </div>
                 <table id="table">
                     <thead>
@@ -26,19 +27,15 @@
                     <tbody>
 
                         <tr *ngFor="let vendor of vendors | paginate : {
-                            itemsPerPage: tableSize,
-                            currentPage: page,
-                            totalItems: count
-                          };
-                    let i = index" [class.active]="i == currentIndex">
+                             itemsPerPage: tableSize, currentPage: page, totalItems: count }; let i=index" [class.active]="i==currentIndex">
                             <td>{{(page-1)*10 +i +1}}</td>
                             <td>{{vendor.vendor_name }}</td>
                             <td>
 
-                                <a routerLink="/View-Vendors/{{vendor.vendor_id}}">
+                                <a routerLink="/View-Vendors/{{vendor.vendor_id}} ">
                                     View
                                 </a> |
-                                <a routerLink="/Vendors/{{vendor.vendor_id}}">
+                                <a routerLink="/Vendors/{{vendor.vendor_id}} ">
                                     Edit
                                 </a>
                             </td>
@@ -50,9 +47,9 @@
     </div>
     <div class=" d-flex justify-content-center ">
         <br> <br>
-        <pagination-controls previousLabel="Prev" nextLabel="Next" (pageChange)="tabSize($event)">
-            <!--responsive="True"-->
-        </pagination-controls>
+        <!-- <pagination-controls previousLabel="Prev " nextLabel="Next " (pageChange)="tabSize($event) "> -->
+        <!--responsive="True "-->
+        <!-- </pagination-controls> -->
     </div>
 
 </div>

@@ -18,7 +18,8 @@ import { BillService } from 'src/app/services/bill.service';
 })
 
 export class ViewVendorComponent implements OnInit {
-  page = 1;
+  bill_page = 1;
+  payment_page = 1;
   count = 0;
   tableSize = 10;
   tableSizesArr = [10];
@@ -127,14 +128,20 @@ export class ViewVendorComponent implements OnInit {
     this.currentIndex = index;
   }
 
-  tabSize(event:any){
-    this.page = event;
+  bill_tabSize(event:any){
+    this.bill_page = event;
+    this.retrieveBills(this.currentVendor.vendor_id);
+  }  
+
+  payment_tabSize(event:any){
+    this.payment_page = event;
     this.retrievePayments(this.currentVendor.vendor_id);
   }  
 
   tableData(event:any): void {
     this.tableSize = event.target.value;
-    this.page = 1;
+    this.bill_page = 1;
+    this.payment_page = 1;
     this.retrievePayments(this.currentVendor.vendor_id);
   } 
 

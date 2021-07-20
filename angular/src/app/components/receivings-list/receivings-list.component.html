@@ -1,15 +1,17 @@
 <div class="col">
     <div id="page-content">
-        <div id="vendors">
+        <div id="receivings">
             <div id="table-container">
                 <div id="table-header">
                     <div id="table-header-left">
                         <span id="tab-title">Receivings</span>
                     </div>
                     <div id="table-header-right">
-                        <input id="search" type="text" placeholder="Search Receivings">
-                        <img id="search-icon" src="search.png">
-                        <button id="add-bill" class="table-header-button" routerLink="/Add-Receiving">Add Receiving</button>
+                        <div>
+                            <input id="search" type="text" placeholder="Search Receiving" [(ngModel)]="receiving_description">
+                            <button id="search-receiving" class="table-header-button" (click)="searchReceivings()">Search Receiving </button>
+                        </div>
+                        <button id="add-bill" class="table-header-button " routerLink="/Add-Receiving">Add Receiving</button>
                     </div>
                 </div>
                 <table id="table">
@@ -26,20 +28,15 @@
                     </thead>
                     <tbody>
                         <tr *ngFor="let receiving of receivings | paginate : {
-                            itemsPerPage: tableSize,
-                            currentPage: page,
-                            totalItems: count
-                          };
-                    let i = index" [class.active]="i == currentIndex">
+                             itemsPerPage: tableSize,
+                              currentPage: page,
+                               totalItems: count }; let i=index " [class.active]="i==currentIndex ">
                             <td>{{(page-1)*10 +i +1}}</td>
                             <td>{{receiving.date_created}}</td>
                             <td>{{receiving.receiving_description}}</td>
                             <td>{{receiving.receiving_amount}}</td>
                             <td>
-                                <!-- <a routerLink="/View-Receivings/{{receiving.receiving_id}}">
-                                    View
-                                </a> | -->
-                                <a routerLink="/Receivings/{{receiving.receiving_id}}">
+                                <a routerLink="/Receivings/{{receiving.receiving_id}} ">
                                     Edit
                                 </a>
                             </td>
@@ -49,8 +46,9 @@
             </div>
         </div>
     </div>
+
     <div class=" d-flex justify-content-center ">
-        <pagination-controls previousLabel="Prev" Responsive=True nextLabel="Next" (pageChange)="tabSize($event)">
+        <pagination-controls previousLabel="Prev " Responsive=True nextLabel="Next " (pageChange)="tabSize($event) ">
 
         </pagination-controls>
     </div>

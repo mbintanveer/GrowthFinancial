@@ -13,6 +13,7 @@ import { ExpenseService } from 'src/app/services/expense.service';
 export class ExpensesListComponent implements OnInit {
 
   expenses?: any;
+  expense_type = '';
   currentExpense: Expense = {};
   currentIndex = -1;
   title = '';
@@ -61,21 +62,22 @@ export class ExpensesListComponent implements OnInit {
     this.currentIndex = index;
   }
 
+  searchExpenses(): void {
+    this.currentExpense = {};
+    this.currentIndex = -1;
 
-  // searchTitle(): void {
-  //   this.currentClient = {};
-  //   this.currentIndex = -1;
+    this.expenseService.findByExpenseType(this.expense_type)
+      .subscribe(
+        data => {
+          this.expenses = data;
+          this.page=1
+          console.log(data);
+        },
+        error => {
+          console.log(error);
+        });
+  }
 
-  //   this.clientService.findByTitle(this.title)
-  //     .subscribe(
-  //       data => {
-  //         this.clients = data;
-  //         console.log(data);
-  //       },
-  //       error => {
-  //         console.log(error);
-  //       });
-  // }
 }
 
 

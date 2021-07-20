@@ -44,5 +44,9 @@ export class ReceivingService {
     return this.http.get<Receiving[]>(`${baseUrl}?receiving_client_id=${receiving_client_id}`);
   }
 
+  findByReceivingDescription(receiving_description: any): Observable<Receiving[]> {
+    return this.http.get<Receiving[]>(`${baseUrl}?receiving_description_keyword=${receiving_description}`);
+  }
+
 }
 
