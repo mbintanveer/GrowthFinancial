@@ -20,8 +20,8 @@ import { BillService } from 'src/app/services/bill.service';
 export class ViewVendorComponent implements OnInit {
   page = 1;
   count = 0;
-  tableSize = 5;
-  tableSizesArr = [5];
+  tableSize = 10;
+  tableSizesArr = [10];
 
   payments?: any;
   currentPayment: Payment = {};

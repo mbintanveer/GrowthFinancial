@@ -14,6 +14,10 @@ def Expenses_Landing(request):
 def expenses_list(request):
     if request.method == 'GET':
         expense = Expense.objects.all()
+        expense_type_keyword = request.GET.get('expense_type_keyword', None)
+        if expense_type_keyword is not None:
+            expense = expense.filter(expense_type__icontains=expense_type_keyword)
+        
         expense_serializer = ExpenseSerializer(expense, many=True)
         return JsonResponse(expense_serializer.data, safe=False)
 

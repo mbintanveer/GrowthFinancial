@@ -8,18 +8,13 @@
             </div>
 
             <div class="form-group">
-                <label for="name">Invoice Status</label>
-                <input class="form-control" id="status" required [(ngModel)]="invoice.invoice_status" name="invoice_status" />
+                <label for="invoice_amount">Invoice Amount</label>
+                <input class="form-control" id="invoice_amount" required [(ngModel)]="invoice.invoice_amount" name="invoice_amount" />
             </div>
-            <!-- <div class="form-group"> -->
-            <!-- <label for="invoice_amount">Invoice Amount</label> -->
-            <!-- <input class="form-control" id="invoice_amount" required [(ngModel)]="invoice.invoice_amount" name="invoice_amount" /> -->
-            <!-- </div> -->
 
             <div class="form-group">
                 <label for="date_created">Date Created</label> <br>
                 <input type="date" id="date_created" name="date_created" required [(ngModel)]="invoice.date_created">
-                <!-- <input class="form-control" id="date_created" required [(ngModel)]="invoice.date_created" name="date_created" /> -->
             </div>
 
             <label for="client">Client </label> <br>

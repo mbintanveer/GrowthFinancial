@@ -65,6 +65,10 @@ def invoices_list(request):
   
     if request.method == 'GET':
         invoice = Invoice.objects.all()
+        invoice_description_keyword = request.GET.get('invoice_description_keyword', None)
+        if invoice_description_keyword is not None:   
+            invoice = invoice.filter(invoice_description__icontains=invoice_description_keyword)
+        invoice_description_keyword = request.GET.get('invoice_description_keyword', None)
         invoice_client_id = request.GET.get('invoice_client_id', None)
         if invoice_client_id is not None:
             invoice = invoice.filter(invoice_client=invoice_client_id)
@@ -109,10 +113,10 @@ def invoices_detail(request, pk):
 def receivings_list(request):
     if request.method == 'GET':
         receiving = Receiving.objects.all()
-        receiving_client_id = request.GET.get('receiving_client_id', None)
-        if receiving_client_id is not None:
-            receiving = receiving.filter(receiving_client=receiving_client_id)
-        
+        receiving_description_keyword = request.GET.get('receiving_description_keyword', None)
+        if receiving_description_keyword is not None:   
+            receiving = receiving.filter(receiving_description__icontains=receiving_description_keyword)
+        receiving_description_keyword = request.GET.get('receiving_description_keyword', None)
         receiving_serializer = ReceivingSerializer(receiving, many=True)
         return JsonResponse(receiving_serializer.data, safe=False)
 

@@ -35,6 +35,9 @@ def Vendors_View(request,id):
 def vendors_list(request):
     if request.method == 'GET':
         vendor = Vendors.objects.all()
+        vendor_name_keyword = request.GET.get('vendor_name_keyword', None)
+        if vendor_name_keyword is not None:
+            vendor = vendor.filter(vendor_name__icontains=vendor_name_keyword)
         vendor_serializer = VendorSerializer(vendor, many=True)
         return JsonResponse(vendor_serializer.data, safe=False)
 

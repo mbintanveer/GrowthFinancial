@@ -72,13 +72,13 @@
                 <table id="table">
                     <thead>
                         <tr>
-                            <td>Transaction ID</td>
-                            <td>Type</td>
-                            <td>Bill Description</td>
-                            <td>Details</td>
-                            <td>Reference No</td>
+                            <th scope="col"> Serial No.</th>
+                            <th scope="col"> Date </th>
+                            <th scope="col"> Description </th>
+                            <th scope="col"> Amount </th>
+                            <th scope="col"> Reference No </th>
                             <td>
-                                View Vendor
+                                View Client
                             </td>
                         </tr>
                     </thead>
@@ -90,12 +90,11 @@
                             totalItems: count
                           };
                     let i = index" [class.active]="i == currentIndex">
-                            <td>{{bill.bill_id }}</td>
+                            <td>{{(page-1)*10 +i +1}}</td>
                             <td>{{bill.date_created}}</td>
                             <td>{{bill.bill_description}}</td>
-                            <td>sample reference no.</td>
-                            <td>{{bill.bill_Vendor}}</td>
-                            <!-- <td>{{Bill.Bill_amount}}</td> -->
+                            <td>{{bill.bill_amount}}</td>
+                            <td>AEE-BIL-{{bill.bill_id}}</td>
                             <td>
 
                                 <a routerLink="/Bills/{{bill.bill_id}}">
@@ -139,13 +138,14 @@
                 <table id="table">
                     <thead>
                         <tr>
-                            <th scope="col"> Transaction ID </th>
+
+                            <th scope="col"> Serial No.</th>
                             <th scope="col"> Date </th>
                             <th scope="col"> Description </th>
-                            <th scope="col"> Vendor </th>
                             <th scope="col"> Amount </th>
+                            <th scope="col"> Reference No </th>
                             <td>
-                                Actions
+                                View Client
                             </td>
                         </tr>
 
@@ -155,18 +155,13 @@
                             itemsPerPage: tableSize,
                             currentPage: page,
                             totalItems: count
-                          };
-                    let i = index" [class.active]="i == currentIndex">
-
-                            <td>{{payment.payment_id }}</td>
+                          }; let i = index" [class.active]="i == currentIndex">
+                            <td>{{(page-1)*10 +i +1}}</td>
                             <td>{{payment.date_created}}</td>
                             <td>{{payment.payment_description}}</td>
-                            <td>{{payment.payment_Vendor}}</td>
                             <td>{{payment.payment_amount}}</td>
+                            <td>AEE-PAY-{{payment.payment_id}}</td>
                             <td>
-                                <!-- <a routerLink="/View-Payments/{{Payment.Payment_id}}">
-                                    View
-                                </a> | -->
                                 <a routerLink="/Payments/{{payment.payment_id}}">
                                     Edit
                                 </a>

@@ -17,8 +17,7 @@ export class AddInvoicesComponent implements OnInit {
   invoice: Invoice = {
     invoice_id: '',
     invoice_description: '',
-    invoice_status: '',
-    // invoice_amount: 0,
+    invoice_amount: 0,
     date_created: '2020-01-01',
   };
   submitted = false;
@@ -48,10 +47,9 @@ export class AddInvoicesComponent implements OnInit {
     const data = {
       invoice_id: this.invoice.invoice_id,
       invoice_description: this.invoice.invoice_description,
-      // invoice_amount:this.invoice.invoice_amount,
+      invoice_amount:this.invoice.invoice_amount,
       date_created: this.invoice.date_created,
       invoice_client:this.invoice.invoice_client,
-      invoice_status:this.invoice.invoice_status
     };
     
 
@@ -59,8 +57,7 @@ export class AddInvoicesComponent implements OnInit {
       .subscribe(
         response => {
           console.log(response);
-          this.submitted = true;
-          this.router.navigate(['/Invoices']);
+          this.router.navigate(['/View-Clients/'+this.invoice.invoice_client]);
         },
         error => {
           console.log(error);

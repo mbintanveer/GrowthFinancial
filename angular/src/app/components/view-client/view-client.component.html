@@ -66,39 +66,36 @@
                     <table id="table">
                         <thead>
                             <tr>
-                                <td>Transaction ID</td>
-                                <td>Type</td>
-                                <td>Invoice Description</td>
-                                <td>Details</td>
+                                <td>Serial No.</td>
+                                <td>Date</td>
+                                <td>Description</td>
+                                <td>Amount</td>
                                 <td>Reference No</td>
                                 <td>
                                     View Client
                                 </td>
                             </tr>
                         </thead>
-                        <tr *ngFor="let invoice of invoices | paginate : {
-                            itemsPerPage: tableSize,
-                            currentPage: page,
-                            totalItems: count
-                          };
-                    let i = index" [class.active]="i == currentIndex">
-                            <td>{{invoice.invoice_id }}</td>
-                            <td>{{invoice.date_created}}</td>
-                            <td>{{invoice.invoice_description}}</td>
-                            <td>sample reference no.</td>
-                            <td>{{invoice.invoice_client}}</td>
-                            <!-- <td>{{invoice.invoice_amount}}</td> -->
-                            <td>
-
-                                <a routerLink="/Invoices/{{invoice.invoice_id}}">
-                                    Edit
-                                </a>
-                            </td>
-                        </tr>
-
-
                         <tbody>
+                            <tr *ngFor="let invoice of invoices | paginate : {
+                                itemsPerPage: tableSize,
+                                currentPage: page,
+                                totalItems: count
+                              };
+                        let i = index" [class.active]="i == currentIndex">
 
+                                <td>{{(page-1)*10 +i +1}}</td>
+                                <td>{{invoice.date_created}}</td>
+                                <td>{{invoice.invoice_description}}</td>
+                                <td>{{invoice.invoice_amount }}</td>
+                                <td>AEE-INV-{{invoice.invoice_id }}</td>
+                                <td>
+
+                                    <a routerLink="/Invoices/{{invoice.invoice_id}}">
+                                        Edit
+                                    </a>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
                 </div>
@@ -131,44 +128,38 @@
                             <button id="add-receiving " class="table-header-button " routerLink="/Add-Receiving">Add Receiving</button>
                         </div>
                     </div>
-
                     <table id="table">
                         <thead>
                             <tr>
-                                <th scope="col"> Transaction ID </th>
-                                <th scope="col"> Date </th>
-                                <th scope="col"> Description </th>
-                                <th scope="col"> Client </th>
-                                <th scope="col"> Amount </th>
+                                <td>Serial No.</td>
+                                <td>Date</td>
+                                <td>Description</td>
+                                <td>Amount</td>
+                                <td>Reference No</td>
                                 <td>
-                                    Actions
+                                    View Client
                                 </td>
                             </tr>
                         </thead>
-                        <tr *ngFor="let receiving of receivings | paginate : {
-                            itemsPerPage: tableSize,
-                            currentPage: page,
-                            totalItems: count
-                          };
-                    let i = index" [class.active]="i == currentIndex">
-
-                            <td>{{receiving.receiving_id }}</td>
-                            <td>{{receiving.date_created}}</td>
-                            <td>{{receiving.receiving_description}}</td>
-                            <td>{{receiving.receiving_client}}</td>
-                            <td>{{receiving.receiving_amount}}</td>
-                            <td>
-                                <!-- <a routerLink="/View-Receivings/{{receiving.receiving_id}}">
-                                    View
-                                </a> | -->
-                                <a routerLink="/Receivings/{{receiving.receiving_id}}">
-                                    Edit
-                                </a>
-                            </td>
-                        </tr>
-
                         <tbody>
+                            <tr *ngFor="let receiving of receivings | paginate : {
+                                itemsPerPage: tableSize,
+                                currentPage: page,
+                                totalItems: count
+                              };
+                        let i = index" [class.active]="i == currentIndex">
 
+                                <td>{{(page-1)*10 +i +1}}</td>
+                                <td>{{receiving.date_created}}</td>
+                                <td>{{receiving.receiving_description}}</td>
+                                <td>{{receiving.receiving_amount}}</td>
+                                <td>AEE-REC-{{receiving.receiving_id}}</td>
+                                <td>
+                                    <a routerLink="/Receivings/{{receiving.receiving_id}}">
+                                        Edit
+                                    </a>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
                 </div>

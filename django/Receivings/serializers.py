@@ -6,7 +6,7 @@ class ReceivingSerializer(serializers.ModelSerializer):
         model = Receiving
         fields = ('receiving_id',
                 'date_created',
-                'receiving_amoun',
+                'receiving_amount',
                'receiving_description',
                 'receiving_client')
    

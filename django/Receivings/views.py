@@ -13,8 +13,12 @@ def Receivings_Landing(request):
 @api_view(['GET','POST'])
 def receivings_list(request):
     if request.method == 'GET':
-        receiving = Receiving.objects.all()
-        receiving_serializer = ReceivingSerializer(receiving, many=True)
+        receivings = Receiving.objects.all()
+        receiving_description_keyword = request.GET.get('receiving_description_keyword', None)
+        if receiving_description_keyword is not None:
+            
+            receivings = receivings.filter(receiving_description__icontains=receiving_description_keyword)
+        receiving_serializer = ReceivingSerializer(receivings, many=True)
         return JsonResponse(receiving_serializer.data, safe=False)
 
     elif request.method == 'POST':
