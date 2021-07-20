@@ -29,20 +29,20 @@
 
                             </td>
                         </tr>
-                        <tr>
-                            <th scope="col"> {{getClientSummary.client_name}} </th>
-                            <th scope="col"> {{getClientSummary.get_one_month}} </th>
-                            <th scope="col"> {{getClientSummary.get_two_month}} </th>
-                            <th scope="col"> {{getClientSummary.get_three_month}} </th>
-                            <th scope="col"> {{getClientSummary.get_four_month}} </th>
-                            <th scope="col"> {{getClientSummary.get_total}} </th>
-                            <td>
 
-                            </td>
-                        </tr>
                     </thead>
                     <tbody>
-
+                        <tr>
+                            <th> {{getClientSummary.client_name}} </th>
+                            <th> {{getClientSummary.get_one_month}} </th>
+                            <th> {{getClientSummary.get_two_month}} </th>
+                            <th> {{getClientSummary.get_three_month}} </th>
+                            <th> {{getClientSummary.get_four_month}} </th>
+                            <th> {{getClientSummary.get_total}} </th>
+                            <td>
+                                View
+                            </td>
+                        </tr>
                     </tbody>
                 </table>
             </div>
@@ -91,28 +91,28 @@
                                     View Client
                                 </td>
                             </tr>
-
-                            <tr *ngFor="let invoice of invoices | paginate : {
+                        </thead>
+                        <tr *ngFor="let invoice of invoices | paginate : {
                             itemsPerPage: tableSize,
                             currentPage: page,
                             totalItems: count
                           };
                     let i = index" [class.active]="i == currentIndex">
-                                <td>{{invoice.invoice_id }}</td>
-                                <td>{{invoice.date_created}}</td>
-                                <td>{{invoice.invoice_description}}</td>
-                                <td>sample reference no.</td>
-                                <td>{{invoice.invoice_client}}</td>
-                                <!-- <td>{{invoice.invoice_amount}}</td> -->
-                                <td>
+                            <td>{{invoice.invoice_id }}</td>
+                            <td>{{invoice.date_created}}</td>
+                            <td>{{invoice.invoice_description}}</td>
+                            <td>sample reference no.</td>
+                            <td>{{invoice.invoice_client}}</td>
+                            <!-- <td>{{invoice.invoice_amount}}</td> -->
+                            <td>
 
-                                    <a routerLink="/Invoices/{{invoice.invoice_id}}">
+                                <a routerLink="/Invoices/{{invoice.invoice_id}}">
                                     Edit
                                 </a>
-                                </td>
-                            </tr>
+                            </td>
+                        </tr>
 
-                        </thead>
+
                         <tbody>
 
                         </tbody>
@@ -130,17 +130,7 @@
                     <!--responsive="True"-->
                 </pagination-controls>
             </div>
-            <!-- <div class=" d-flex justify-content-center ">
-            Items per Page: <select (change)="tableData($event)">
-            <option *ngFor="let size of tableSizesArr" [ngValue]="size">
-              {{ size }}
-            </option>
-          </select>
-            <br> <br>
-            <pagination-controls previousLabel="Prev" nextLabel="Next" (pageChange)="tabSize($event)">
-                <!--responsive="True"
-            </pagination-controls>
-        </div> -->
+
         </div>
 
     </div>
@@ -176,28 +166,29 @@
                                     Actions
                                 </td>
                             </tr>
-                            <tr *ngFor="let receiving of receivings | paginate : {
+                        </thead>
+                        <tr *ngFor="let receiving of receivings | paginate : {
                             itemsPerPage: tableSize,
                             currentPage: page,
                             totalItems: count
                           };
                     let i = index" [class.active]="i == currentIndex">
 
-                                <td>{{receiving.receiving_id }}</td>
-                                <td>{{receiving.date_created}}</td>
-                                <td>{{receiving.receiving_description}}</td>
-                                <td>{{receiving.receiving_client}}</td>
-                                <td>{{receiving.receiving_amount}}</td>
-                                <td>
-                                    <!-- <a routerLink="/View-Receivings/{{receiving.receiving_id}}">
+                            <td>{{receiving.receiving_id }}</td>
+                            <td>{{receiving.date_created}}</td>
+                            <td>{{receiving.receiving_description}}</td>
+                            <td>{{receiving.receiving_client}}</td>
+                            <td>{{receiving.receiving_amount}}</td>
+                            <td>
+                                <!-- <a routerLink="/View-Receivings/{{receiving.receiving_id}}">
                                     View
                                 </a> | -->
-                                    <a routerLink="/Receivings/{{receiving.receiving_id}}">
+                                <a routerLink="/Receivings/{{receiving.receiving_id}}">
                                     Edit
                                 </a>
-                                </td>
-                            </tr>
-                        </thead>
+                            </td>
+                        </tr>
+
                         <tbody>
 
                         </tbody>

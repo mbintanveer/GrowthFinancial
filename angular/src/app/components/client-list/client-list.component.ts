@@ -43,7 +43,7 @@ export class ClientsListComponent implements OnInit {
   
   tabSize(event:any){
     this.page = event;
-    this.retrieveClients();
+    //this.retrieveClients();
   }  
 
   tableData(event:any): void {
@@ -83,6 +83,7 @@ export class ClientsListComponent implements OnInit {
       .subscribe(
         data => {
           this.clients = data;
+          this.page=1
           console.log(data);
         },
         error => {
