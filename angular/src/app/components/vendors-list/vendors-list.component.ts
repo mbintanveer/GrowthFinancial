@@ -18,8 +18,8 @@ export class VendorsListComponent implements OnInit {
   vendors?: any;
   page = 1;
   count = 0;
-  tableSize = 5;
-  tableSizesArr = [5];
+  tableSize = 10;
+  tableSizesArr = [10];
 
   constructor(private vendorService: VendorService) { }
 

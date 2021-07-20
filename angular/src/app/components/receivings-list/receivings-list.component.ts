@@ -12,10 +12,13 @@ import { ReceivingService } from 'src/app/services/receiving.service';
 
 export class ReceivingsListComponent implements OnInit {
 
-  receivings?: Receiving[];
+  receivings?: any;
   currentReceiving: Receiving = {};
   currentIndex = -1;
   title = '';
+  page = 1;
+  count = 0;
+  tableSize = 10;
 
   constructor(private receivingService: ReceivingService) { }
 
@@ -41,6 +44,17 @@ export class ReceivingsListComponent implements OnInit {
     this.currentReceiving = {};
     this.currentIndex = -1;
   }
+
+  tabSize(event:any){
+    this.page = event;
+    //this.retrieveClients();
+  }  
+
+  tableData(event:any): void {
+    this.tableSize = event.target.value;
+    this.page = 1;
+    this.retrieveReceivings();
+  } 
 
   setActiveReceiving(receiving: Receiving, index: number): void {
     this.currentReceiving =receiving;

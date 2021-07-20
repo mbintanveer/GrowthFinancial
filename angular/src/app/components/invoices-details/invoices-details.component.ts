@@ -93,7 +93,7 @@ export class InvoicesDetailsComponent implements OnInit {
           error => {
             console.log(error);
           });
-        this.router.navigate(['/Invoices']);
+        this.router.navigate(['/View-Clients/'+this.currentInvoice.invoice_client]);
           
     }
   
@@ -103,7 +103,7 @@ export class InvoicesDetailsComponent implements OnInit {
           response => {
        
             this.message = response.message ? response.message : 'This invoice was deleted successfully!';
-            this.router.navigate(['/Invoices']);
+            this.router.navigate(['/View-Clients/'+this.currentInvoice.invoice_client]);
           },
           error => {
             console.log(error);

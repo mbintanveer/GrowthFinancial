@@ -3,6 +3,10 @@ import { PaymentService } from 'src/app/services/payment.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Payment } from 'src/app/models/payment.model';
 
+
+import { Vendor} from 'src/app/models/vendor.model';
+import { VendorService } from 'src/app/services/vendor.service';
+
 @Component({
   selector: 'app-payment-details',
   templateUrl: './payments-details.component.html',
@@ -20,18 +24,32 @@ export class PaymentsDetailsComponent implements OnInit {
     
   };
   message = '';
-
+  vendors?: Vendor[];
+  
   constructor(
     private paymentService: PaymentService,
+    private vendorService: VendorService,
     private route: ActivatedRoute,
     private router: Router) { }
 
     ngOnInit(): void {
       this.message = '';
       this.getPayment(this.route.snapshot.params.id);
-      console.log('hi')
+      this.retrieveVendors();
     }
   
+    retrieveVendors(): void {
+      this.vendorService.getAll()
+        .subscribe(
+          data => {
+            this.vendors = data;
+            console.log(data);
+          },
+          error => {
+            console.log(error);
+          });
+    }
+
     getPayment(id: string): void {
       this.paymentService.get(id)
         .subscribe(
@@ -74,7 +92,7 @@ export class PaymentsDetailsComponent implements OnInit {
           error => {
             console.log(error);
           });
-        this.router.navigate(['/Payments']);
+          this.router.navigate(['/View-Vendors/'+this.currentPayment.payment_vendor]);
           
     }
   
@@ -84,7 +102,7 @@ export class PaymentsDetailsComponent implements OnInit {
           response => {
        
             this.message = response.message ? response.message : 'This payment was deleted successfully!';
-            this.router.navigate(['/Payments']);
+            this.router.navigate(['/View-Vendors/'+this.currentPayment.payment_vendor]);
           },
           error => {
             console.log(error);

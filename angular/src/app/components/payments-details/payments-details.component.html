@@ -18,9 +18,14 @@
 
 
             <div class="form-group">
-                <label for="vendor">Vendor ID</label> <br>
-                <input class="form-group" id="payment_vendor" required [(ngModel)]="currentPayment.payment_vendor" name="payment_vendor" />
+                <label for="vendor">Vendor</label> <br>
+                <select id="payment_vendor" name="payment_vendor" class=form-group required [(ngModel)]="currentPayment.payment_vendor">
+                <option *ngFor="let vendor of vendors " [value]="vendor.vendor_id ">
+                  {{vendor.vendor_name}}
+                </option>
+            </select>
             </div>
+
         </form>
 
         <button class="badge badge-danger mr-2" (click)="deletePayment()">

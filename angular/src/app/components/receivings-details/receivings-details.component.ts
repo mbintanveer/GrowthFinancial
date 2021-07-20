@@ -74,7 +74,7 @@ export class ReceivingsDetailsComponent implements OnInit {
           error => {
             console.log(error);
           });
-        this.router.navigate(['/Receivings']);
+          this.router.navigate(['/View-Clients/'+this.currentReceiving.receiving_client]);
           
     }
   
@@ -82,10 +82,10 @@ export class ReceivingsDetailsComponent implements OnInit {
       this.receivingService.delete(this.currentReceiving.receiving_id)
         .subscribe(
           response => {
-       
             this.message = response.message ? response.message : 'This receiving was deleted successfully!';
-            this.router.navigate(['/Receivings']);
+            this.router.navigate(['/View-Clients/'+this.currentReceiving.receiving_client]);
           },
+          
           error => {
             console.log(error);
           });

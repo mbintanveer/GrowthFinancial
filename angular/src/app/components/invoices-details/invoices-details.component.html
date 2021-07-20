@@ -23,27 +23,26 @@
             </div> -->
 
             <label for="client">Client ID</label> <br>
-
-            <select id=possile_clients class=form-group [(ngModel)]="currentInvoice.invoice_client">
-                <option *ngFor="let client of clients" [value]="client.client_id">
-                  {{client.client_name}} - {{client.client_id}}
+            <select id="invoice_client" name="invoice_client" class=form-group required [(ngModel)]="currentInvoice.invoice_client">
+                <option *ngFor="let client of clients " [value]="client.client_id ">
+                  {{client.client_name}}
                 </option>
             </select>
 
 
         </form>
 
-        <button class="badge badge-danger mr-2" (click)="deleteInvoice()">
+        <button class="badge badge-danger mr-2 " (click)="deleteInvoice() ">
       Delete
     </button>
 
-        <button type="submit" class="badge badge-success mb-2" (click)="updateInvoice()">
+        <button type="submit " class="badge badge-success mb-2 " (click)="updateInvoice() ">
       Update
     </button>
         <p>{{ message }}</p>
     </div>
 
-    <div *ngIf="!currentInvoice.invoice_id">
+    <div *ngIf="!currentInvoice.invoice_id ">
         <br />
         <p>Cannot access this Client...</p>
     </div>

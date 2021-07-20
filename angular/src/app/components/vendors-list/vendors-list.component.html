@@ -18,8 +18,6 @@
                         <tr>
                             <td>Serial No</td>
                             <td>Vendor Name</td>
-                            <td>Vendor Type</td>
-                            <td>Reference No</td>
                             <td>
                                 View Vendor
                             </td>
@@ -33,10 +31,8 @@
                             totalItems: count
                           };
                     let i = index" [class.active]="i == currentIndex">
-                            <td>{{vendor.vendor_id}}</td>
+                            <td>{{(page-1)*10 +i +1}}</td>
                             <td>{{vendor.vendor_name }}</td>
-                            <td>Type 1</td>
-                            <td>658795423568975</td>
                             <td>
 
                                 <a routerLink="/View-Vendors/{{vendor.vendor_id}}">
@@ -53,11 +49,6 @@
         </div>
     </div>
     <div class=" d-flex justify-content-center ">
-        Items per Page: <select (change)="tableData($event)">
-        <option *ngFor="let size of tableSizesArr" [ngValue]="size">
-          {{ size }}
-        </option>
-      </select>
         <br> <br>
         <pagination-controls previousLabel="Prev" nextLabel="Next" (pageChange)="tabSize($event)">
             <!--responsive="True"-->

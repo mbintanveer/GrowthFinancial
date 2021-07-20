@@ -3,6 +3,9 @@ import { BillService } from 'src/app/services/bill.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Bill } from 'src/app/models/bill.model';
 
+import { Vendor} from 'src/app/models/vendor.model';
+import { VendorService } from 'src/app/services/vendor.service';
+
 @Component({
   selector: 'app-bill-details',
   templateUrl: './bills-details.component.html',
@@ -20,16 +23,30 @@ export class BillsDetailsComponent implements OnInit {
     
   };
   message = '';
+  vendors?: Vendor[];
 
   constructor(
     private billService: BillService,
+    private vendorService: VendorService,
     private route: ActivatedRoute,
     private router: Router) { }
 
     ngOnInit(): void {
       this.message = '';
       this.getBill(this.route.snapshot.params.id);
-      console.log('hi')
+      this.retrieveVendors();
+    }
+
+    retrieveVendors(): void {
+      this.vendorService.getAll()
+        .subscribe(
+          data => {
+            this.vendors = data;
+            console.log(data);
+          },
+          error => {
+            console.log(error);
+          });
     }
   
     getBill(id: string): void {
@@ -74,7 +91,7 @@ export class BillsDetailsComponent implements OnInit {
           error => {
             console.log(error);
           });
-        this.router.navigate(['/Bills']);
+          this.router.navigate(['/View-Vendors/'+this.currentBill.bill_vendor]);
           
     }
   
@@ -84,7 +101,7 @@ export class BillsDetailsComponent implements OnInit {
           response => {
        
             this.message = response.message ? response.message : 'This bill was deleted successfully!';
-            this.router.navigate(['/Bills']);
+            this.router.navigate(['/View-Vendors/'+this.currentBill.bill_vendor]);
           },
           error => {
             console.log(error);
