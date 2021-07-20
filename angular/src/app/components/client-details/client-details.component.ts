@@ -24,7 +24,6 @@ export class ClientDetailsComponent implements OnInit {
     ngOnInit(): void {
       this.message = '';
       this.getClient(this.route.snapshot.params.id);
-      console.log('hi')
     }
   
     getClient(id: string): void {

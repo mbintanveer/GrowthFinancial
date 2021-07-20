@@ -1,6 +1,7 @@
 <div>
     <div class="submit-form">
         <div *ngIf="!submitted">
+            <b><h2>Add an Invoice</h2></b>
             <div class="form-group">
                 <label for="name">Invoice Description</label>
                 <input class="form-control" id="description" required [(ngModel)]="invoice.invoice_description" name="invoice_description" />

@@ -1,6 +1,7 @@
 <div>
     <div class="submit-form">
         <div *ngIf="!submitted">
+            <b><h2>Add a Bill</h2></b>
             <div class="form-group">
                 <label for="name">Bill Description</label>
                 <input class="form-control" id="description" required [(ngModel)]="bill.bill_description" name="bill_description" />

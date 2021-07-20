@@ -1,10 +1,10 @@
 <div>
     <div *ngIf="currentClient.client_id" class="edit-form">
-        <h4>Client</h4>
+        <b><h2>Edit a Client</h2></b>
         <form>
-
+            <br>
             <div class="form-group">
-                <label for="name">Name</label>
+                <label for="name">Client Name</label>
                 <input type="text" class="form-control" id="name" [(ngModel)]="currentClient.client_name" name="client_name" />
             </div>
         </form>

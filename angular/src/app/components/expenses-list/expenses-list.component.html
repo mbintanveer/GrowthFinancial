@@ -26,8 +26,13 @@
                     </thead>
                     <tbody>
 
-                        <tr *ngFor="let expense of expenses; let i = index">
-                            <td>{{expense.expense_id }}</td>
+                        <tr *ngFor="let expense of expenses | paginate : {
+                            itemsPerPage: tableSize,
+                            currentPage: page,
+                            totalItems: count
+                          };
+                    let i = index" [class.active]="i == currentIndex">
+                            <td>{{(page-1)*10 +i +1}}</td>
                             <td>{{expense.date_created}}</td>
                             <td>{{expense.expense_type}}</td>
                             <td>{{expense.expense_amount}}</td>
@@ -44,5 +49,10 @@
                 </table>
             </div>
         </div>
+    </div>
+    <div class=" d-flex justify-content-center ">
+        <pagination-controls previousLabel="Prev" Responsive=True nextLabel="Next" (pageChange)="tabSize($event)">
+
+        </pagination-controls>
     </div>
 </div>

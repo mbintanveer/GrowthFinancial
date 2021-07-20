@@ -19,8 +19,8 @@ import { InvoiceService } from 'src/app/services/invoice.service';
 export class ViewClientComponent implements OnInit {
   page = 1;
   count = 0;
-  tableSize = 5;
-  tableSizesArr = [5];
+  tableSize = 10;
+  tableSizesArr = [10];
 
   receivings?: any;
   currentReceiving: Receiving = {};

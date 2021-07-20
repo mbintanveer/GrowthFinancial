@@ -19,8 +19,8 @@ export class ClientsListComponent implements OnInit {
   clients: any;
   page = 1;
   count = 0;
-  tableSize = 5;
-  tableSizesArr = [5];
+  tableSize = 10;
+  // tableSizesArr = [1];
 
   constructor(private clientService: ClientService) { }
 
